@@ -2,13 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2019-09-28T14:40:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2019-09-28T14:40:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2019-08-26T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2019-08-26T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.8.26_receiver-has-generic-name/</loc>
+    <lastmod>2019-08-26T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/</loc>
+    <lastmod>2019-07-29T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2019-07-25T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2019-03-25T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</loc>
+    <lastmod>2019-03-21T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.3.18_voltdb%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2019-03-18T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/</loc>
+    <lastmod>2019-03-16T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/</loc>
+    <lastmod>2019-03-16T14:42:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

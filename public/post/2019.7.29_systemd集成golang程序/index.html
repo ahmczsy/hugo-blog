@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Systemd集成Golang程序 - Noel&#39;s Blog </title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Noel" /><meta name="description" content="当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.58.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.bed08eb2.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Systemd集成Golang程序" />
+<meta property="og:description" content="当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/" />
+<meta property="article:published_time" content="2019-07-29T14:42:11+08:00" />
+<meta property="article:modified_time" content="2019-07-29T14:42:11+08:00" />
+<meta itemprop="name" content="Systemd集成Golang程序">
+<meta itemprop="description" content="当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务">
+
+
+<meta itemprop="datePublished" content="2019-07-29T14:42:11&#43;08:00" />
+<meta itemprop="dateModified" content="2019-07-29T14:42:11&#43;08:00" />
+<meta itemprop="wordCount" content="460">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Systemd集成Golang程序"/>
+<meta name="twitter:description" content="当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Noel</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Noel</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Systemd集成Golang程序</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-07-29 </span>
+        
+          <span class="more-meta"> 约 460 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#新建systemd的service">新建Systemd的Service</a></li>
+<li><a href="#运行service">运行Service</a></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务</p>
+
+<h3 id="新建systemd的service">新建Systemd的Service</h3>
+
+<p>目前go build得到的可执行文件放在/root/glass/go下</p>
+
+<p>首先新建Service，名称叫做glass-api</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">touch /lib/systemd/system/glass-api.service</code></pre></td></tr></table>
+</div>
+</div>
+<p>下一步，编辑该文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[Unit]
+Description=Glass admin&#39;s api
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart=/root/glass/go/main
+WorkingDirectory=/root/glass/go/
+
+[Install]
+WantedBy=multi-user.target</pre></td></tr></table>
+</div>
+</div>
+<p>ExecStart是go可执行文件的路径</p>
+
+<p>WorkingDirectory要注意，如果程序中使用了相对路径来加载一些配置文件，如果在Service中没有配置WorkingDirectory，默认是根路径，所以配置文件就从根路径来寻找，会造成一些意向不到的情况</p>
+
+<h3 id="运行service">运行Service</h3>
+
+<p>启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">service glass-api start</code></pre></td></tr></table>
+</div>
+</div>
+<p>停止</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">service glass-api stop</code></pre></td></tr></table>
+</div>
+</div>
+<p>查看状态</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-she" data-lang="she"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-she" data-lang="she">service glass-api status</code></pre></td></tr></table>
+</div>
+</div>
+<p>输出结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">Redirecting to /bin/systemctl status  glass-api.service
+● glass-api.service - Glass admin<span class="err">&#39;</span>s api
+   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/glass-api.service<span class="p">;</span> disabled<span class="p">;</span> vendor preset: disabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Sat <span class="m">2019</span>-07-27 <span class="m">19</span>:00:09 CST<span class="p">;</span> <span class="m">1</span> day 15h ago
+ Main PID: <span class="m">22559</span> <span class="o">(</span>main<span class="o">)</span>
+   Memory: <span class="m">7</span>.3M
+   CGroup: /system.slice/glass-api.service
+           └─22559 /root/glass/go/main</code></pre></td></tr></table>
+</div>
+</div>
+<p>如果想要开机启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">service glass-api enable</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="参考">参考</h3>
+
+<ul>
+<li><a href="https://liqiang.io/post/run-golang-binary-with-systemd">https://liqiang.io/post/run-golang-binary-with-systemd</a></li>
+<li><a href="https://github.com/kardianos/service">https://github.com/kardianos/service</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Noel</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-07-29
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2019.8.26_receiver-has-generic-name/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Receiver has generic name</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
+            <span class="next-text nav-default">golang time包相关的一些问题</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:ahmczsy@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ahmczsy" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Noel</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.f79f403f.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
