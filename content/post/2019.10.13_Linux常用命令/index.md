@@ -1,6 +1,7 @@
 ---
 title: "Linux常用命令"
 date: 2019-10-13T14:42:11+08:00
+tags: ["linux"]
 ---
 
 ### zip命令

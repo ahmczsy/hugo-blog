@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Noel" /><meta name="description" content="MySql事务等级和幻读语法 四个事物等级  read uncommitted ：有可能脏读  一个事务过程中读取到了，另一个事务的中途数据
+<meta name="author" content="Noel" /><meta name="description" content="四个事物等级  read uncommitted ：有可能脏读  一个事务过程中读取到了，另一个事务的中途数据
  read committed ：有可能不可重复读  即在一次事务之间，进行了两次读取，但是结果不一样，可能第一次id为1的人叫“李三”，第二次读id为1的人就叫了“李四”。因为读取操作不会阻止其他事务
  repetable read ：有可能幻读  幻读侧重的方面是某一次的 select 操作得到的结果所表征的数据状态无法支撑后续的业务操作。更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行 insert 时发现此记录已存在，无法插入，此时就发生了幻读
  serializable ：效率最低
@@ -44,9 +44,7 @@
 
 
 <meta property="og:title" content="MySql事务等级和幻读" />
-<meta property="og:description" content="MySql事务等级和幻读语法
-
-四个事物等级
+<meta property="og:description" content="四个事物等级
 
 
 read uncommitted ：有可能脏读
@@ -75,9 +73,7 @@ serializable ：效率最低
 <meta property="og:url" content="http://localhost:1313/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/" />
 
 <meta itemprop="name" content="MySql事务等级和幻读">
-<meta itemprop="description" content="MySql事务等级和幻读语法
-
-四个事物等级
+<meta itemprop="description" content="四个事物等级
 
 
 read uncommitted ：有可能脏读
@@ -105,16 +101,14 @@ serializable ：效率最低
 
 
 
-<meta itemprop="wordCount" content="542">
+<meta itemprop="wordCount" content="528">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySql事务等级和幻读"/>
-<meta name="twitter:description" content="MySql事务等级和幻读语法
-
-四个事物等级
+<meta name="twitter:description" content="四个事物等级
 
 
 read uncommitted ：有可能脏读
@@ -210,7 +204,7 @@ serializable ：效率最低
       <div class="post-meta">
         <span class="post-time"> 0001-01-01 </span>
         
-          <span class="more-meta"> 约 542 字 </span>
+          <span class="more-meta"> 约 528 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -221,7 +215,7 @@ serializable ：效率最低
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#mysql事务等级和幻读语法">MySql事务等级和幻读语法</a>
+<li>
 <ul>
 <li>
 <ul>
@@ -236,9 +230,7 @@ serializable ：效率最低
   </div>
 </div>
     <div class="post-content">
-      <h1 id="mysql事务等级和幻读语法">MySql事务等级和幻读语法</h1>
-
-<h3 id="四个事物等级">四个事物等级</h3>
+      <h3 id="四个事物等级">四个事物等级</h3>
 
 <ul>
 <li>read uncommitted ：有可能脏读</li>

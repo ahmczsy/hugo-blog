@@ -45,7 +45,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:1313/" />
 
-<meta property="og:updated_time" content="2019-09-28T14:40:17+08:00" />
+<meta property="og:updated_time" content="2019-10-13T14:42:11+08:00" />
 <meta itemprop="name" content="Noel&#39;s Blog ">
 <meta itemprop="description" content="Hugo theme even example site.">
 
@@ -118,20 +118,60 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">B-树的一些概念</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/">MySql索引优化</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-03-21 </span>
+      <span class="post-time"> 2019-03-25 </span>
       
-        <span class="more-meta"> 约 365 字 </span>
+        <span class="more-meta"> 约 206 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h1 id="b-树的一些概念">B-树的一些概念</h1>
+      MySql索引优化 语法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 create table user_info ( id int AUTO_INCREMENT, name varchar(20), age int(3), email varchar(256), PRIMARY KEY (id) ); create index idx_user_nameAgeEmail on user_info (name,age,email); create table t ( a varchar(20), b int(3), c varchar(20) ); create index idx_a_b_c on t
+    </div>
+    <div class="read-more">
+      <a href="/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
 
-<h3 id="阶-的含义">“阶”的含义</h3>
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/">使用idea自带的plugin反编译jar</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-03-25 </span>
+      
+        <span class="more-meta"> 约 392 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      问题 之前想反编译jar包,在网上了找了一些反编译的工具感觉都不太好用.就来我发现idea自带的反编译插件挺好用,但是没有GUI只能使用命令.
+    </div>
+    <div class="read-more">
+      <a href="/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">B-树的一些概念</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-03-21 </span>
+      
+        <span class="more-meta"> 约 357 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h3 id="阶-的含义">“阶”的含义</h3>
 
 <p>B-树的所有结点中<strong>最多可以拥有的子结点的个数</strong>为“阶”，用M表示，下图是一个三阶B-树</p>
 
@@ -232,89 +272,6 @@ $ sudo service mysql strat</code></pre></td></tr></table>
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/">WSL安装和使用LxRunOffline备份</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-03-16 </span>
-      
-        <span class="more-meta"> 约 404 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="安装">安装</h1>
-
-<h3 id="开启wsl组件">开启WSL组件</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell">  <span class="nb">Enable-WindowsOptionalFeature</span> <span class="n">-Online</span> <span class="n">-FeatureName</span> <span class="n">Microsoft-Windows-Subsystem-Linux</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="下载镜像">下载镜像</h3>
-
-<p>由于我的Win10是精简版所以没用应用商店所以只能手动下载镜像</p>
-
-<p>各个发行版 <a href="https://docs.microsoft.com/en-us/windows/wsl/install-manua">https://docs.microsoft.com/en-us/windows/wsl/install-manua</a></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/">MySql事务等级和幻读</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 0001-01-01 </span>
-      
-        <span class="more-meta"> 约 542 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="mysql事务等级和幻读语法">MySql事务等级和幻读语法</h1>
-
-<h3 id="四个事物等级">四个事物等级</h3>
-
-<ul>
-<li>read uncommitted ：有可能脏读</li>
-</ul>
-
-<p>一个事务过程中读取到了，另一个事务的中途数据</p>
-
-<ul>
-<li>read committed ：有可能不可重复读</li>
-</ul>
-
-<p>即在一次事务之间，进行了两次读取，但是结果不一样，可能第一次id为1的人叫“李三”，第二次读id为1的人就叫了“李四”。因为读取操作不会阻止其他事务</p>
-
-<ul>
-<li>repetable read ：有可能幻读</li>
-</ul>
-
-<p>幻读侧重的方面是某一次的 select 操作得到的结果所表征的数据状态无法支撑后续的业务操作。更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行 insert 时发现此记录已存在，无法插入，此时就发生了幻读</p>
-
-<ul>
-<li><p>serializable ：效率最低</p>
-
-<p>可避免幻读。读加共享锁，写加排他锁。这样读取事务可以并发，但是读写，写写事务之间都是互斥的，基本上就是一个个执行事务，所以叫序列化</p></li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -322,7 +279,10 @@ $ sudo service mysql strat</code></pre></td></tr></table>
         <i class="iconfont icon-left"></i>
         <span class="prev-text">上一页</span>
       </a>
-    
+    <a class="next" href="/page/3/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
   </nav>
         </div>
         
