@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vue on Noel&#39;s Blog </title>
+    <link>http://localhost:1313/tags/vue/</link>
+    <description>Recent content in vue on Noel&#39;s Blog </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 21 Oct 2019 13:55:11 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>当github aciton遇到element-ui-admin</title>
+      <link>http://localhost:1313/post/2019.10.21_%E5%BD%93github-aciton%E9%81%87%E5%88%B0element-ui-admin/</link>
+      <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2019.10.21_%E5%BD%93github-aciton%E9%81%87%E5%88%B0element-ui-admin/</guid>
+      <description>Github Actions是github搞的一个持续集成服务,现在还在测试中,如果想要使用需要到官网去申请. 现在我想使用github actions实现</description>
+    </item>
+    
+  </channel>
+</rss>

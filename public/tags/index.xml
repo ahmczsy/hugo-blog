@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Noel&#39;s Blog </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 13 Oct 2019 14:42:11 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 21 Oct 2019 13:55:11 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git</title>
+      <link>http://localhost:1313/tags/git/</link>
+      <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vue</title>
+      <link>http://localhost:1313/tags/vue/</link>
+      <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>前端</title>
+      <link>http://localhost:1313/tags/%E5%89%8D%E7%AB%AF/</link>
+      <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/%E5%89%8D%E7%AB%AF/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>linux</title>

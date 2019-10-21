@@ -45,7 +45,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:1313/" />
 
-<meta property="og:updated_time" content="2019-10-13T14:42:11+08:00" />
+<meta property="og:updated_time" content="2019-10-21T13:55:11+08:00" />
 <meta itemprop="name" content="Noel&#39;s Blog ">
 <meta itemprop="description" content="Hugo theme even example site.">
 
@@ -116,6 +116,54 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/">Ubuntu18.04 修改Mysql5.7默认root密码</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-03-16 </span>
+      
+        <span class="more-meta"> 约 174 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h4 id="步骤">步骤</h4>
+
+<ul>
+<li><p>设置mysql免密码登陆
+编辑/etc/mysql/my.cnf文件,在最后加入以下设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aidl" data-lang="aidl"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aidl" data-lang="aidl">[mysqld]
+skip-grant-tables=1</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>重启mysql</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-aidl" data-lang="aidl"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-aidl" data-lang="aidl">$ sudo service mysql stop
+$ sudo service mysql strat</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/">WSL安装和使用LxRunOffline备份</a></h1>

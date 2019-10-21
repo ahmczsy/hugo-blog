@@ -45,7 +45,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:1313/" />
 
-<meta property="og:updated_time" content="2019-10-13T14:42:11+08:00" />
+<meta property="og:updated_time" content="2019-10-21T13:55:11+08:00" />
 <meta itemprop="name" content="Noel&#39;s Blog ">
 <meta itemprop="description" content="Hugo theme even example site.">
 
@@ -116,6 +116,41 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">golang time包相关的一些问题</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-07-25 </span>
+      
+        <span class="more-meta"> 约 337 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h3 id="获取毫秒时间戳">获取毫秒时间戳</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//第一种
+</span><span class="c1"></span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">()</span> <span class="o">/</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+<span class="c1">//第二种
+</span><span class="c1"></span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1e6</span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/">MySql索引优化</a></h1>
@@ -220,54 +255,6 @@
     </div>
     <div class="read-more">
       <a href="/post/2019.3.18_voltdb%E5%85%A5%E9%97%A8/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/">Ubuntu18.04 修改Mysql5.7默认root密码</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-03-16 </span>
-      
-        <span class="more-meta"> 约 174 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h4 id="步骤">步骤</h4>
-
-<ul>
-<li><p>设置mysql免密码登陆
-编辑/etc/mysql/my.cnf文件,在最后加入以下设置</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-aidl" data-lang="aidl"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-aidl" data-lang="aidl">[mysqld]
-skip-grant-tables=1</code></pre></td></tr></table>
-</div>
-</div></li>
-
-<li><p>重启mysql</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-aidl" data-lang="aidl"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-aidl" data-lang="aidl">$ sudo service mysql stop
-$ sudo service mysql strat</code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
