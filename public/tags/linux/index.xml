@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on Noel&#39;s Blog </title>
+    <title>linux on Zshell的博客</title>
     <link>http://localhost:1313/tags/linux/</link>
-    <description>Recent content in linux on Noel&#39;s Blog </description>
+    <description>Recent content in linux on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-CN</language>
     <lastBuildDate>Sun, 13 Oct 2019 14:42:11 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,10 @@
       <pubDate>Sun, 13 Oct 2019 14:42:11 +0800</pubDate>
       
       <guid>http://localhost:1313/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错 在要解压的目的地的前面加个参数－d，就能新建一个</description>
+      <description>zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错
+在要解压的目的地的前面加个参数－d，就能新建一个不存的目录
+mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下
+mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼</description>
     </item>
     
   </channel>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Noel&#39;s Blog </title>
+    <title>Posts on Zshell的博客</title>
     <link>http://localhost:1313/post/</link>
-    <description>Recent content in Posts on Noel&#39;s Blog </description>
+    <description>Recent content in Posts on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-CN</language>
     <lastBuildDate>Mon, 21 Oct 2019 13:55:11 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,11 @@
       <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
       
       <guid>http://localhost:1313/post/2019.10.21_%E5%BD%93github-aciton%E9%81%87%E5%88%B0element-ui-admin/</guid>
-      <description>Github Actions是github搞的一个持续集成服务,现在还在测试中,如果想要使用需要到官网去申请. 现在我想使用github actions实现</description>
+      <description>Github Actions是github搞的一个持续集成服务,现在还在测试中,如果想要使用需要到官网去申请.
+现在我想使用github actions实现vue-element-admin做的一个管理后台的自动构建发布到生产服务器的一系列过程
+新建github workflow 进入github仓库的主页点击actions就可以创建一个新的workflow
+新建文件的路径在仓库根目录的./github/workflows/
+我之前误操作不知道为什么新建在仓库的根目录</description>
     </item>
     
     <item>
@@ -26,7 +30,10 @@
       <pubDate>Sun, 13 Oct 2019 14:42:11 +0800</pubDate>
       
       <guid>http://localhost:1313/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错 在要解压的目的地的前面加个参数－d，就能新建一个</description>
+      <description>zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错
+在要解压的目的地的前面加个参数－d，就能新建一个不存的目录
+mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下
+mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼</description>
     </item>
     
     <item>
@@ -35,7 +42,7 @@
       <pubDate>Mon, 26 Aug 2019 14:42:11 +0800</pubDate>
       
       <guid>http://localhost:1313/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
-      <description>&lt;h3 id=&#34;问题&#34;&gt;问题&lt;/h3&gt;
+      <description>&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
 
 &lt;p&gt;如果想要在go build生成的可执行文件中注入编译时间，git hash等信息。可以在编译的时候使用-ldflags -X参数来注入变量&lt;/p&gt;
 
@@ -53,14 +60,10 @@
       <description>&lt;h4 id=&#34;问题&#34;&gt;问题&lt;/h4&gt;
 
 &lt;p&gt;Golang的&lt;strong&gt;方法接收者&lt;/strong&gt;就是在函数名前的括号内的东西  如&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;self&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Car&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;self&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;car&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;就是方法接收者&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (self Car) run() // (self car)就是方法接收者
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是&lt;strong&gt;self  me  this&lt;/strong&gt;类似的词，IDE会提示*Receiver has generic name*信息 如下图所示&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/26/mW6QpQ.png&#34; alt=&#34;mW6QpQ.png&#34; /&gt;&lt;/p&gt;</description>
@@ -82,20 +85,12 @@
       
       <guid>http://localhost:1313/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;h3 id=&#34;获取毫秒时间戳&#34;&gt;获取毫秒时间戳&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;c1&#34;&gt;//第一种
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;UnixNano&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Millisecond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//第二种
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;UnixNano&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1e6&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;//第一种
+time.Now().UnixNano() / int64(time.Millisecond)
+//第二种
+time.Now().UnixNano() / 1e6
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -104,7 +99,7 @@
       <pubDate>Mon, 25 Mar 2019 14:42:11 +0800</pubDate>
       
       <guid>http://localhost:1313/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</guid>
-      <description>MySql索引优化 语法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 create table user_info ( id int AUTO_INCREMENT, name varchar(20), age int(3), email varchar(256), PRIMARY KEY (id) ); create index idx_user_nameAgeEmail on user_info (name,age,email); create table t ( a varchar(20), b int(3), c varchar(20) ); create index idx_a_b_c on t</description>
+      <description>MySql索引优化 语法 create table user_info ( id int AUTO_INCREMENT, name varchar(20), age int(3), email varchar(256), PRIMARY KEY (id) ); create index idx_user_nameAgeEmail on user_info (name,age,email); create table t ( a varchar(20), b int(3), c varchar(20) ); create index idx_a_b_c on t (a,b,c); create index &amp;lt;索引名称&amp;gt; on &amp;lt;表名&amp;gt; （&amp;lt;列名&amp;gt;,.</description>
     </item>
     
     <item>
@@ -113,7 +108,9 @@
       <pubDate>Mon, 25 Mar 2019 14:42:11 +0800</pubDate>
       
       <guid>http://localhost:1313/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/</guid>
-      <description>问题 之前想反编译jar包,在网上了找了一些反编译的工具感觉都不太好用.就来我发现idea自带的反编译插件挺好用,但是没有GUI只能使用命令.</description>
+      <description>问题 之前想反编译jar包,在网上了找了一些反编译的工具感觉都不太好用.就来我发现idea自带的反编译插件挺好用,但是没有GUI只能使用命令.
+使用 这个插件在/plugins/java-decompiler/lib/java-decompiler.jar.这个jar不能直接用java -jar运行,这个jar没有只能main函数,直接java -jar会报错,下面是使用方法
+java -cp java-decompiler.jar org.</description>
     </item>
     
     <item>
@@ -169,28 +166,16 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;设置mysql免密码登陆
 编辑/etc/mysql/my.cnf文件,在最后加入以下设置&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-aidl&#34; data-lang=&#34;aidl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-aidl&#34; data-lang=&#34;aidl&#34;&gt;[mysqld]
-skip-grant-tables=1&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-aidl&#34;&gt;[mysqld]
+skip-grant-tables=1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;重启mysql&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-aidl&#34; data-lang=&#34;aidl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-aidl&#34; data-lang=&#34;aidl&#34;&gt;$ sudo service mysql stop
-$ sudo service mysql strat&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-aidl&#34;&gt;$ sudo service mysql stop
+$ sudo service mysql strat
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -203,14 +188,10 @@ $ sudo service mysql strat&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/ta
       <description>&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;
 
 &lt;h3 id=&#34;开启wsl组件&#34;&gt;开启WSL组件&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;Enable-WindowsOptionalFeature&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Online&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-FeatureName&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Microsoft-Windows-Subsystem-Linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-powershell&#34;&gt;  Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&#34;下载镜像&#34;&gt;下载镜像&lt;/h3&gt;
 
 &lt;p&gt;由于我的Win10是精简版所以没用应用商店所以只能手动下载镜像&lt;/p&gt;

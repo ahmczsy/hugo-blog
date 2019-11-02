@@ -1,15 +1,9 @@
-<?xml-stylesheet type="text/xsl" href="http://localhost:1313/sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://localhost:1313/tags/git/</loc>
-    <lastmod>2019-10-21T13:55:11+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/</loc>
     <lastmod>2019-10-21T13:55:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -31,6 +25,13 @@
   
   <url>
     <loc>http://localhost:1313/tags/vue/</loc>
+    <lastmod>2019-10-21T13:55:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2019-10-21T13:55:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -65,13 +66,6 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/about/</loc>
-    <lastmod>2019-09-29T00:37:01+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2019-08-26T14:42:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -80,7 +74,7 @@
   
   <url>
     <loc>http://localhost:1313/post/2019.8.26_receiver-has-generic-name/</loc>
-    <lastmod>2019-09-29T00:37:01+08:00</lastmod>
+    <lastmod>2019-08-26T14:42:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -149,6 +143,18 @@
   
   <url>
     <loc>http://localhost:1313/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/about/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/archives/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
