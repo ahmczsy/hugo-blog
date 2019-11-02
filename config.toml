@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://blog.mcjy.top/"
 name = "Zshell"
 license = "MIT"
 licenselink = ""
