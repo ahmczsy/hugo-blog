@@ -1,7 +1,8 @@
 ---
-title: "当github aciton遇到element-ui-admin"
+title: "当github action遇到element-ui-admin"
 date: 2019-10-21T13:55:11+08:00
 tags: ["vue","git","前端"]
+keywords: ["github actions","element admin","element","element admin CI/CD"]
 ---
 
 Github Actions是github搞的一个持续集成服务,现在还在测试中,如果想要使用需要到官网去申请.
