@@ -1,49 +1,58 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Noel&#39;s Blog </title>
-    <link>http://localhost:1313/tags/</link>
-    <description>Recent content in Tags on Noel&#39;s Blog </description>
+    <title>Tags on Zshell的博客</title>
+    <link>https://blog.mcjy.top/tags/</link>
+    <description>Recent content in Tags on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 21 Oct 2019 13:55:11 +0800</lastBuildDate>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 03 Nov 2019 20:23:48 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.mcjy.top/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>生活</title>
+      <link>https://blog.mcjy.top/tags/%E7%94%9F%E6%B4%BB/</link>
+      <pubDate>Sun, 03 Nov 2019 20:23:48 +0800</pubDate>
+      
+      <guid>https://blog.mcjy.top/tags/%E7%94%9F%E6%B4%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>git</title>
-      <link>http://localhost:1313/tags/git/</link>
+      <link>https://blog.mcjy.top/tags/git/</link>
       <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/git/</guid>
+      <guid>https://blog.mcjy.top/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vue</title>
-      <link>http://localhost:1313/tags/vue/</link>
+      <link>https://blog.mcjy.top/tags/vue/</link>
       <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/vue/</guid>
+      <guid>https://blog.mcjy.top/tags/vue/</guid>
       <description></description>
     </item>
     
     <item>
       <title>前端</title>
-      <link>http://localhost:1313/tags/%E5%89%8D%E7%AB%AF/</link>
+      <link>https://blog.mcjy.top/tags/%E5%89%8D%E7%AB%AF/</link>
       <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/%E5%89%8D%E7%AB%AF/</guid>
+      <guid>https://blog.mcjy.top/tags/%E5%89%8D%E7%AB%AF/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>http://localhost:1313/tags/linux/</link>
+      <link>https://blog.mcjy.top/tags/linux/</link>
       <pubDate>Sun, 13 Oct 2019 14:42:11 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/linux/</guid>
+      <guid>https://blog.mcjy.top/tags/linux/</guid>
       <description></description>
     </item>
     

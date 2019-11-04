@@ -1,229 +1,462 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>归档 - Noel&#39;s Blog </title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <title>Zshell的博客 | 专注于Golang、VPS、移动互联网、软件架构</title>
+    <meta property="og:title" content="Zshell的博客 | 专注于Golang、VPS、移动互联网、软件架构">
+    <meta property="og:type" content="website">
+    <meta name="Keywords" content="golang,go语言,VPS,zshell,java,博客,项目管理,python,软件架构,公众号,小程序">
+    <meta name="description" content="专注于IT互联网，包括但不限于Golang、Java、Android、VPS、软件架构等">
+    <meta property="og:url" content="https://blog.mcjy.top/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="alternate" type="application/rss+xml+xml" href="https://blog.mcjy.top/index.xml" title="Zshell的博客" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<meta name="author" content="Noel" /><meta name="description" content="noel的博客" /><meta name="keywords" content="noel, golang博客, 编程" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.58.3 with theme even" />
+    
 
 
-<link rel="canonical" href="http://localhost:1313/" />
-  <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="Noel&#39;s Blog " />
-  <link href="http://localhost:1313/index.xml" rel="feed" type="application/rss+xml" title="Noel&#39;s Blog " />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.bed08eb2.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="Noel&#39;s Blog " />
-<meta property="og:description" content="noel的博客" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/" />
-
-<meta property="og:updated_time" content="2019-10-21T13:55:11+08:00" />
-<meta itemprop="name" content="Noel&#39;s Blog ">
-<meta itemprop="description" content="noel的博客">
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Noel&#39;s Blog "/>
-<meta name="twitter:description" content="noel的博客"/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+    
+    
 </head>
+
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Noel</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">归档</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Noel</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">归档</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          
-<section id="archive" class="archive">
-    <div class="archive-title">
-      <span class="archive-post-counter">
-        共计 2 篇文章
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">2019</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        10-21
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/" class="archive-post-link">
-          Posts
-        </a>
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">0001</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        01-01
-      </span>
-      <span class="archive-post-title">
-        <a href="/about/" class="archive-post-link">
-          
-        </a>
-      </span>
-    </div></section>
-
-<nav class="pagination">
-  
-  
-</nav>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://blog.mcjy.top/">
+                            Zshell的博客
+                        </a>
+                    </h1>
+                
+                <p class="description">专注于Golang、VPS、移动互联网、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://blog.mcjy.top/">首页</a>
+                    
+                    <a  href="https://blog.mcjy.top/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://blog.mcjy.top/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
         </div>
-        
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:ahmczsy@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://github.com/ahmczsy" class="iconfont icon-github" title="github"></a>
-  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2017 - 
-    2019
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Noel</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.f79f403f.min.js"></script>
+</header>
 
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/" title="上海办理护照流程" >上海办理护照流程</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年11月3日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://blog.mcjy.top/categories/%E7%94%9F%E6%B4%BB">生活</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                前言 我办理护照并不是因为目前有出过国的需求。而是国外的一些平台的身份认证需要上传护照，中国居民身份证在国外平台的认可度是没有护照高的。所以现在闲着没事办个护照，以备不时之需。
+必要条件和证件 在上海办理护照要满足以下三个条件其中之一
+ 上海户籍 上海居住证 在上海连续缴纳一年社保  我就是以第三个条件来办理的护照……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/" title="当github aciton遇到element-ui-admin" >当github aciton遇到element-ui-admin</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年10月21日
+                            </date>
+                            
+                            <div class="post-content">
+                                Github Actions是github搞的一个持续集成服务,现在还在测试中,如果想要使用需要到官网去申请.
+现在我想使用github actions实现vue-element-admin做的一个管理后台的自动构建发布到生产服务器的一系列过程
+新建github workflow 进入github仓库的主页点击actions就可以创建一个新的workflow
+新建文件的路径在仓库根目录的./github/workflows/
+我之前误操作不知道为什么新建在仓库的根目录……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux常用命令" >Linux常用命令</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年10月13日
+                            </date>
+                            
+                            <div class="post-content">
+                                zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错
+在要解压的目的地的前面加个参数－d，就能新建一个不存的目录
+mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下
+mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/" title="golang ldfalgs的小技巧" >golang ldfalgs的小技巧</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年8月26日
+                            </date>
+                            
+                            <div class="post-content">
+                                <h2 id="问题">问题</h2>
+
+<p>如果想要在go build生成的可执行文件中注入编译时间，git hash等信息。可以在编译的时候使用-ldflags -X参数来注入变量</p>
+
+<p>-ldfflags -X 可以在go install 、go build、go run  、go test中使用</p>
+
+<p><strong>go build -ldflags &ldquo;-X  &lsquo; packageName.varName=cmd &rsquo; &ldquo;</strong></p>……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/" title="Receiver has generic name" >Receiver has generic name</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年8月26日
+                            </date>
+                            
+                            <div class="post-content">
+                                <h4 id="问题">问题</h4>
+
+<p>Golang的<strong>方法接收者</strong>就是在函数名前的括号内的东西  如</p>
+
+<pre><code class="language-go">func (self Car) run() // (self car)就是方法接收者
+</code></pre>
+
+<p>在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是<strong>self  me  this</strong>类似的词，IDE会提示*Receiver has generic name*信息 如下图所示</p>
+
+<p><img src="https://s2.ax1x.com/2019/08/26/mW6QpQ.png" alt="mW6QpQ.png" /></p>……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/" title="Systemd集成Golang程序" >Systemd集成Golang程序</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年7月29日
+                            </date>
+                            
+                            <div class="post-content">
+                                <p>当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务</p>……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" title="golang time包相关的一些问题" >golang time包相关的一些问题</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年7月25日
+                            </date>
+                            
+                            <div class="post-content">
+                                <h3 id="获取毫秒时间戳">获取毫秒时间戳</h3>
+
+<pre><code class="language-go">//第一种
+time.Now().UnixNano() / int64(time.Millisecond)
+//第二种
+time.Now().UnixNano() / 1e6
+</code></pre>……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" title="MySql索引优化" >MySql索引优化</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年3月25日
+                            </date>
+                            
+                            <div class="post-content">
+                                MySql索引优化 语法 create table user_info ( id int AUTO_INCREMENT, name varchar(20), age int(3), email varchar(256), PRIMARY KEY (id) ); create index idx_user_nameAgeEmail on user_info (name,age,email); create table t ( a varchar(20), b int(3), c varchar(20) ); create index idx_a_b_c on t (a,b,c); create index &lt;索引名称&gt; on &lt;表名&gt; （&lt;列名&gt;,.……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/" title="使用idea自带的plugin反编译jar" >使用idea自带的plugin反编译jar</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年3月25日
+                            </date>
+                            
+                            <div class="post-content">
+                                问题 之前想反编译jar包,在网上了找了一些反编译的工具感觉都不太好用.就来我发现idea自带的反编译插件挺好用,但是没有GUI只能使用命令.
+使用 这个插件在/plugins/java-decompiler/lib/java-decompiler.jar.这个jar不能直接用java -jar运行,这个jar没有只能main函数,直接java -jar会报错,下面是使用方法
+java -cp java-decompiler.jar org.……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/" title="B-树的一些概念" >B-树的一些概念</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年3月21日
+                            </date>
+                            
+                            <div class="post-content">
+                                <h3 id="阶-的含义">“阶”的含义</h3>
+
+<p>B-树的所有结点中<strong>最多可以拥有的子结点的个数</strong>为“阶”，用M表示，下图是一个三阶B-树</p>
+
+<p><a href="https://imgchr.com/i/A3Ce7n"><img src="https://s2.ax1x.com/2019/03/21/A3Ce7n.png" alt="A3Ce7n.png" /></a></p>
+
+<p>三阶B树中所有节点的子节点最多有三个，不能超过三个</p>……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">阅读全文</a></p>
+                        </article>
+                    
+                    
+                    
+
+
+
+<ol class="page-navigator">
+    
+
+    
+    <li  class="current">
+        <a href="https://blog.mcjy.top/">1</a>
+    </li>
+    
+    <li >
+        <a href="https://blog.mcjy.top/page/2/">2</a>
+    </li>
+    
+
+    
+    <li class="next">
+        <a href="https://blog.mcjy.top/page/2/">下一页</a>
+    </li>
+    
+</ol>
+
+
+
+                </div>
+            </div>
+
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://blog.mcjy.top/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/" title="上海办理护照流程">上海办理护照流程</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/" title="当github aciton遇到element-ui-admin">当github aciton遇到element-ui-admin</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux常用命令">Linux常用命令</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/" title="golang ldfalgs的小技巧">golang ldfalgs的小技巧</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/" title="Receiver has generic name">Receiver has generic name</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/" title="Systemd集成Golang程序">Systemd集成Golang程序</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" title="golang time包相关的一些问题">golang time包相关的一些问题</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" title="MySql索引优化">MySql索引优化</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/" title="使用idea自带的plugin反编译jar">使用idea自带的plugin反编译jar</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/" title="B-树的一些概念">B-树的一些概念</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://blog.mcjy.top/categories/%E7%94%9F%E6%B4%BB/">生活(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://blog.mcjy.top/tags/git/">git</a>
+    
+    <a href="https://blog.mcjy.top/tags/linux/">linux</a>
+    
+    <a href="https://blog.mcjy.top/tags/vue/">vue</a>
+    
+    <a href="https://blog.mcjy.top/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+    
+    <a href="https://blog.mcjy.top/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://mirrors.flysnow.org/" title="常用开发工具CDN镜像">常用开发工具CDN镜像</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://blog.mcjy.top/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://blog.mcjy.top/">Zshell的博客 By Noel</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-151122324-1', 'auto');
-	ga('set', 'anonymizeIp', true);
+	
 	ga('send', 'pageview');
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-<script id="baidu_analytics">
-  var _hmt = _hmt || [];
-  (function() {
-    if (window.location.hostname === 'localhost') return;
-    var hm = document.createElement("script"); hm.async = true;
-    hm.src = "https://hm.baidu.com/hm.js?8a8f8db5d842b83cc9123b8eb0be533a";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
 
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 
