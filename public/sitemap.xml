@@ -4,28 +4,49 @@
   
   <url>
     <loc>https://blog.mcjy.top/categories/</loc>
-    <lastmod>2019-11-03T20:23:48+08:00</lastmod>
+    <lastmod>2019-11-08T19:07:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/tags/golang/</loc>
+    <lastmod>2019-11-08T19:07:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</loc>
+    <lastmod>2019-11-08T19:07:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.mcjy.top/post/</loc>
-    <lastmod>2019-11-03T20:23:48+08:00</lastmod>
+    <lastmod>2019-11-08T19:07:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.mcjy.top/tags/</loc>
-    <lastmod>2019-11-03T20:23:48+08:00</lastmod>
+    <lastmod>2019-11-08T19:07:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.mcjy.top/</loc>
-    <lastmod>2019-11-03T20:23:48+08:00</lastmod>
+    <lastmod>2019-11-08T19:07:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/categories/%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2019-11-08T19:07:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
