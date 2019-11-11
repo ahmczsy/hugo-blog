@@ -173,7 +173,7 @@ t2.pointerMethod()//正确
 
 <p>在讨论interface的receiver之前，先看下interface在使用中的一些问题。</p>
 
-<pre><code class="language-golang">type S struct {
+<pre><code class="language-go">type S struct {
 }
 
 func (s *S) pointerMethod() {
@@ -219,7 +219,7 @@ func TestInterface(t *testing.T) {
 <ul>
 <li><p>把<code>s</code>的类型改为指针</p>
 
-<pre><code class="language-golang">type str string
+<pre><code class="language-go">type str string
   
 func (s *str) MarshalJSON() (data []byte, err error) {
 	return json.Marshal(&quot;bbb&quot;)
