@@ -6,10 +6,30 @@
     <description>Recent content in Posts on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 08 Nov 2019 19:07:02 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Dec 2019 18:39:58 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.mcjy.top/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>当golang多个字段的json tag相同时会怎么样?</title>
+      <link>https://blog.mcjy.top/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</link>
+      <pubDate>Wed, 04 Dec 2019 18:39:58 +0800</pubDate>
+      
+      <guid>https://blog.mcjy.top/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</guid>
+      <description>问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思
+情况1 都是普通字段 type sameTag struct { A string `json:&amp;quot;a&amp;quot;` B string `json:&amp;quot;a&amp;quot;` Other string `json:&amp;quot;other&amp;quot;` } func TestSameJson(t *testing.</description>
+    </item>
+    
+    <item>
+      <title>当golang多个字段的json tag相同时会怎么样?</title>
+      <link>https://blog.mcjy.top/post/xx/</link>
+      <pubDate>Wed, 04 Dec 2019 18:39:58 +0800</pubDate>
+      
+      <guid>https://blog.mcjy.top/post/xx/</guid>
+      <description>问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思
+情况1 都是普通字段 type sameTag struct { A string `json:&amp;quot;a&amp;quot;` B string `json:&amp;quot;a&amp;quot;` Other string `json:&amp;quot;other&amp;quot;` } func TestSameJson(t *testing.</description>
+    </item>
     
     <item>
       <title>MarshalJSON没有调用、无效？</title>
