@@ -21,15 +21,5 @@
 情况1 都是普通字段 type sameTag struct { A string `json:&amp;quot;a&amp;quot;` B string `json:&amp;quot;a&amp;quot;` Other string `json:&amp;quot;other&amp;quot;` } func TestSameJson(t *testing.</description>
     </item>
     
-    <item>
-      <title>当golang多个字段的json tag相同时会怎么样?</title>
-      <link>https://blog.mcjy.top/post/xx/</link>
-      <pubDate>Wed, 04 Dec 2019 18:39:58 +0800</pubDate>
-      
-      <guid>https://blog.mcjy.top/post/xx/</guid>
-      <description>问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思
-情况1 都是普通字段 type sameTag struct { A string `json:&amp;quot;a&amp;quot;` B string `json:&amp;quot;a&amp;quot;` Other string `json:&amp;quot;other&amp;quot;` } func TestSameJson(t *testing.</description>
-    </item>
-    
   </channel>
 </rss>
