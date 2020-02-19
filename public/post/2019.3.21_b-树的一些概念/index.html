@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -87,41 +87,29 @@
                         
                         
                         <div class="post-content">
-                            <h3 id="阶-的含义">“阶”的含义</h3>
-
+                            <h3 id="阶的含义">“阶”的含义</h3>
 <p>B-树的所有结点中<strong>最多可以拥有的子结点的个数</strong>为“阶”，用M表示，下图是一个三阶B-树</p>
-
-<p><a href="https://imgchr.com/i/A3Ce7n"><img src="https://s2.ax1x.com/2019/03/21/A3Ce7n.png" alt="A3Ce7n.png" /></a></p>
-
+<p><a href="https://imgchr.com/i/A3Ce7n"><img src="https://s2.ax1x.com/2019/03/21/A3Ce7n.png" alt="A3Ce7n.png"></a></p>
 <p>三阶B树中所有节点的子节点最多有三个，不能超过三个</p>
-
 <p>下图是一个四阶B树</p>
-
-<p><img src="https://s2.ax1x.com/2019/03/21/A3CNA1.png" alt="A3CNA1.png" /></p>
-
+<p><img src="https://s2.ax1x.com/2019/03/21/A3CNA1.png" alt="A3CNA1.png"></p>
 <h3 id="m阶b树中每个节点的个数">M阶B树中每个节点的个数</h3>
-
 <ul>
-<li><p>每个节点中最多有M-1个元素</p></li>
-
-<li><p>每个节点最少有[M/2]-1个元素<strong>除了根节点</strong>，[]表示向上取整</p></li>
+<li>
+<p>每个节点中最多有M-1个元素</p>
+</li>
+<li>
+<p>每个节点最少有[M/2]-1个元素<strong>除了根节点</strong>，[]表示向上取整</p>
+<p>比如一个五阶B树，每个节点内最少有[5/2]-1=2个元素，最多有5-1=4个元素</p>
+<p><img src="https://s2.ax1x.com/2019/03/21/A3P9b9.png" alt="A3P9b9.png"></p>
+</li>
 </ul>
-
-<p>比如一个五阶B树，每个节点内最少有[<sup>5</sup>&frasl;<sub>2</sub>]-1=2个元素，最多有5-1=4个元素</p>
-
-<p><img src="https://s2.ax1x.com/2019/03/21/A3P9b9.png" alt="A3P9b9.png" /></p>
-
 <h3 id="当元素个数超过最大个数时">当元素个数超过最大个数时</h3>
-
 <p>选取元素中第[M/2]个元素，进行分裂</p>
-
-<p>一个四阶B树，最多有3个元素，当再插入一个元素时，已经4个元素了，要选取第[<sup>4</sup>&frasl;<sub>2</sub>]=2个元素进行分裂，分解的过程如下</p>
-
-<p><img src="https://s2.ax1x.com/2019/03/22/A3RysH.gif" alt="A3RysH.gif" /></p>
-
+<p>一个四阶B树，最多有3个元素，当再插入一个元素时，已经4个元素了，要选取第[4/2]=2个元素进行分裂，分解的过程如下</p>
+<p><img src="https://s2.ax1x.com/2019/03/22/A3RysH.gif" alt="A3RysH.gif"></p>
 <h3 id="参考">参考</h3>
-
-<p>B-树插入删除可视化：<a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</a></p>
+<p>B-树插入删除可视化：https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</p>
                         </div>
 
                         

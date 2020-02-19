@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,69 +88,50 @@
                         
                         <div class="post-content">
                             <h4 id="问题">问题</h4>
-
 <p>Golang的<strong>方法接收者</strong>就是在函数名前的括号内的东西  如</p>
-
-<pre><code class="language-go">func (self Car) run() // (self car)就是方法接收者
-</code></pre>
-
-<p>在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是<strong>self  me  this</strong>类似的词，IDE会提示*Receiver has generic name*信息 如下图所示</p>
-
-<p><img src="https://s2.ax1x.com/2019/08/26/mW6QpQ.png" alt="mW6QpQ.png" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">self</span> <span style="color:#a6e22e">Car</span>) <span style="color:#a6e22e">run</span>() <span style="color:#75715e">// (self car)就是方法接收者
+</span></code></pre></div><p>在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是<strong>self  me  this</strong>类似的词，IDE会提示<em>Receiver has generic name</em>信息 如下图所示</p>
+<p><img src="https://s2.ax1x.com/2019/08/26/mW6QpQ.png" alt="mW6QpQ.png"></p>
 <h4 id="go中的函数">Go中的函数</h4>
-
 <p>在Go中，无论是方法还是函数都可以把他作为一个普通的函数来调用</p>
-
 <p>Demo:</p>
-
-<pre><code class="language-go">type Car struct {
-	i int
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Car</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>
 }
 
-func (c Car) run() {
-	fmt.Println(&quot;my receiver is:&quot;, c.i)
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">Car</span>) <span style="color:#a6e22e">run</span>() {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;my receiver is:&#34;</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">i</span>)
 }
 
-func TestSelf(t *testing.T) {
-	a := Car{1}
-	a.run()
-	Car.run(Car{22})
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestSelf</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+	<span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Car</span>{<span style="color:#ae81ff">1</span>}
+	<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">run</span>()
+	<span style="color:#a6e22e">Car</span>.<span style="color:#a6e22e">run</span>(<span style="color:#a6e22e">Car</span>{<span style="color:#ae81ff">22</span>})
 }
-</code></pre>
-
-<p>运行结果如下：</p>
-
+</code></pre></div><p>运行结果如下：</p>
 <pre><code>my receiver is: 1
 my receiver is: 22
-</code></pre>
-
-<p>Go的方法只是语法糖而已，本质还是第一个参数是接收者的普通函数</p>
-
+</code></pre><p>Go的方法只是语法糖而已，本质还是第一个参数是接收者的普通函数</p>
 <h4 id="解释">解释</h4>
-
 <p>在其他面向对象的语言中<strong>this self me</strong>这些字段都有具体的含义，比如可以访问自己的私有方法或字段或者有其他特殊的含义。</p>
-
 <p>但是在go中最好不用使用这些词，因为方法接收者只是一个普通的参数而，起不到这些词字面上的含义</p>
-
 <p>go官方的代码规范也提到了这一点</p>
-
 <blockquote>
 <p>The name of a method&rsquo;s receiver should be a reflection of its identity; often a one or two letter abbreviation of its type suffices (such as &ldquo;c&rdquo; or &ldquo;cl&rdquo; for &ldquo;Client&rdquo;). Don&rsquo;t use generic names such as &ldquo;me&rdquo;, &ldquo;this&rdquo; or &ldquo;self&rdquo;, identifiers typical of object-oriented languages that gives the method a special meaning. In Go, the receiver of a method is just another parameter and therefore, should be named accordingly. The name need not be as descriptive as that of a method argument, as its role is obvious and serves no documentary purpose. It can be very short as it will appear on almost every line of every method of the type; familiarity admits brevity. Be consistent, too: if you call the receiver &ldquo;c&rdquo; in one method, don&rsquo;t call it &ldquo;cl&rdquo; in another.</p>
 </blockquote>
-
 <p>如果想关闭掉这个提示可以在Setting-&gt;Editor-&gt;Inspections-&gt;Go-&gt;Code style issues 中把Receiver has generic name这一项取消</p>
-
-<p><img src="https://s2.ax1x.com/2019/08/26/mWcE34.png" alt="mWcE34.png" /></p>
-
+<p><img src="https://s2.ax1x.com/2019/08/26/mWcE34.png" alt="mWcE34.png"></p>
 <h4 id="参考">参考</h4>
-
 <ul>
-<li><p><a href="https://stackoverflow.com/questions/23482068/in-go-is-naming-the-receiver-variable-self-misleading-or-good-practice">https://stackoverflow.com/questions/23482068/in-go-is-naming-the-receiver-variable-self-misleading-or-good-practice</a></p></li>
-
-<li><p><a href="https://stackoverflow.com/questions/38025743/go-why-shouldnt-use-this-for-method-receiver-name">https://stackoverflow.com/questions/38025743/go-why-shouldnt-use-this-for-method-receiver-name</a></p></li>
-
-<li><p><a href="https://github.com/golang/go/wiki/CodeReviewComments#receiver-names">https://github.com/golang/go/wiki/CodeReviewComments#receiver-names</a></p></li>
+<li>
+<p><a href="https://stackoverflow.com/questions/23482068/in-go-is-naming-the-receiver-variable-self-misleading-or-good-practice">https://stackoverflow.com/questions/23482068/in-go-is-naming-the-receiver-variable-self-misleading-or-good-practice</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/38025743/go-why-shouldnt-use-this-for-method-receiver-name">https://stackoverflow.com/questions/38025743/go-why-shouldnt-use-this-for-method-receiver-name</a></p>
+</li>
+<li>
+<p><a href="https://github.com/golang/go/wiki/CodeReviewComments#receiver-names">https://github.com/golang/go/wiki/CodeReviewComments#receiver-names</a></p>
+</li>
 </ul>
                         </div>
 

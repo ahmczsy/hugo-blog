@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,51 +88,41 @@
                         
                         <div class="post-content">
                             <h3 id="获取毫秒时间戳">获取毫秒时间戳</h3>
-
-<pre><code class="language-go">//第一种
-time.Now().UnixNano() / int64(time.Millisecond)
-//第二种
-time.Now().UnixNano() / 1e6
-</code></pre>
-
-<h3 id="time-unix-用法">time.Unix()用法</h3>
-
-<pre><code class="language-go">//函数定义
-func Unix(sec int64, nsec int64) Time 
-</code></pre>
-
-<ul>
-<li><p>unix有两个参数</p></li>
-
-<li><p>第一个参数秒级的时间戳</p></li>
-
-<li><p>第二个参数是纳秒</p></li>
-
-<li><p>当使用sec时，把nsec置为0，使用nsec时把sec置为0</p>
-
-<pre><code class="language-go">//秒时间戳-&gt;Time
-time.Unix(1564063799, 0)
-//纳秒时间戳-&gt;Time
-time.Unix(0, 1564063799695197200)
-//毫秒时间戳-&gt;Time
-time.Unix(0, 1564063799695*int64(time.Millisecond))
-</code></pre></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//第一种
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>() <span style="color:#f92672">/</span> int64(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>)
+<span style="color:#75715e">//第二种
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>() <span style="color:#f92672">/</span> <span style="color:#ae81ff">1e6</span>
+</code></pre></div><h3 id="timeunix用法">time.Unix()用法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//函数定义
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Unix</span>(<span style="color:#a6e22e">sec</span> <span style="color:#66d9ef">int64</span>, <span style="color:#a6e22e">nsec</span> <span style="color:#66d9ef">int64</span>) <span style="color:#a6e22e">Time</span> 
+</code></pre></div><ul>
+<li>
+<p>unix有两个参数</p>
+</li>
+<li>
+<p>第一个参数秒级的时间戳</p>
+</li>
+<li>
+<p>第二个参数是纳秒</p>
+</li>
+<li>
+<p>当使用sec时，把nsec置为0，使用nsec时把sec置为0</p>
+</li>
 </ul>
-
-<h3 id="time-format">Time.Format</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//秒时间戳-&gt;Time
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Unix</span>(<span style="color:#ae81ff">1564063799</span>, <span style="color:#ae81ff">0</span>)
+<span style="color:#75715e">//纳秒时间戳-&gt;Time
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Unix</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1564063799695197200</span>)
+<span style="color:#75715e">//毫秒时间戳-&gt;Time
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Unix</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1564063799695</span><span style="color:#f92672">*</span>int64(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>))
+</code></pre></div><h3 id="timeformat">Time.Format</h3>
 <p>format默认使用的时本地时区，如果要指定时区方式如下</p>
-
-<pre><code class="language-go">var cstZone = time.FixedZone(&quot;CST&quot;, 8*3600)       // 东八
-time.Now().In(cstZone).Format(&quot;2006-01-02 15:04:05&quot;)
-</code></pre>
-
-<h3 id="time-parse">Time.Parse</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cstZone</span> = <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">FixedZone</span>(<span style="color:#e6db74">&#34;CST&#34;</span>, <span style="color:#ae81ff">8</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3600</span>)       <span style="color:#75715e">// 东八
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">In</span>(<span style="color:#a6e22e">cstZone</span>).<span style="color:#a6e22e">Format</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>)
+</code></pre></div><h3 id="timeparse">Time.Parse</h3>
 <p><code>time.Parse()</code> 只会在参数里有指明时区信息、时区信息以 zone offset 形式（如 2018-01-01 12:11:11 +0800 CST）表示、表示结果与本地时区等价时，才会使用本地时区，否则使用读出的时区。若参数里没有指明时区信息，<strong>则使用 UTC 时间</strong>。所以一般建议使用time.ParseInLocation()</p>
-
-<pre><code class="language-go">time.ParseInLocation(&quot;2006-01-02 15:04:05&quot;, &quot;2018-01-01 12:11:11&quot;,time.Local)
-</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">ParseInLocation</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>, <span style="color:#e6db74">&#34;2018-01-01 12:11:11&#34;</span>,<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Local</span>)
+</code></pre></div>
                         </div>
 
                         

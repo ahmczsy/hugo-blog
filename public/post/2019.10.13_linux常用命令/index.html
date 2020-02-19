@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -87,41 +87,23 @@
                         
                         
                         <div class="post-content">
-                            
-
-<h3 id="zip命令">zip命令</h3>
-
+                            <h3 id="zip命令">zip命令</h3>
 <p>使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错</p>
-
-<p><img src="unzip失败.png" alt="" /></p>
-
+<p><img src="unzip%E5%A4%B1%E8%B4%A5.png" alt=""></p>
 <p>在要解压的目的地的前面加个参数－d，就能新建一个不存的目录</p>
-
-<p><img src="unzip成功.png" alt="" /></p>
-
-<hr />
-
+<p><img src="unzip%E6%88%90%E5%8A%9F.png" alt=""></p>
+<hr>
 <h3 id="mysql相关命令">mysql相关命令</h3>
-
 <h4 id="自动补全">自动补全</h4>
-
 <p>mysql的命令也是有自动补全的．需要的参数如下</p>
-
-<pre><code class="language-bash">mysql -u root -p --auto-rehash
-</code></pre>
-
-<p>开启后能自动补全了
-<img src="待补全的sql.png" alt="" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysql -u root -p --auto-rehash
+</code></pre></div><p>开启后能自动补全了
+<img src="%E5%BE%85%E8%A1%A5%E5%85%A8%E7%9A%84sql.png" alt=""></p>
 <p>但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼</p>
-
 <h4 id="连接远程mysql">连接远程mysql</h4>
-
 <p>-h参数就是远程地址</p>
-
-<pre><code class="language-bash">mysql -h 192.168.1.221 -u root -p
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysql -h 192.168.1.221 -u root -p
+</code></pre></div>
                         </div>
 
                         

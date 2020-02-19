@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -78,8 +78,8 @@
                             
                             <div class="post-content">
                                 问题 之前想反编译jar包,在网上了找了一些反编译的工具感觉都不太好用.就来我发现idea自带的反编译插件挺好用,但是没有GUI只能使用命令.
-使用 这个插件在/plugins/java-decompiler/lib/java-decompiler.jar.这个jar不能直接用java -jar运行,这个jar没有只能main函数,直接java -jar会报错,下面是使用方法
-java -cp java-decompiler.jar org.……
+使用 这个插件在&lt;idea_home&gt;/plugins/java-decompiler/lib/java-decompiler.jar.这个jar不能直接用java -jar运行,这个jar没有只能main函数,直接java -jar会报错,下面是使用方法
+java -cp java-decompiler.jar org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler -dgs=true siddhi-core.……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/">阅读全文</a></p>
                         </article>
@@ -97,12 +97,9 @@ java -cp java-decompiler.jar org.……
                             </date>
                             
                             <div class="post-content">
-                                <h3 id="阶-的含义">“阶”的含义</h3>
-
+                                <h3 id="阶的含义">“阶”的含义</h3>
 <p>B-树的所有结点中<strong>最多可以拥有的子结点的个数</strong>为“阶”，用M表示，下图是一个三阶B-树</p>
-
-<p><a href="https://imgchr.com/i/A3Ce7n"><img src="https://s2.ax1x.com/2019/03/21/A3Ce7n.png" alt="A3Ce7n.png" /></a></p>
-
+<p><a href="https://imgchr.com/i/A3Ce7n"><img src="https://s2.ax1x.com/2019/03/21/A3Ce7n.png" alt="A3Ce7n.png"></a></p>
 <p>三阶B树中所有节点的子节点最多有三个，不能超过三个</p>……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">阅读全文</a></p>
@@ -122,23 +119,26 @@ java -cp java-decompiler.jar org.……
                             
                             <div class="post-content">
                                 <h1 id="安装运行">安装运行</h1>
-
 <h3 id="环境要求">环境要求</h3>
-
 <ul>
-<li><p>python2.7以上，不支持python3</p></li>
-
-<li><p>java8</p></li>
+<li>
+<p>python2.7以上，不支持python3</p>
+</li>
+<li>
+<p>java8</p>
+</li>
 </ul>
-
 <h3 id="安装">安装</h3>
-
 <ul>
-<li><p>到官网注册个账号才能把下载链接发到邮箱，很蛋疼，不能直接下载</p></li>
-
-<li><p>解压</p></li>
-
-<li><p>把voltdb/bin/加入环境变量</p></li>
+<li>
+<p>到官网注册个账号才能把下载链接发到邮箱，很蛋疼，不能直接下载</p>
+</li>
+<li>
+<p>解压</p>
+</li>
+<li>
+<p>把voltdb/bin/加入环境变量</p>
+</li>
 </ul>……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.3.18_voltdb%E5%85%A5%E9%97%A8/">阅读全文</a></p>
@@ -158,21 +158,18 @@ java -cp java-decompiler.jar org.……
                             
                             <div class="post-content">
                                 <h4 id="步骤">步骤</h4>
-
 <ul>
-<li><p>设置mysql免密码登陆
-编辑/etc/mysql/my.cnf文件,在最后加入以下设置</p>
-
-<pre><code class="language-aidl">[mysqld]
+<li>设置mysql免密码登陆
+编辑/etc/mysql/my.cnf文件,在最后加入以下设置</li>
+</ul>
+<pre><code class="language-aidl" data-lang="aidl">[mysqld]
 skip-grant-tables=1
-</code></pre></li>
-
-<li><p>重启mysql</p>
-
-<pre><code class="language-aidl">$ sudo service mysql stop
+</code></pre><ul>
+<li>重启mysql</li>
+</ul>
+<pre><code class="language-aidl" data-lang="aidl">$ sudo service mysql stop
 $ sudo service mysql strat
-</code></pre></li>
-</ul>……
+</code></pre>……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/">阅读全文</a></p>
                         </article>
@@ -191,16 +188,10 @@ $ sudo service mysql strat
                             
                             <div class="post-content">
                                 <h1 id="安装">安装</h1>
-
 <h3 id="开启wsl组件">开启WSL组件</h3>
-
-<pre><code class="language-powershell">  Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-</code></pre>
-
-<h3 id="下载镜像">下载镜像</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+</code></pre></div><h3 id="下载镜像">下载镜像</h3>
 <p>由于我的Win10是精简版所以没用应用商店所以只能手动下载镜像</p>
-
 <p>各个发行版 <a href="https://docs.microsoft.com/en-us/windows/wsl/install-manua">https://docs.microsoft.com/en-us/windows/wsl/install-manua</a></p>……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/">阅读全文</a></p>
@@ -238,29 +229,23 @@ $ sudo service mysql strat
                             
                             <div class="post-content">
                                 <h3 id="四个事物等级">四个事物等级</h3>
-
 <ul>
-<li>read uncommitted ：有可能脏读</li>
-</ul>
-
+<li>
+<p>read uncommitted ：有可能脏读</p>
 <p>一个事务过程中读取到了，另一个事务的中途数据</p>
-
-<ul>
-<li>read committed ：有可能不可重复读</li>
-</ul>
-
+</li>
+<li>
+<p>read committed ：有可能不可重复读</p>
 <p>即在一次事务之间，进行了两次读取，但是结果不一样，可能第一次id为1的人叫“李三”，第二次读id为1的人就叫了“李四”。因为读取操作不会阻止其他事务</p>
-
-<ul>
-<li>repetable read ：有可能幻读</li>
-</ul>
-
+</li>
+<li>
+<p>repetable read ：有可能幻读</p>
 <p>幻读侧重的方面是某一次的 select 操作得到的结果所表征的数据状态无法支撑后续的业务操作。更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行 insert 时发现此记录已存在，无法插入，此时就发生了幻读</p>
-
-<ul>
-<li><p>serializable ：效率最低</p>
-
-<p>可避免幻读。读加共享锁，写加排他锁。这样读取事务可以并发，但是读写，写写事务之间都是互斥的，基本上就是一个个执行事务，所以叫序列化</p></li>
+</li>
+<li>
+<p>serializable ：效率最低</p>
+<p>可避免幻读。读加共享锁，写加排他锁。这样读取事务可以并发，但是读写，写写事务之间都是互斥的，基本上就是一个个执行事务，所以叫序列化</p>
+</li>
 </ul>……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/">阅读全文</a></p>

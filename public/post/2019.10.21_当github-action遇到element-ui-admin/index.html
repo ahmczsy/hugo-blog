@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -87,210 +87,169 @@
                         
                         
                         <div class="post-content">
-                            
-
-<p>Github Actions是github搞的一个持续集成服务,现在还在测试中,如果想要使用需要到官网去申请.</p>
-
+                            <p>Github Actions是github搞的一个持续集成服务,现在还在测试中,如果想要使用需要到官网去申请.</p>
 <p>现在我想使用github actions实现vue-element-admin做的一个管理后台的自动构建发布到生产服务器的一系列过程</p>
-
 <h2 id="新建github-workflow">新建github workflow</h2>
-
-<p><img src="1571639291772.png" alt="1571639291772" /></p>
-
+<p><img src="1571639291772.png" alt="1571639291772"></p>
 <p>进入github仓库的主页点击actions就可以创建一个新的workflow</p>
-
 <p>新建文件的路径在仓库根目录的./github/workflows/</p>
-
 <p>我之前误操作不知道为什么新建在仓库的根目录</p>
-
 <h2 id="字段说明">字段说明</h2>
-
 <ul>
-<li><p><code>name</code>  字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名</p>
-
-<pre><code class="language-yaml">name: CI
-</code></pre></li>
-
-<li><p><code>on</code> 字段指定触发 workflow 的条件</p>
-
-<pre><code class="language-yaml">//push时触发
-on: [push]
+<li>
+<p><code>name</code>  字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: CI
+</code></pre></div></li>
+<li>
+<p><code>on</code> 字段指定触发 workflow 的条件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">//push时触发
+<span style="color:#66d9ef">on</span>: [push]
 //push和pull时触发
-on: [push, pull_request]
+<span style="color:#66d9ef">on</span>: [push, pull_request]
 //只在master分支push时触发
-on:
-push:
-  branches:    
-    - master
-</code></pre></li>
-
-<li><p><code>jobs</code> 表示要执行的一项或多项任务</p>
-
-<pre><code class="language-yaml">jobs: 
-	my_job1:
-		xxxxxxx
-		xxxx
-	my_job2: 
-		xxxxx
-		xxx
-</code></pre></li>
-</ul>
-
-<p>my_job1和my_job2称为job_id</p>
-
-<ul>
-<li><p><code>jobs.&lt;job_id&gt;.runs-on</code>  字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下</p>
-
+<span style="color:#66d9ef">on</span>:
+  <span style="color:#66d9ef">push</span>:
+    <span style="color:#66d9ef">branches</span>:    
+      - master
+</code></pre></div></li>
+<li>
+<p><code>jobs</code> 表示要执行的一项或多项任务</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">jobs</span>: 
+  <span style="color:#66d9ef">my_job1</span>:
+      xxxxxxx
+      xxxx
+  <span style="color:#66d9ef">my_job2</span>: 
+      xxxxx
+      xxx
+</code></pre></div><p>my_job1和my_job2称为job_id</p>
+</li>
+<li>
+<p><code>jobs.&lt;job_id&gt;.runs-on</code>  字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下</p>
 <ul>
 <li><code>ubuntu-latest</code>，<code>ubuntu-18.04</code>或<code>ubuntu-16.04</code></li>
 <li><code>windows-latest</code>，<code>windows-2019</code>或<code>windows-2016</code></li>
 <li><code>macOS-latest</code>或<code>macOS-10.14</code></li>
-</ul></li>
-
-<li><p><code>jobs.&lt;job_id&gt;.steps</code> 字段指定每个 Job 的运行步骤，可以包含一个或多个步骤。每个步骤都可以指定以下字段</p>
-
-<ul>
-<li><p><code>steps.name</code>：步骤名称</p></li>
-
-<li><p><code>steps.run</code>：该步骤运行的linux命令 如<code>pwd</code> <code>ls-l</code> 等</p></li>
-
-<li><p><code>steps.uses</code> :该步骤使用<a href="https://github.com/marketplace?type=actions">actions market</a>中的别人写好的action</p></li>
-
-<li><p><code>steps.uses.with</code>:该步骤是填入别人定义好的参数,比如在hellow_action中定义好了三个参数( <code>first_name</code>, <code>middle_name</code>, and <code>last_name</code> )</p>
-
-<pre><code class="language-yaml">jobs:
-my_first_job:
-steps:
-  - name: My first step
-    uses: actions/hello_world@master
-    with:
-      first_name: Mona
-      middle_name: The
-      last_name: Octocat  
-</code></pre>
-
-<ul>
-<li><code>steps.uses.env</code>和<code>with</code>类似</li>
-</ul></li>
-</ul></li>
 </ul>
-
+</li>
+<li>
+<p><code>jobs.&lt;job_id&gt;.steps</code> 字段指定每个 Job 的运行步骤，可以包含一个或多个步骤。每个步骤都可以指定以下字段</p>
+<ul>
+<li>
+<p><code>steps.name</code>：步骤名称</p>
+</li>
+<li>
+<p><code>steps.run</code>：该步骤运行的linux命令 如<code>pwd</code> <code>ls-l</code> 等</p>
+</li>
+<li>
+<p><code>steps.uses</code> :该步骤使用<a href="https://github.com/marketplace?type=actions">actions market</a>中的别人写好的action</p>
+</li>
+<li>
+<p><code>steps.uses.with</code>:该步骤是填入别人定义好的参数,比如在hellow_action中定义好了三个参数( <code>first_name</code>, <code>middle_name</code>, and <code>last_name</code> )</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">jobs</span>:
+  <span style="color:#66d9ef">my_first_job</span>:
+    <span style="color:#66d9ef">steps</span>:
+      - <span style="color:#66d9ef">name</span>: My first step
+        <span style="color:#66d9ef">uses</span>: actions/hello_world@master
+        <span style="color:#66d9ef">with</span>:
+          <span style="color:#66d9ef">first_name</span>: Mona
+          <span style="color:#66d9ef">middle_name</span>: The
+          <span style="color:#66d9ef">last_name</span>: Octocat  
+</code></pre></div><ul>
+<li><code>steps.uses.env</code>和<code>with</code>类似</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="我的action">我的action</h2>
-
 <h3 id="下载项目代码">下载项目代码</h3>
-
-<pre><code class="language-yaml">uses: actions/checkout@master
-</code></pre>
-
-<p>@master是指定master的代码
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">uses</span>: actions/checkout@master
+</code></pre></div><p>@master是指定master的代码
 如果想要下载某个tag或某个commit的代码,如下</p>
-
-<pre><code class="language-yaml">actions/checkout@74bc508 # 指向一个 commit
-actions/checkout@v1.0    # 指向一个标签
-actions/checkout@master  # 指向一个分支
-</code></pre>
-
-<h3 id="npm-build">npm build</h3>
-
-<pre><code class="language-yaml">- name: npm install, build, and test
-  run: |
-     npm install
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">actions/checkout@74bc508 <span style="color:#75715e"># 指向一个 commit</span>
+actions/checkout@v1<span style="color:#ae81ff">.0</span>    <span style="color:#75715e"># 指向一个标签</span>
+actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
+</code></pre></div><h3 id="npm-build">npm build</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">name</span>: npm install, build, and test
+  <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">    </span><span style="color:#e6db74"> </span><span style="color:#e6db74">npm install</span>
      npm run build:prod --if-present
-  env:
-     CI: true
-</code></pre>
-
-<h3 id="ssh到生产服务器备份现在正在运行的静态网页">ssh到生产服务器备份现在正在运行的静态网页</h3>
-
+  <span style="color:#66d9ef">env</span>:
+     <span style="color:#66d9ef">CI</span>: <span style="color:#66d9ef">true</span>
+</code></pre></div><h3 id="ssh到生产服务器备份现在正在运行的静态网页">ssh到生产服务器备份现在正在运行的静态网页</h3>
 <p>这一部使用了appleboy的ssh-action,这个action就是从action market中找到的
 具体文档<a href="https://github.com/appleboy/ssh-action">在这</a></p>
-
-<pre><code class="language-yaml">  name: backup admin-web
-  uses: appleboy/ssh-action@master
-  with:
-       host: ${{ secrets.SERVER_IP }}
-       username: root
-       password:  ${{ secrets.FTP_PASSWORD }}
-       port: 22
-       script: |
-         cp -r /root/glass/admin-web /root/glass/admin-web-old
-</code></pre>
-
-<p>如果actions的配置文件里重要的信息,比如密码或密钥可以使用秘密环境变量来替代<code>${{secrets.xxxx}}</code></p>
-
-<p><img src="1571646282881.png" alt="1571646282881" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#66d9ef">name</span>: backup admin-web
+  <span style="color:#66d9ef">uses</span>: appleboy/ssh-action@master
+  <span style="color:#66d9ef">with</span>:
+       <span style="color:#66d9ef">host</span>: ${{ secrets.SERVER_IP }}
+       <span style="color:#66d9ef">username</span>: root
+       <span style="color:#66d9ef">password</span>:  ${{ secrets.FTP_PASSWORD }}
+       <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">22</span>
+       <span style="color:#66d9ef">script</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        </span><span style="color:#e6db74"> </span><span style="color:#e6db74">cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
+</code></pre></div><p>如果actions的配置文件里重要的信息,比如密码或密钥可以使用秘密环境变量来替代<code>${{secrets.xxxx}}</code></p>
+<p><img src="1571646282881.png" alt="1571646282881"></p>
 <h3 id="把dist部署到生产服务器">把dist部署到生产服务器</h3>
-
 <p>vue-element-admin build之后的静态文件在根目录的dist文件夹,所以我要把dist文件夹内的文件都上穿到生产服务器里</p>
-
 <p>这里使用了SamKirkland/FTP-Deploy-Action@2.0.0     <a href="https://github.com/SamKirkland/FTP-Deploy-Action">文档</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">        <span style="color:#66d9ef">uses</span>: SamKirkland/FTP-Deploy-Action@<span style="color:#ae81ff">2.0</span><span style="color:#ae81ff">.0</span>
+        <span style="color:#66d9ef">env</span>:
+          <span style="color:#66d9ef">FTP_SERVER</span>: ${{ secrets.SERVER_IP }}
+          <span style="color:#66d9ef">FTP_USERNAME</span>: root
+          <span style="color:#66d9ef">FTP_PASSWORD</span>: ${{ secrets.FTP_PASSWORD }}
+          <span style="color:#66d9ef">METHOD</span>: sftp
+          <span style="color:#66d9ef">LOCAL_DIR</span>: dist   <span style="color:#75715e">#要上传的目录</span>
+          <span style="color:#66d9ef">REMOTE_DIR</span>: /root/glass/admin-web  <span style="color:#75715e">#上传到服务器的目录</span>
+          <span style="color:#66d9ef">ARGS</span>: --delete
+</code></pre></div><h2 id="全部action文件">全部action文件</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: Node CI
 
-<pre><code class="language-yaml">        uses: SamKirkland/FTP-Deploy-Action@2.0.0
-        env:
-          FTP_SERVER: ${{ secrets.SERVER_IP }}
-          FTP_USERNAME: root
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          METHOD: sftp
-          LOCAL_DIR: dist   #要上传的目录
-          REMOTE_DIR: /root/glass/admin-web  #上传到服务器的目录
-          ARGS: --delete
-</code></pre>
-
-<h2 id="全部action文件">全部action文件</h2>
-
-<pre><code class="language-yaml">name: Node CI
-
-on:
-  push:
-    branches:
+<span style="color:#66d9ef">on</span>:
+  <span style="color:#66d9ef">push</span>:
+    <span style="color:#66d9ef">branches</span>:
       - master
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+<span style="color:#66d9ef">jobs</span>:
+  <span style="color:#66d9ef">build</span>:
+    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@master
+    <span style="color:#66d9ef">steps</span>:
+      - <span style="color:#66d9ef">uses</span>: actions/checkout@master
 
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: npm install, build, and test
-        run: |
-          npm install
+      - <span style="color:#66d9ef">name</span>: Use Node.js <span style="color:#ae81ff">12.</span>x
+        <span style="color:#66d9ef">uses</span>: actions/setup-node@v1
+        <span style="color:#66d9ef">with</span>:
+          <span style="color:#66d9ef">node-version</span>: <span style="color:#e6db74">&#39;12.x&#39;</span>
+      - <span style="color:#66d9ef">name</span>: npm install, build, and test
+        <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">         </span><span style="color:#e6db74"> </span><span style="color:#e6db74">npm install</span>
           npm run build:prod --if-present
-        env:
-          CI: true
+        <span style="color:#66d9ef">env</span>:
+          <span style="color:#66d9ef">CI</span>: <span style="color:#66d9ef">true</span>
 
-      - name: backup admin-web
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: root
-          password:  ${{ secrets.FTP_PASSWORD }}
-          port: 22
-          script: |
-            cp -r /root/glass/admin-web /root/glass/admin-web-old
-      - name: deploy to server
-        uses: SamKirkland/FTP-Deploy-Action@2.0.0
-        env:
-          FTP_SERVER: ${{ secrets.SERVER_IP }}
-          FTP_USERNAME: root
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          METHOD: sftp
-          LOCAL_DIR: dist
-          REMOTE_DIR: /root/glass/admin-web
-          ARGS: --delete
-</code></pre>
-
-<p>运行结果</p>
-
-<p><img src="1571647840346.png" alt="1571647840346" /></p>
-
+      - <span style="color:#66d9ef">name</span>: backup admin-web
+        <span style="color:#66d9ef">uses</span>: appleboy/ssh-action@master
+        <span style="color:#66d9ef">with</span>:
+          <span style="color:#66d9ef">host</span>: ${{ secrets.SERVER_IP }}
+          <span style="color:#66d9ef">username</span>: root
+          <span style="color:#66d9ef">password</span>:  ${{ secrets.FTP_PASSWORD }}
+          <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">22</span>
+          <span style="color:#66d9ef">script</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">           </span><span style="color:#e6db74"> </span><span style="color:#e6db74">cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
+      - <span style="color:#66d9ef">name</span>: deploy to server
+        <span style="color:#66d9ef">uses</span>: SamKirkland/FTP-Deploy-Action@<span style="color:#ae81ff">2.0</span><span style="color:#ae81ff">.0</span>
+        <span style="color:#66d9ef">env</span>:
+          <span style="color:#66d9ef">FTP_SERVER</span>: ${{ secrets.SERVER_IP }}
+          <span style="color:#66d9ef">FTP_USERNAME</span>: root
+          <span style="color:#66d9ef">FTP_PASSWORD</span>: ${{ secrets.FTP_PASSWORD }}
+          <span style="color:#66d9ef">METHOD</span>: sftp
+          <span style="color:#66d9ef">LOCAL_DIR</span>: dist
+          <span style="color:#66d9ef">REMOTE_DIR</span>: /root/glass/admin-web
+          <span style="color:#66d9ef">ARGS</span>: --delete
+</code></pre></div><p>运行结果</p>
+<p><img src="1571647840346.png" alt="1571647840346"></p>
 <h2 id="参考">参考</h2>
-
 <ul>
 <li><a href="https://help.github.com/en/github/automating-your-workflow-with-github-actions/virtual-environments-for-github-actions">https://help.github.com/en/github/automating-your-workflow-with-github-actions/virtual-environments-for-github-actions</a></li>
 <li><a href="https://github.com/SamKirkland/FTP-Deploy-Action">https://github.com/SamKirkland/FTP-Deploy-Action</a></li>

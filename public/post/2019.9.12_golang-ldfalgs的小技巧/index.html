@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,64 +88,42 @@
                         
                         <div class="post-content">
                             <h2 id="问题">问题</h2>
-
 <p>如果想要在go build生成的可执行文件中注入编译时间，git hash等信息。可以在编译的时候使用-ldflags -X参数来注入变量</p>
-
 <p>-ldfflags -X 可以在go install 、go build、go run  、go test中使用</p>
-
-<p><strong>go build -ldflags &ldquo;-X  &lsquo; packageName.varName=cmd &rsquo; &ldquo;</strong></p>
-
+<p><strong>go build -ldflags &ldquo;-X  ' packageName.varName=cmd ' &ldquo;</strong></p>
 <h2 id="样例">样例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<pre><code class="language-go">package main
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
 
-import &quot;fmt&quot;
-
-var (
-	time = &quot;not set&quot;
-	git  = &quot;not set&quot;
+<span style="color:#66d9ef">var</span> (
+	<span style="color:#a6e22e">time</span> = <span style="color:#e6db74">&#34;not set&#34;</span>
+	<span style="color:#a6e22e">git</span>  = <span style="color:#e6db74">&#34;not set&#34;</span>
 )
 
-func main() {
-	fmt.Println(&quot;build time:&quot;, time)
-	fmt.Println(&quot;git log:&quot;, git)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;build time:&#34;</span>, <span style="color:#a6e22e">time</span>)
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;git log:&#34;</span>, <span style="color:#a6e22e">git</span>)
 }
-</code></pre>
-
-<p>想要在build的时候改变time和git的值，可以这么做：</p>
-
+</code></pre></div><p>想要在build的时候改变time和git的值，可以这么做：</p>
 <p>powershell(<strong>cmd有问题</strong>):</p>
-
-<pre><code class="language-shell">go build -ldflags &quot;-X 'main.buildTime=$(date)' -X 'main.gitHash=$(git log --pretty=format:&quot;%h&quot; -1)'&quot;  main.go
-</code></pre>
-
-<p>linux:</p>
-
-<pre><code class="language-shell">go build  -ldflags &quot;-X 'main.time=$(date -u --rfc-3339=seconds)' -X 'main.git=$(git log --pretty=format:&quot;%h&quot; -1)'&quot;  main.go
-</code></pre>
-
-<p>运行结果:</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-X &#39;main.buildTime=</span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;main.gitHash=</span><span style="color:#66d9ef">$(</span>git log --pretty<span style="color:#f92672">=</span>format:<span style="color:#e6db74">&#34;%h&#34;</span> -1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#34;</span>  main.go
+</code></pre></div><p>linux:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build  -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-X &#39;main.time=</span><span style="color:#66d9ef">$(</span>date -u --rfc-3339<span style="color:#f92672">=</span>seconds<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;main.git=</span><span style="color:#66d9ef">$(</span>git log --pretty<span style="color:#f92672">=</span>format:<span style="color:#e6db74">&#34;%h&#34;</span> -1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#34;</span>  main.go
+</code></pre></div><p>运行结果:</p>
 <pre><code>build date: 2019-09-12 06:57:45+00:00
 git hash: e1ac7a6
-</code></pre>
-
-<h2 id="注意">注意</h2>
-
+</code></pre><h2 id="注意">注意</h2>
 <ul>
 <li>只能给string赋值,不能是bool,int</li>
 <li>只能是变量，不能是常量</li>
 <li><code>-X importpath.name=val</code>, 其中<code>importpath</code>是变量所在包的的路径， <code>name</code>是包中定义的变量， val 是需要在编译时设置的变量的值<code>(string)</code></li>
-<li>如果val是命令的结果，命令中可能有空格之类的特殊符号，建议 <code>importpath.nmae=val</code>  用<strong>单引号</strong>括起来,如：`<code>importpath.nmae=val</code>`<br />
-
-<br /></li>
+<li>如果val是命令的结果，命令中可能有空格之类的特殊符号，建议 <code>importpath.nmae=val</code>  用<strong>单引号</strong>括起来,如：`<code>importpath.nmae=val</code>`</li>
 </ul>
-
 <h2 id="参考">参考</h2>
-
 <ul>
 <li><a href="https://stackoverflow.com/questions/47509272/how-to-set-package-variable-using-ldflags-x-in-golang-build">https://stackoverflow.com/questions/47509272/how-to-set-package-variable-using-ldflags-x-in-golang-build</a></li>
-<li><a href="https://2young.2simple.top/article/golang/golang在编译时使用ldflags动态设置变量的值.html">https://2young.2simple.top/article/golang/golang%E5%9C%A8%E7%BC%96%E8%AF%91%E6%97%B6%E4%BD%BF%E7%94%A8ldflags%E5%8A%A8%E6%80%81%E8%AE%BE%E7%BD%AE%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC.html</a></li>
+<li><a href="https://2young.2simple.top/article/golang/golang%E5%9C%A8%E7%BC%96%E8%AF%91%E6%97%B6%E4%BD%BF%E7%94%A8ldflags%E5%8A%A8%E6%80%81%E8%AE%BE%E7%BD%AE%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC.html">https://2young.2simple.top/article/golang/golang%E5%9C%A8%E7%BC%96%E8%AF%91%E6%97%B6%E4%BD%BF%E7%94%A8ldflags%E5%8A%A8%E6%80%81%E8%AE%BE%E7%BD%AE%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC.html</a></li>
 </ul>
                         </div>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>git on Zshell的博客</title>
@@ -21,7 +21,8 @@
 现在我想使用github actions实现vue-element-admin做的一个管理后台的自动构建发布到生产服务器的一系列过程
 新建github workflow 进入github仓库的主页点击actions就可以创建一个新的workflow
 新建文件的路径在仓库根目录的./github/workflows/
-我之前误操作不知道为什么新建在仓库的根目录</description>
+我之前误操作不知道为什么新建在仓库的根目录
+字段说明   name 字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名</description>
     </item>
     
   </channel>

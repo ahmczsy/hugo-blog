@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on Zshell的博客</title>
@@ -18,7 +18,7 @@
       
       <guid>https://blog.mcjy.top/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</guid>
       <description>问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思
-情况1 都是普通字段 type sameTag struct { A string `json:&amp;quot;a&amp;quot;` B string `json:&amp;quot;a&amp;quot;` Other string `json:&amp;quot;other&amp;quot;` } func TestSameJson(t *testing.</description>
+情况1 都是普通字段 type sameTag struct { A string `json:&amp;#34;a&amp;#34;` B string `json:&amp;#34;a&amp;#34;` Other string `json:&amp;#34;other&amp;#34;` } func TestSameJson(t *testing.</description>
     </item>
     
     <item>

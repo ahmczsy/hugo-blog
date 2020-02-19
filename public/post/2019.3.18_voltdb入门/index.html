@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,114 +88,101 @@
                         
                         <div class="post-content">
                             <h1 id="安装运行">安装运行</h1>
-
 <h3 id="环境要求">环境要求</h3>
-
 <ul>
-<li><p>python2.7以上，不支持python3</p></li>
-
-<li><p>java8</p></li>
+<li>
+<p>python2.7以上，不支持python3</p>
+</li>
+<li>
+<p>java8</p>
+</li>
 </ul>
-
 <h3 id="安装">安装</h3>
-
 <ul>
-<li><p>到官网注册个账号才能把下载链接发到邮箱，很蛋疼，不能直接下载</p></li>
-
-<li><p>解压</p></li>
-
-<li><p>把voltdb/bin/加入环境变量</p></li>
+<li>
+<p>到官网注册个账号才能把下载链接发到邮箱，很蛋疼，不能直接下载</p>
+</li>
+<li>
+<p>解压</p>
+</li>
+<li>
+<p>把voltdb/bin/加入环境变量</p>
+</li>
 </ul>
-
 <h3 id="运行">运行</h3>
-
 <ul>
-<li><p>初始化工作空间</p>
-
-<pre><code class="language-shell">voltdb inti  
-</code></pre></li>
+<li>
+<p>初始化工作空间</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">voltdb inti  
+</code></pre></div><p>在当前目录生成voltdbroot文件夹，里面存放着数据库数据之类的东西，还有命令行快照，用来恢复数据</p>
+</li>
+<li>
+<p>运行voltdb</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">voltdb start
+</code></pre></div></li>
+<li>
+<p>通过cmd操作数据库</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sqlcmd
+</code></pre></div><p>用过sqlcmd进入命令行,和MySQL的命令行差不多</p>
+</li>
+<li>
+<p>关闭</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">voltadmin shutdown
+</code></pre></div></li>
 </ul>
-
-<p>在当前目录生成voltdbroot文件夹，里面存放着数据库数据之类的东西，还有命令行快照，用来恢复数据</p>
-
+<h1 id="java连接voltdb">Java连接VoltDB</h1>
 <ul>
-<li><p>运行voltdb</p>
-
-<pre><code class="language-shell">voltdb start
-</code></pre></li>
-
-<li><p>通过cmd操作数据库</p>
-
-<pre><code class="language-shell">sqlcmd
-</code></pre>
-
-<p>用过sqlcmd进入命令行,和MySQL的命令行差不多</p></li>
-
-<li><p>关闭</p>
-
-<pre><code class="language-shell">voltadmin shutdown
-</code></pre>
-
-<h1 id="java连接voltdb">Java连接VoltDB</h1></li>
-
-<li><p>驱动jar</p>
-
-<pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/org.voltdb/voltdbclient --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.voltdb&lt;/groupId&gt;
-    &lt;artifactId&gt;voltdbclient&lt;/artifactId&gt;
-    &lt;version&gt;8.4.1&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre></li>
-
-<li><p>传统的jdbc方式连接VoltDB</p>
-
-<pre><code class="language-java">String driver = &quot;org.voltdb.jdbc.Driver&quot;;
-String url = &quot;jdbc:voltdb://host:port?jdbc.committhrowexception=false&amp;jdbc.rollbackthrowexception=false&amp;autoreconnect=true&quot;;
-Class.forName(driver);
-this.connection = DriverManager.getConnection(url);
-</code></pre>
-
-<p>因为voltdb不支持传统的事务方式，所以在jdbc添加两个参数使在使用事务时不报异常</p></li>
-
-<li><p>使用client来连接VoltDB</p>
-
-<pre><code class="language-java">ClientConfig config = new ClientConfig();
-    this.client = ClientFactory.createClient(config);
-    client.createConnection(&quot;192.168.1.241&quot;);
-</code></pre>
-
-<p>如果使用这种方式来操作数据库，所有的操作只能通过存储过程来实现</p></li>
+<li>
+<p>驱动jar</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> https://mvnrepository.com/artifact/org.voltdb/voltdbclient </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.voltdb<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>voltdbclient<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>8.4.1<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div></li>
+<li>
+<p>传统的jdbc方式连接VoltDB</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  String driver <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;org.voltdb.jdbc.Driver&#34;</span><span style="color:#f92672">;</span>
+  String url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jdbc:voltdb://host:port?jdbc.committhrowexception=false&amp;jdbc.rollbackthrowexception=false&amp;autoreconnect=true&#34;</span><span style="color:#f92672">;</span>
+  Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span>driver<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">connection</span> <span style="color:#f92672">=</span> DriverManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnection</span><span style="color:#f92672">(</span>url<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p>因为voltdb不支持传统的事务方式，所以在jdbc添加两个参数使在使用事务时不报异常</p>
+</li>
+<li>
+<p>使用client来连接VoltDB</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ClientConfig config <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClientConfig<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> ClientFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">createClient</span><span style="color:#f92672">(</span>config<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+      client<span style="color:#f92672">.</span><span style="color:#a6e22e">createConnection</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.1.241&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p>如果使用这种方式来操作数据库，所有的操作只能通过存储过程来实现</p>
+</li>
 </ul>
-
 <h1 id="简单性能测试">简单性能测试</h1>
-
 <ul>
 <li>启动时占用550M左右的内存</li>
 <li>每秒45次插入时,CPU占用大概20%</li>
 <li>每秒3900次插入时,CPU满载,没有数据丢失</li>
 <li>对100W单表的一个字段进行like查询,耗时0.2S</li>
 <li>三百万条下图类似的数据，加上voltdb本身的进程大概占用1.22G内存
-<img src="https://s2.ax1x.com/2019/03/18/Am5FAS.png" alt="Am5FAS.png" /></li>
+<img src="https://s2.ax1x.com/2019/03/18/Am5FAS.png" alt="Am5FAS.png"></li>
 </ul>
-
 <h1 id="其他">其他</h1>
-
 <ul>
-<li><p>voltdb是内存关系数据库,所以查询比redis方便</p></li>
-
-<li><p>不支持beganTransaction autoCommit之类的操作,要想进行事务相关的操作,只能使用存储过程</p></li>
-
-<li><p>不支持外键,自增字段之类的</p></li>
-
-<li><p>sqlcmd可以执行sql脚本</p>
-
-<pre><code class="language-shell">sqlcmd &lt; test.sql
-</code></pre></li>
+<li>
+<p>voltdb是内存关系数据库,所以查询比redis方便</p>
+</li>
+<li>
+<p>不支持beganTransaction autoCommit之类的操作,要想进行事务相关的操作,只能使用存储过程</p>
+</li>
+<li>
+<p>不支持外键,自增字段之类的</p>
+</li>
+<li>
+<p>sqlcmd可以执行sql脚本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sqlcmd &lt; test.sql
+</code></pre></div></li>
 </ul>
-
 <h1 id="参考">参考</h1>
-
 <ul>
 <li><a href="https://docs.voltdb.com/UsingVoltDB/ddlref_createtable.php">https://docs.voltdb.com/UsingVoltDB/ddlref_createtable.php</a></li>
 <li><a href="https://docs.voltdb.com/">https://docs.voltdb.com/</a></li>

@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,26 +88,21 @@
                         
                         <div class="post-content">
                             <h4 id="步骤">步骤</h4>
-
 <ul>
-<li><p>设置mysql免密码登陆
-编辑/etc/mysql/my.cnf文件,在最后加入以下设置</p>
-
-<pre><code class="language-aidl">[mysqld]
-skip-grant-tables=1
-</code></pre></li>
-
-<li><p>重启mysql</p>
-
-<pre><code class="language-aidl">$ sudo service mysql stop
-$ sudo service mysql strat
-</code></pre></li>
+<li>设置mysql免密码登陆
+编辑/etc/mysql/my.cnf文件,在最后加入以下设置</li>
 </ul>
-
-<ul>
-<li><p>进入mysql，先修改验证方式，再改密码</p>
-
-<pre><code class="language-aidl">$ mysql
+<pre><code class="language-aidl" data-lang="aidl">[mysqld]
+skip-grant-tables=1
+</code></pre><ul>
+<li>重启mysql</li>
+</ul>
+<pre><code class="language-aidl" data-lang="aidl">$ sudo service mysql stop
+$ sudo service mysql strat
+</code></pre><ul>
+<li>进入mysql，先修改验证方式，再改密码</li>
+</ul>
+<pre><code class="language-aidl" data-lang="aidl">$ mysql
 //修改验证方式
 mysql&gt; USE mysql;
 mysql&gt; UPDATE user SET plugin='mysql_native_password' WHERE User='root';
@@ -117,16 +112,11 @@ mysql&gt; update mysql.user set authentication_string=password('123qwe') where u
 mysql&gt; flush privileges;
 //推出
 musql&gt; exit;
-</code></pre></li>
-
-<li><p>重启mysql服务 登陆mysql</p>
-
-<pre><code class="language-aidl">$ mysql -uroot -p
-</code></pre></li>
+</code></pre><ul>
+<li>重启mysql服务 登陆mysql</li>
 </ul>
-
-<h4 id="参考">参考</h4>
-
+<pre><code class="language-aidl" data-lang="aidl">$ mysql -uroot -p
+</code></pre><h4 id="参考">参考</h4>
 <p><a href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost#">https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost#</a></p>
                         </div>
 

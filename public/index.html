@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -85,7 +85,7 @@
                             
                             <div class="post-content">
                                 问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思
-情况1 都是普通字段 type sameTag struct { A string `json:&quot;a&quot;` B string `json:&quot;a&quot;` Other string `json:&quot;other&quot;` } func TestSameJson(t *testing.……
+情况1 都是普通字段 type sameTag struct { A string `json:&#34;a&#34;` B string `json:&#34;a&#34;` Other string `json:&#34;other&#34;` } func TestSameJson(t *testing.……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/">阅读全文</a></p>
                         </article>
@@ -161,7 +161,8 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
 现在我想使用github actions实现vue-element-admin做的一个管理后台的自动构建发布到生产服务器的一系列过程
 新建github workflow 进入github仓库的主页点击actions就可以创建一个新的workflow
 新建文件的路径在仓库根目录的./github/workflows/
-我之前误操作不知道为什么新建在仓库的根目录……
+我之前误操作不知道为什么新建在仓库的根目录
+字段说明   name 字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/">阅读全文</a></p>
                         </article>
@@ -181,8 +182,8 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
                             <div class="post-content">
                                 zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错
 在要解压的目的地的前面加个参数－d，就能新建一个不存的目录
-mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下
-mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼……
+ mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下
+mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">阅读全文</a></p>
                         </article>
@@ -201,12 +202,9 @@ mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能�
                             
                             <div class="post-content">
                                 <h2 id="问题">问题</h2>
-
 <p>如果想要在go build生成的可执行文件中注入编译时间，git hash等信息。可以在编译的时候使用-ldflags -X参数来注入变量</p>
-
 <p>-ldfflags -X 可以在go install 、go build、go run  、go test中使用</p>
-
-<p><strong>go build -ldflags &ldquo;-X  &lsquo; packageName.varName=cmd &rsquo; &ldquo;</strong></p>……
+<p><strong>go build -ldflags &ldquo;-X  ' packageName.varName=cmd ' &ldquo;</strong></p>……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">阅读全文</a></p>
                         </article>
@@ -225,15 +223,10 @@ mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能�
                             
                             <div class="post-content">
                                 <h4 id="问题">问题</h4>
-
 <p>Golang的<strong>方法接收者</strong>就是在函数名前的括号内的东西  如</p>
-
-<pre><code class="language-go">func (self Car) run() // (self car)就是方法接收者
-</code></pre>
-
-<p>在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是<strong>self  me  this</strong>类似的词，IDE会提示*Receiver has generic name*信息 如下图所示</p>
-
-<p><img src="https://s2.ax1x.com/2019/08/26/mW6QpQ.png" alt="mW6QpQ.png" /></p>……
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">self</span> <span style="color:#a6e22e">Car</span>) <span style="color:#a6e22e">run</span>() <span style="color:#75715e">// (self car)就是方法接收者
+</span></code></pre></div><p>在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是<strong>self  me  this</strong>类似的词，IDE会提示<em>Receiver has generic name</em>信息 如下图所示</p>
+<p><img src="https://s2.ax1x.com/2019/08/26/mW6QpQ.png" alt="mW6QpQ.png"></p>……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/">阅读全文</a></p>
                         </article>
@@ -270,12 +263,11 @@ mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能�
                             
                             <div class="post-content">
                                 <h3 id="获取毫秒时间戳">获取毫秒时间戳</h3>
-
-<pre><code class="language-go">//第一种
-time.Now().UnixNano() / int64(time.Millisecond)
-//第二种
-time.Now().UnixNano() / 1e6
-</code></pre>……
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//第一种
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>() <span style="color:#f92672">/</span> int64(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>)
+<span style="color:#75715e">//第二种
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>() <span style="color:#f92672">/</span> <span style="color:#ae81ff">1e6</span>
+</code></pre></div>……
                             </div>
                             <p class="readmore"><a href="https://blog.mcjy.top/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">阅读全文</a></p>
                         </article>

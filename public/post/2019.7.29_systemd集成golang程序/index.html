@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,18 +88,11 @@
                         
                         <div class="post-content">
                             <p>当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务</p>
-
 <h3 id="新建systemd的service">新建Systemd的Service</h3>
-
 <p>目前go build得到的可执行文件放在/root/glass/go下</p>
-
 <p>首先新建Service，名称叫做glass-api</p>
-
-<pre><code class="language-shell">touch /lib/systemd/system/glass-api.service
-</code></pre>
-
-<p>下一步，编辑该文件</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">touch /lib/systemd/system/glass-api.service
+</code></pre></div><p>下一步，编辑该文件</p>
 <pre><code>[Unit]
 Description=Glass admin's api
 
@@ -112,48 +105,27 @@ WorkingDirectory=/root/glass/go/
 
 [Install]
 WantedBy=multi-user.target
-</code></pre>
-
-<p>ExecStart是go可执行文件的路径</p>
-
+</code></pre><p>ExecStart是go可执行文件的路径</p>
 <p>WorkingDirectory要注意，如果程序中使用了相对路径来加载一些配置文件，如果在Service中没有配置WorkingDirectory，默认是根路径，所以配置文件就从根路径来寻找，会造成一些意向不到的情况</p>
-
 <h3 id="运行service">运行Service</h3>
-
 <p>启动</p>
-
-<pre><code class="language-shell">service glass-api start
-</code></pre>
-
-<p>停止</p>
-
-<pre><code class="language-shell">service glass-api stop
-</code></pre>
-
-<p>查看状态</p>
-
-<pre><code class="language-she">service glass-api status
-</code></pre>
-
-<p>输出结果</p>
-
-<pre><code class="language-shell">Redirecting to /bin/systemctl status  glass-api.service
-● glass-api.service - Glass admin's api
-   Loaded: loaded (/usr/lib/systemd/system/glass-api.service; disabled; vendor preset: disabled)
-   Active: active (running) since Sat 2019-07-27 19:00:09 CST; 1 day 15h ago
- Main PID: 22559 (main)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">service glass-api start
+</code></pre></div><p>停止</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">service glass-api stop
+</code></pre></div><p>查看状态</p>
+<pre><code class="language-she" data-lang="she">service glass-api status
+</code></pre><p>输出结果</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Redirecting to /bin/systemctl status  glass-api.service
+● glass-api.service - Glass admin<span style="color:#960050;background-color:#1e0010">&#39;</span>s api
+   Loaded: loaded <span style="color:#f92672">(</span>/usr/lib/systemd/system/glass-api.service; disabled; vendor preset: disabled<span style="color:#f92672">)</span>
+   Active: active <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span> since Sat 2019-07-27 19:00:09 CST; <span style="color:#ae81ff">1</span> day 15h ago
+ Main PID: <span style="color:#ae81ff">22559</span> <span style="color:#f92672">(</span>main<span style="color:#f92672">)</span>
    Memory: 7.3M
    CGroup: /system.slice/glass-api.service
            └─22559 /root/glass/go/main
-</code></pre>
-
-<p>如果想要开机启动</p>
-
-<pre><code class="language-shell">service glass-api enable
-</code></pre>
-
-<h3 id="参考">参考</h3>
-
+</code></pre></div><p>如果想要开机启动</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">service glass-api enable
+</code></pre></div><h3 id="参考">参考</h3>
 <ul>
 <li><a href="https://liqiang.io/post/run-golang-binary-with-systemd">https://liqiang.io/post/run-golang-binary-with-systemd</a></li>
 <li><a href="https://github.com/kardianos/service">https://github.com/kardianos/service</a></li>

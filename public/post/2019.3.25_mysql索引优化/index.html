@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -87,48 +87,40 @@
                         
                         
                         <div class="post-content">
-                            
-
-<h1 id="mysql索引优化">MySql索引优化</h1>
-
+                            <h1 id="mysql索引优化">MySql索引优化</h1>
 <h3 id="语法">语法</h3>
-
-<pre><code class="language-sql">create table user_info (
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> user_info (
 	id int AUTO_INCREMENT,
-	name varchar(20),
-	age int(3),
-	email varchar(256),
-	PRIMARY KEY (id)
+	name varchar(<span style="color:#ae81ff">20</span>),
+	age int(<span style="color:#ae81ff">3</span>),
+	email varchar(<span style="color:#ae81ff">256</span>),
+	<span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (id)
 );
-create index idx_user_nameAgeEmail on user_info (name,age,email);
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">index</span> idx_user_nameAgeEmail <span style="color:#66d9ef">on</span> user_info (name,age,email);
 
-create table t (
-	a varchar(20),
-	b int(3),
-	c varchar(20)
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> t (
+	a varchar(<span style="color:#ae81ff">20</span>),
+	b int(<span style="color:#ae81ff">3</span>),
+	<span style="color:#66d9ef">c</span> varchar(<span style="color:#ae81ff">20</span>)
 );
 
-create index idx_a_b_c on t (a,b,c);
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">index</span> idx_a_b_c <span style="color:#66d9ef">on</span> t (a,b,<span style="color:#66d9ef">c</span>);
 
 
 
-create index &lt;索引名称&gt; on &lt;表名&gt; （&lt;列名&gt;,.....）
-</code></pre>
-
-<h3 id="不合适创建索引的情况">不合适创建索引的情况</h3>
-
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">index</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">索</span><span style="color:#960050;background-color:#1e0010">引</span><span style="color:#960050;background-color:#1e0010">名</span><span style="color:#960050;background-color:#1e0010">称</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表</span><span style="color:#960050;background-color:#1e0010">名</span><span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">列</span><span style="color:#960050;background-color:#1e0010">名</span><span style="color:#f92672">&gt;</span>,.....<span style="color:#960050;background-color:#1e0010">）</span>
+</code></pre></div><h3 id="不合适创建索引的情况">不合适创建索引的情况</h3>
 <ul>
-<li><p>更新多，查询少</p></li>
-
-<li><p>数据重复度高的字段：</p></li>
-</ul>
-
+<li>
+<p>更新多，查询少</p>
+</li>
+<li>
+<p>数据重复度高的字段：</p>
 <p>比如一张表有两个字段“名”和“姓”，“名”就合适建立索引，“姓”不合适</p>
-
+</li>
+</ul>
 <h3 id="索引优化">索引优化</h3>
-
 <h4 id="最左前缀">最左前缀</h4>
-
 <p>使用索引的时候要一定要注意在创建索引时的顺序</p>
 
                         </div>

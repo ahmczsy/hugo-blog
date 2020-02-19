@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,46 +88,32 @@
                         
                         <div class="post-content">
                             <h1 id="安装">安装</h1>
-
 <h3 id="开启wsl组件">开启WSL组件</h3>
-
-<pre><code class="language-powershell">  Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-</code></pre>
-
-<h3 id="下载镜像">下载镜像</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+</code></pre></div><h3 id="下载镜像">下载镜像</h3>
 <p>由于我的Win10是精简版所以没用应用商店所以只能手动下载镜像</p>
-
 <p>各个发行版 <a href="https://docs.microsoft.com/en-us/windows/wsl/install-manua">https://docs.microsoft.com/en-us/windows/wsl/install-manua</a></p>
-
 <h3 id="安装-1">安装</h3>
-
 <ul>
-<li><p>把Ubuntu.appx重命名为Ubuntu.zip</p></li>
-
-<li><p>解压</p></li>
-
-<li><p>对Ubuntu.exe右键以管理员运行，输入用户名和密码即安装完成</p></li>
+<li>
+<p>把Ubuntu.appx重命名为Ubuntu.zip</p>
+</li>
+<li>
+<p>解压</p>
+</li>
+<li>
+<p>对Ubuntu.exe右键以管理员运行，输入用户名和密码即安装完成</p>
+</li>
 </ul>
-
 <h3 id="修改默认用户">修改默认用户</h3>
-
 <p>在解压的根目录打开powershell</p>
-
-<pre><code class="language-powershell">ubuntu config --default-user &lt;username&gt;
-</code></pre>
-
-<h1 id="备份wsl">备份WSL</h1>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">ubuntu config --default-user &lt;username&gt;
+</code></pre></div><h1 id="备份wsl">备份WSL</h1>
 <h3 id="安装lxrunoffline">安装LxRunOffline</h3>
-
 <p><a href="https://github.com/DDoSolitary/LxRunOffline">https://github.com/DDoSolitary/LxRunOffline</a></p>
-
 <p>安装好后最好重启下电脑，如果不重启可能有问题</p>
-
 <h3 id="常用lxrunoffline命令">常用LxRunOffline命令</h3>
-
-<pre><code class="language-powershell">//已经安装的wsl
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">//已经安装的wsl
 LxRunOffline.exe list 
 //安装wsl
 LxRunOffline.exe install
@@ -135,54 +121,35 @@ LxRunOffline.exe install
 LxRunOffline.exe export
 //启动一个wsl
 LxRunOffline.exe run
-</code></pre>
-
-<h3 id="备份wsl-1">备份wsl</h3>
-
+</code></pre></div><h3 id="备份wsl-1">备份wsl</h3>
 <ul>
-<li><p>先查看当前系统中存在的wsl</p>
-
-<pre><code class="language-powershell">&gt; LxRunOffline.exe list
+<li>
+<p>先查看当前系统中存在的wsl</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">&gt; LxRunOffline.exe list
   
 Ubuntu-18.04
-</code></pre></li>
-
-<li><p>开始备份</p>
-
+</code></pre></div></li>
+<li>
+<p>开始备份</p>
 <pre><code>LxRunOffline.exe export -n Ubuntu-18.04 -f backup.tar.gz
-</code></pre></li>
-</ul>
-
-<p>-n ：wsl的别名，就是之前用list查看的其中一个</p>
-
+</code></pre><p>-n ：wsl的别名，就是之前用list查看的其中一个</p>
 <p>-f  ：备份的路径，我这直接备份到当前路径backup.tar.gz</p>
-
-<ul>
-<li><p>还原wsl</p>
-
+</li>
+<li>
+<p>还原wsl</p>
 <pre><code>LxRunOffline.exe install -n new-linux -d .\ -f D:\temp\backup.tar.gz
-</code></pre></li>
-</ul>
-
-<p>-n ：起个名字</p>
-
+</code></pre><p>-n ：起个名字</p>
 <p>-d ：wsl安装目录</p>
-
 <p>-f ：备份文件目录</p>
-
-<ul>
-<li><p>启动备份的wsl</p>
-
-<pre><code>LxRunOffline.exe run -n new-linux
+</li>
+<li>
+<p>启动备份的wsl</p>
+<pre><code> LxRunOffline.exe run -n new-linux
 </code></pre></li>
 </ul>
-
 <h1 id="参考">参考</h1>
-
 <p><a href="https://github.com/DDoSolitary/LxRunOffline">https://github.com/DDoSolitary/LxRunOffline</a></p>
-
 <p><a href="https://docs.microsoft.com/en-us/windows/wsl/install-on-server">https://docs.microsoft.com/en-us/windows/wsl/install-on-server</a></p>
-
 <p><a href="https://askubuntu.com/questions/816732/how-to-change-default-user-in-wsl-ubuntu-bash-on-windows-10">https://askubuntu.com/questions/816732/how-to-change-default-user-in-wsl-ubuntu-bash-on-windows-10</a></p>
                         </div>
 

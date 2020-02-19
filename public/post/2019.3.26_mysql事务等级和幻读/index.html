@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -84,52 +84,39 @@
                         
                         <div class="post-content">
                             <h3 id="四个事物等级">四个事物等级</h3>
-
 <ul>
-<li>read uncommitted ：有可能脏读</li>
-</ul>
-
+<li>
+<p>read uncommitted ：有可能脏读</p>
 <p>一个事务过程中读取到了，另一个事务的中途数据</p>
-
-<ul>
-<li>read committed ：有可能不可重复读</li>
-</ul>
-
+</li>
+<li>
+<p>read committed ：有可能不可重复读</p>
 <p>即在一次事务之间，进行了两次读取，但是结果不一样，可能第一次id为1的人叫“李三”，第二次读id为1的人就叫了“李四”。因为读取操作不会阻止其他事务</p>
-
-<ul>
-<li>repetable read ：有可能幻读</li>
-</ul>
-
+</li>
+<li>
+<p>repetable read ：有可能幻读</p>
 <p>幻读侧重的方面是某一次的 select 操作得到的结果所表征的数据状态无法支撑后续的业务操作。更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行 insert 时发现此记录已存在，无法插入，此时就发生了幻读</p>
-
-<ul>
-<li><p>serializable ：效率最低</p>
-
-<p>可避免幻读。读加共享锁，写加排他锁。这样读取事务可以并发，但是读写，写写事务之间都是互斥的，基本上就是一个个执行事务，所以叫序列化</p></li>
+</li>
+<li>
+<p>serializable ：效率最低</p>
+<p>可避免幻读。读加共享锁，写加排他锁。这样读取事务可以并发，但是读写，写写事务之间都是互斥的，基本上就是一个个执行事务，所以叫序列化</p>
+</li>
 </ul>
-
 <h3 id="查看当前事务等级">查看当前事务等级</h3>
-
-<pre><code class="language-mysql">SELECT @@global.tx_isolation, @@tx_isolation;	
-</code></pre>
-
-<h3 id="触发幻读">触发幻读</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span><span style="color:#f92672">@</span>global.tx_isolation, <span style="color:#f92672">@</span><span style="color:#f92672">@</span>tx_isolation;	
+</code></pre></div><h3 id="触发幻读">触发幻读</h3>
 <ul>
-<li><p>事前准备</p>
-
-<pre><code class="language-mysql">
-create table t1 (
-	id int(10),
-	age int(3),
-	primary key(id)
-)
-</code></pre></li>
-
-<li><p>触发过程</p></li>
+<li>事前准备</li>
 </ul>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> <span style="color:#a6e22e">t1</span> (
+	id <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">10</span>),
+	age <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">3</span>),
+	<span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span>(id)
+)
+</code></pre></div><ul>
+<li>触发过程</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -138,26 +125,22 @@ create table t1 (
 <th align="center">步骤</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="center">begin</td>
 <td align="center"></td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">select * from t1 where id  =1</td>
 <td align="center"></td>
 <td align="center">2</td>
 </tr>
-
 <tr>
 <td align="center"></td>
 <td align="center">insert into t1 values (1,12)</td>
 <td align="center">3</td>
 </tr>
-
 <tr>
 <td align="center">insert into t1 values(1,12)</td>
 <td align="center"></td>
@@ -165,13 +148,9 @@ create table t1 (
 </tr>
 </tbody>
 </table>
-
-<p>​   在事务1中，先查询有没有id = 1的记录，如果没有就插入，但是在查询后，事务2先插入了，那么事务1就出现错误</p>
-
-<p><img src="https://s2.ax1x.com/2019/03/26/AUCtSA.png" alt="AUCtSA.png" /></p>
-
+<p>​	在事务1中，先查询有没有id = 1的记录，如果没有就插入，但是在查询后，事务2先插入了，那么事务1就出现错误</p>
+<p><img src="https://s2.ax1x.com/2019/03/26/AUCtSA.png" alt="AUCtSA.png"></p>
 <h3 id="解决幻读">解决幻读</h3>
-
 <table>
 <thead>
 <tr>
@@ -180,32 +159,27 @@ create table t1 (
 <th align="center">步骤</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="center">begin</td>
 <td align="center"></td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">select * from t1 where id  =1 <strong>for update</strong></td>
 <td align="center"></td>
 <td align="center">2</td>
 </tr>
-
 <tr>
 <td align="center"></td>
 <td align="center">insert into t1 values (1,12)</td>
 <td align="center">3</td>
 </tr>
-
 <tr>
 <td align="center">insert into t1 values(1,12)</td>
 <td align="center"></td>
 <td align="center">4</td>
 </tr>
-
 <tr>
 <td align="center">commit</td>
 <td align="center"></td>
@@ -213,9 +187,7 @@ create table t1 (
 </tr>
 </tbody>
 </table>
-
-<p><img src="https://s2.ax1x.com/2019/03/26/AUPE0f.png" alt="AUPE0f.png" /></p>
-
+<p><img src="https://s2.ax1x.com/2019/03/26/AUPE0f.png" alt="AUPE0f.png"></p>
 <p>在Step2执行后，数据库会加一个X锁(排它锁)。这时Step3执行后，会一直等待事务1执行完毕，当事务1 commit后，事务2就报错了</p>
                         </div>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Zshell的博客</title>
@@ -18,7 +18,7 @@
       
       <guid>https://blog.mcjy.top/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</guid>
       <description>问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思
-情况1 都是普通字段 type sameTag struct { A string `json:&amp;quot;a&amp;quot;` B string `json:&amp;quot;a&amp;quot;` Other string `json:&amp;quot;other&amp;quot;` } func TestSameJson(t *testing.</description>
+情况1 都是普通字段 type sameTag struct { A string `json:&amp;#34;a&amp;#34;` B string `json:&amp;#34;a&amp;#34;` Other string `json:&amp;#34;other&amp;#34;` } func TestSameJson(t *testing.</description>
     </item>
     
     <item>
@@ -53,7 +53,8 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
 现在我想使用github actions实现vue-element-admin做的一个管理后台的自动构建发布到生产服务器的一系列过程
 新建github workflow 进入github仓库的主页点击actions就可以创建一个新的workflow
 新建文件的路径在仓库根目录的./github/workflows/
-我之前误操作不知道为什么新建在仓库的根目录</description>
+我之前误操作不知道为什么新建在仓库的根目录
+字段说明   name 字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名</description>
     </item>
     
     <item>
@@ -64,8 +65,8 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
       <guid>https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错
 在要解压的目的地的前面加个参数－d，就能新建一个不存的目录
-mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下
-mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼</description>
+ mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下
+mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼</description>
     </item>
     
     <item>
@@ -75,12 +76,9 @@ mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能�
       
       <guid>https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
       <description>&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
-
 &lt;p&gt;如果想要在go build生成的可执行文件中注入编译时间，git hash等信息。可以在编译的时候使用-ldflags -X参数来注入变量&lt;/p&gt;
-
 &lt;p&gt;-ldfflags -X 可以在go install 、go build、go run  、go test中使用&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;go build -ldflags &amp;ldquo;-X  &amp;lsquo; packageName.varName=cmd &amp;rsquo; &amp;ldquo;&lt;/strong&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;go build -ldflags &amp;ldquo;-X  &#39; packageName.varName=cmd &#39; &amp;ldquo;&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -90,15 +88,10 @@ mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能�
       
       <guid>https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/</guid>
       <description>&lt;h4 id=&#34;问题&#34;&gt;问题&lt;/h4&gt;
-
 &lt;p&gt;Golang的&lt;strong&gt;方法接收者&lt;/strong&gt;就是在函数名前的括号内的东西  如&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (self Car) run() // (self car)就是方法接收者
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是&lt;strong&gt;self  me  this&lt;/strong&gt;类似的词，IDE会提示*Receiver has generic name*信息 如下图所示&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/26/mW6QpQ.png&#34; alt=&#34;mW6QpQ.png&#34; /&gt;&lt;/p&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Car&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;run&lt;/span&gt;() &lt;span style=&#34;color:#75715e&#34;&gt;// (self car)就是方法接收者
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是&lt;strong&gt;self  me  this&lt;/strong&gt;类似的词，IDE会提示&lt;em&gt;Receiver has generic name&lt;/em&gt;信息 如下图所示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/08/26/mW6QpQ.png&#34; alt=&#34;mW6QpQ.png&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -117,12 +110,11 @@ mysql -u root -p --auto-rehash  开启后能自动补全了 但是这个只能�
       
       <guid>https://blog.mcjy.top/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;h3 id=&#34;获取毫秒时间戳&#34;&gt;获取毫秒时间戳&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;//第一种
-time.Now().UnixNano() / int64(time.Millisecond)
-//第二种
-time.Now().UnixNano() / 1e6
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//第一种
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Now&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;UnixNano&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; int64(&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Millisecond&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;//第二种
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Now&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;UnixNano&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1e6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -141,8 +133,8 @@ time.Now().UnixNano() / 1e6
       
       <guid>https://blog.mcjy.top/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/</guid>
       <description>问题 之前想反编译jar包,在网上了找了一些反编译的工具感觉都不太好用.就来我发现idea自带的反编译插件挺好用,但是没有GUI只能使用命令.
-使用 这个插件在/plugins/java-decompiler/lib/java-decompiler.jar.这个jar不能直接用java -jar运行,这个jar没有只能main函数,直接java -jar会报错,下面是使用方法
-java -cp java-decompiler.jar org.</description>
+使用 这个插件在&amp;lt;idea_home&amp;gt;/plugins/java-decompiler/lib/java-decompiler.jar.这个jar不能直接用java -jar运行,这个jar没有只能main函数,直接java -jar会报错,下面是使用方法
+java -cp java-decompiler.jar org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler -dgs=true siddhi-core.</description>
     </item>
     
     <item>
@@ -151,12 +143,9 @@ java -cp java-decompiler.jar org.</description>
       <pubDate>Thu, 21 Mar 2019 14:42:11 +0800</pubDate>
       
       <guid>https://blog.mcjy.top/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</guid>
-      <description>&lt;h3 id=&#34;阶-的含义&#34;&gt;“阶”的含义&lt;/h3&gt;
-
+      <description>&lt;h3 id=&#34;阶的含义&#34;&gt;“阶”的含义&lt;/h3&gt;
 &lt;p&gt;B-树的所有结点中&lt;strong&gt;最多可以拥有的子结点的个数&lt;/strong&gt;为“阶”，用M表示，下图是一个三阶B-树&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/A3Ce7n&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/03/21/A3Ce7n.png&#34; alt=&#34;A3Ce7n.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/A3Ce7n&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/03/21/A3Ce7n.png&#34; alt=&#34;A3Ce7n.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;三阶B树中所有节点的子节点最多有三个，不能超过三个&lt;/p&gt;</description>
     </item>
     
@@ -167,23 +156,26 @@ java -cp java-decompiler.jar org.</description>
       
       <guid>https://blog.mcjy.top/post/2019.3.18_voltdb%E5%85%A5%E9%97%A8/</guid>
       <description>&lt;h1 id=&#34;安装运行&#34;&gt;安装运行&lt;/h1&gt;
-
 &lt;h3 id=&#34;环境要求&#34;&gt;环境要求&lt;/h3&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;python2.7以上，不支持python3&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;java8&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python2.7以上，不支持python3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;java8&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;到官网注册个账号才能把下载链接发到邮箱，很蛋疼，不能直接下载&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;解压&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;把voltdb/bin/加入环境变量&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;到官网注册个账号才能把下载链接发到邮箱，很蛋疼，不能直接下载&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把voltdb/bin/加入环境变量&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -194,21 +186,18 @@ java -cp java-decompiler.jar org.</description>
       
       <guid>https://blog.mcjy.top/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/</guid>
       <description>&lt;h4 id=&#34;步骤&#34;&gt;步骤&lt;/h4&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;设置mysql免密码登陆
-编辑/etc/mysql/my.cnf文件,在最后加入以下设置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-aidl&#34;&gt;[mysqld]
+&lt;li&gt;设置mysql免密码登陆
+编辑/etc/mysql/my.cnf文件,在最后加入以下设置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-aidl&#34; data-lang=&#34;aidl&#34;&gt;[mysqld]
 skip-grant-tables=1
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;重启mysql&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-aidl&#34;&gt;$ sudo service mysql stop
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;重启mysql&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-aidl&#34; data-lang=&#34;aidl&#34;&gt;$ sudo service mysql stop
 $ sudo service mysql strat
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -218,16 +207,10 @@ $ sudo service mysql strat
       
       <guid>https://blog.mcjy.top/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/</guid>
       <description>&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;
-
 &lt;h3 id=&#34;开启wsl组件&#34;&gt;开启WSL组件&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-powershell&#34;&gt;  Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;下载镜像&#34;&gt;下载镜像&lt;/h3&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;下载镜像&#34;&gt;下载镜像&lt;/h3&gt;
 &lt;p&gt;由于我的Win10是精简版所以没用应用商店所以只能手动下载镜像&lt;/p&gt;
-
 &lt;p&gt;各个发行版 &lt;a href=&#34;https://docs.microsoft.com/en-us/windows/wsl/install-manua&#34;&gt;https://docs.microsoft.com/en-us/windows/wsl/install-manua&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
@@ -238,29 +221,23 @@ $ sudo service mysql strat
       
       <guid>https://blog.mcjy.top/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/</guid>
       <description>&lt;h3 id=&#34;四个事物等级&#34;&gt;四个事物等级&lt;/h3&gt;
-
 &lt;ul&gt;
-&lt;li&gt;read uncommitted ：有可能脏读&lt;/li&gt;
-&lt;/ul&gt;
-
+&lt;li&gt;
+&lt;p&gt;read uncommitted ：有可能脏读&lt;/p&gt;
 &lt;p&gt;一个事务过程中读取到了，另一个事务的中途数据&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;read committed ：有可能不可重复读&lt;/li&gt;
-&lt;/ul&gt;
-
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;read committed ：有可能不可重复读&lt;/p&gt;
 &lt;p&gt;即在一次事务之间，进行了两次读取，但是结果不一样，可能第一次id为1的人叫“李三”，第二次读id为1的人就叫了“李四”。因为读取操作不会阻止其他事务&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;repetable read ：有可能幻读&lt;/li&gt;
-&lt;/ul&gt;
-
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;repetable read ：有可能幻读&lt;/p&gt;
 &lt;p&gt;幻读侧重的方面是某一次的 select 操作得到的结果所表征的数据状态无法支撑后续的业务操作。更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行 insert 时发现此记录已存在，无法插入，此时就发生了幻读&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;serializable ：效率最低&lt;/p&gt;
-
-&lt;p&gt;可避免幻读。读加共享锁，写加排他锁。这样读取事务可以并发，但是读写，写写事务之间都是互斥的，基本上就是一个个执行事务，所以叫序列化&lt;/p&gt;&lt;/li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;serializable ：效率最低&lt;/p&gt;
+&lt;p&gt;可避免幻读。读加共享锁，写加排他锁。这样读取事务可以并发，但是读写，写写事务之间都是互斥的，基本上就是一个个执行事务，所以叫序列化&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
