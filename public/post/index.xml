@@ -6,10 +6,34 @@
     <description>Recent content in Posts on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 04 Dec 2019 18:39:58 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2020 13:31:38 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.mcjy.top/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang处理数据库返回大量数据</title>
+      <link>https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Tue, 26 May 2020 13:31:38 +0800</pubDate>
+      
+      <guid>https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</guid>
+      <description>问题 这两天需要把ClickHouse的查询结果进行统计然后存储起来，但是每一次查询的出来的数据量非常大。行数很多，某一天的count统计如下：
+每次查询的数据有上亿行😢。在ClickHouse查询出结果后返回给client(就是我写的程序)，但是由于这个任务是在k8s内运行，限制只有400m的内存。所以很快就因为内存溢出而崩溃。
+之前的代码 一般的情况下都是把查询结果都放到slice内再返回比如这样：
+for scanner.Next() { value := reflect.</description>
+    </item>
+    
+    <item>
+      <title>Mac下clash教程</title>
+      <link>https://blog.mcjy.top/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 18 Feb 2020 22:44:13 +0800</pubDate>
+      
+      <guid>https://blog.mcjy.top/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</guid>
+      <description>问题 在Mac下想要舒服的使用UnblockNeteaseMusic肯定要和clashx配合使用，我在使用clashx时遇到了一些问题，现在记录下来方便大家参考
+简单使用   下载地址
+  clashx的配置文件夹路径在~/.config/clash/下，或者直接在状态栏通过gui操作
+   配置文件都是以yaml类型的。在配置文件夹下可以存在多个配置文件，方便在界面上切换不同的配置，如上图的三个配置文件test，config，ali 只有在设置为系统代理的情况下才能使代理有效  我使用到的配置 详细的配置文档可以参考这个链接，下面说的都是我经常用到的</description>
+    </item>
     
     <item>
       <title>当golang多个字段的json tag相同时会怎么样?</title>
