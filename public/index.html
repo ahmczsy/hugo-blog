@@ -69,6 +69,26 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/" title="使用Postman发送经过gzip压缩的request body" >使用Postman发送经过gzip压缩的request body</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2020年6月30日
+                            </date>
+                            
+                            <div class="post-content">
+                                最近需要测试gzip相关的内容。其中有一项需要对经过gzip压缩的request body进行处理。平时测试接口都是使用postman，这次我也希望用postman来完成
+实现  首先请求的header中必须有Content-Encoding=gzip，如图所示    想要使用postman发送gzip压缩的请求，只能通过发送文件的方式。所以要先把要发送的内容生成gzip文件
+func TestGzip(t *testing.……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/" title="golang处理数据库返回大量数据" >golang处理数据库返回大量数据</a>
                                 </h1>
                             </header>
@@ -290,24 +310,6 @@ mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补
                         </article>
                     
                     
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.mcjy.top/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/" title="Systemd集成Golang程序" >Systemd集成Golang程序</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年7月29日
-                            </date>
-                            
-                            <div class="post-content">
-                                <p>当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务</p>……
-                            </div>
-                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/">阅读全文</a></p>
-                        </article>
-                    
-                    
                     
 
 
@@ -322,6 +324,10 @@ mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补
     
     <li >
         <a href="https://blog.mcjy.top/page/2/">2</a>
+    </li>
+    
+    <li >
+        <a href="https://blog.mcjy.top/page/3/">3</a>
     </li>
     
 
@@ -350,6 +356,10 @@ mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补
     <section class="widget">
         <h3 class="widget-title">最近文章</h3>
 <ul class="widget-list">
+    
+    <li>
+        <a href="https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/" title="使用Postman发送经过gzip压缩的request body">使用Postman发送经过gzip压缩的request body</a>
+    </li>
     
     <li>
         <a href="https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/" title="golang处理数据库返回大量数据">golang处理数据库返回大量数据</a>
@@ -385,10 +395,6 @@ mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补
     
     <li>
         <a href="https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/" title="Receiver has generic name">Receiver has generic name</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.mcjy.top/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/" title="Systemd集成Golang程序">Systemd集成Golang程序</a>
     </li>
     
 </ul>

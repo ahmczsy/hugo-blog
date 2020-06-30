@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Linux常用命令 | Zshell的博客</title>
-    <meta property="og:title" content="Linux常用命令 - Zshell的博客">
+    <title>使用Postman发送经过gzip压缩的request body | Zshell的博客</title>
+    <meta property="og:title" content="使用Postman发送经过gzip压缩的request body - Zshell的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-10-13T14:42:11&#43;08:00">
+    <meta property="article:published_time" content="2020-06-30T18:37:49&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2019-10-13T14:42:11&#43;08:00">
+    <meta property="article:modified_time" content="2020-06-30T18:37:49&#43;08:00">
         
-    <meta name="Keywords" content="golang,go语言,VPS,zshell,java,博客,项目管理,python,软件架构,公众号,小程序">
-    <meta name="description" content="Linux常用命令">
+    <meta name="Keywords" content="[postman gzip]">
+    <meta name="description" content="使用Postman发送经过gzip压缩的request body">
         
     <meta name="author" content="Noel">
-    <meta property="og:url" content="https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+    <meta property="og:url" content="https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -74,10 +74,10 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">Linux常用命令</h1>
+                            <h1 class="post-title">使用Postman发送经过gzip压缩的request body</h1>
                         </header>
                         <date class="post-meta meta-date">
-                            2019年10月13日
+                            2020年6月30日
                         </date>
                         
                         
@@ -87,30 +87,37 @@
                         
                         
                         <div class="post-content">
-                            <h3 id="zip命令">zip命令</h3>
-<p>使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错</p>
-<p><img src="unzip%E5%A4%B1%E8%B4%A5.png" alt=""></p>
-<p>在要解压的目的地的前面加个参数－d，就能新建一个不存的目录</p>
-<p><img src="unzip%E6%88%90%E5%8A%9F.png" alt=""></p>
-<hr>
-<h3 id="mysql相关命令">mysql相关命令</h3>
-<h4 id="自动补全">自动补全</h4>
-<p>mysql的命令也是有自动补全的．需要的参数如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysql -u root -p --auto-rehash
-</code></pre></div><p>开启后能自动补全了
-<img src="%E5%BE%85%E8%A1%A5%E5%85%A8%E7%9A%84sql.png" alt=""></p>
-<p>但是这个只能补数据名和表名之类的，不能补全show databases 之类的命令，很蛋疼</p>
-<h4 id="连接远程mysql">连接远程mysql</h4>
-<p>-h参数就是远程地址</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysql -h 192.168.1.221 -u root -p
-</code></pre></div>
+                            <p>最近需要测试gzip相关的内容。其中有一项需要对经过gzip压缩的request body进行处理。平时测试接口都是使用postman，这次我也希望用postman来完成</p>
+<h2 id="实现">实现</h2>
+<ul>
+<li>首先请求的header中必须有<code>Content-Encoding=gzip</code>，如图所示</li>
+</ul>
+<p><img src="image-20200630184423185.png" alt="image-20200630184423185"></p>
+<ul>
+<li>
+<p>想要使用postman发送gzip压缩的请求，只能通过发送文件的方式。所以要先把要发送的内容生成gzip文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestGzip</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">Buffer</span>
+  <span style="color:#a6e22e">w</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gzip</span>.<span style="color:#a6e22e">NewWriter</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">b</span>)
+  <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">&#34;gzip content.......&#34;</span>))
+  <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Close</span>()
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">WriteFile</span>(<span style="color:#e6db74">&#34;./gzip.txt&#34;</span>, <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">Bytes</span>(), <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">FileMode</span>(<span style="color:#ae81ff">0777</span>)))
+}
+</code></pre></div><p>上面的go程序就是把<code>gzip content.....</code>这个string压缩为gzip文件</p>
+</li>
+<li>
+<p>然后在body选项中选择binary类型，选择上一步生成的文件。点击发送</p>
+<p><img src="image-20200630185223688.png" alt="image-20200630185223688"></p>
+</li>
+</ul>
+
                         </div>
 
                         
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://blog.mcjy.top/">Noel</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/">https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -120,31 +127,10 @@
 
                         
 
-<div class="post-archive">
-    <h2>See Also</h2>
-    <ul class="listing">
-        
-        <li><a href="/post/2019.8.26_receiver-has-generic-name/">Receiver has generic name</a></li>
-        
-        <li><a href="/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">golang ldfalgs的小技巧</a></li>
-        
-        <li><a href="/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/">Systemd集成Golang程序</a></li>
-        
-        <li><a href="/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">golang time包相关的一些问题</a></li>
-        
-        <li><a href="/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/">MySql索引优化</a></li>
-        
-    </ul>
-</div>
-
 
                         <div class="post-meta meta-tags">
                             
-                            <ul class="clearfix">
-                                
-                                <li><a href="https://blog.mcjy.top/tags/linux">linux</a></li>
-                                
-                            </ul>
+                            没有标签
                             
                         </div>
                     </article>

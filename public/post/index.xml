@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 26 May 2020 13:31:38 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2020 18:37:49 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.mcjy.top/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Postman发送经过gzip压缩的request body</title>
+      <link>https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Tue, 30 Jun 2020 18:37:49 +0800</pubDate>
+      
+      <guid>https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</guid>
+      <description>最近需要测试gzip相关的内容。其中有一项需要对经过gzip压缩的request body进行处理。平时测试接口都是使用postman，这次我也希望用postman来完成
+实现  首先请求的header中必须有Content-Encoding=gzip，如图所示    想要使用postman发送gzip压缩的请求，只能通过发送文件的方式。所以要先把要发送的内容生成gzip文件
+func TestGzip(t *testing.</description>
+    </item>
     
     <item>
       <title>golang处理数据库返回大量数据</title>

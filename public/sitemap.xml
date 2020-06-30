@@ -3,6 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.mcjy.top/post/</loc>
+    <lastmod>2020-06-30T18:37:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/</loc>
+    <lastmod>2020-06-30T18:37:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</loc>
+    <lastmod>2020-06-30T18:37:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.mcjy.top/categories/</loc>
     <lastmod>2020-05-26T13:31:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -45,21 +66,7 @@
   </url>
   
   <url>
-    <loc>https://blog.mcjy.top/post/</loc>
-    <lastmod>2020-05-26T13:31:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.mcjy.top/tags/</loc>
-    <lastmod>2020-05-26T13:31:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/</loc>
     <lastmod>2020-05-26T13:31:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
