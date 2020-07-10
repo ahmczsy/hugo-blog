@@ -6,10 +6,24 @@
     <description>Recent content in Posts on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 30 Jun 2020 18:37:49 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2020 14:33:51 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.mcjy.top/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>linux的top命令如何保存设置</title>
+      <link>https://blog.mcjy.top/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Fri, 10 Jul 2020 14:33:51 +0800</pubDate>
+      
+      <guid>https://blog.mcjy.top/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</guid>
+      <description>问题 linux的top命令的默认显示方式不是很直观。比如内存的显示方式是以字节为单位；每次刷新的间隔太慢；多个cpu核心没有全部显示等。每次进入top的界面都要设置一阵子才能舒适的使用。但是每次都要设置就很麻烦，所以这篇文章就是来展示我的top命令的一些设置以及如果保存这些设置。
+如何保存设置 使用大写的W来保存自定义的设置，按下W后top界面上会显示设置保存的路径，如下图所示
+个人设置 下面是我的一些个性化设置
+内存为MB为单位显示 按多次e切换各个进程的内存单位
+按多次E切换概览信息的内存单位，调整前后的效果如下所示
+调整前：</description>
+    </item>
     
     <item>
       <title>使用Postman发送经过gzip压缩的request body</title>
