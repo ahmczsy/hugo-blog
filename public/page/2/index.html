@@ -69,6 +69,27 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/" title="golang ldfalgs的小技巧" >golang ldfalgs的小技巧</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年8月26日
+                            </date>
+                            
+                            <div class="post-content">
+                                <h2 id="问题">问题</h2>
+<p>如果想要在go build生成的可执行文件中注入编译时间，git hash等信息。可以在编译的时候使用-ldflags -X参数来注入变量</p>
+<p>-ldfflags -X 可以在go install 、go build、go run  、go test中使用</p>
+<p><strong>go build -ldflags &ldquo;-X  ' packageName.varName=cmd ' &ldquo;</strong></p>……
+                            </div>
+                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/" title="Receiver has generic name" >Receiver has generic name</a>
                                 </h1>
                             </header>
@@ -279,42 +300,6 @@ $ sudo service mysql strat
                         </article>
                     
                     
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.mcjy.top/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/" title="MySql事务等级和幻读" >MySql事务等级和幻读</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                1年1月1日
-                            </date>
-                            
-                            <div class="post-content">
-                                <h3 id="四个事物等级">四个事物等级</h3>
-<ul>
-<li>
-<p>read uncommitted ：有可能脏读</p>
-<p>一个事务过程中读取到了，另一个事务的中途数据</p>
-</li>
-<li>
-<p>read committed ：有可能不可重复读</p>
-<p>即在一次事务之间，进行了两次读取，但是结果不一样，可能第一次id为1的人叫“李三”，第二次读id为1的人就叫了“李四”。因为读取操作不会阻止其他事务</p>
-</li>
-<li>
-<p>repetable read ：有可能幻读</p>
-<p>幻读侧重的方面是某一次的 select 操作得到的结果所表征的数据状态无法支撑后续的业务操作。更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行 insert 时发现此记录已存在，无法插入，此时就发生了幻读</p>
-</li>
-<li>
-<p>serializable ：效率最低</p>
-<p>可避免幻读。读加共享锁，写加排他锁。这样读取事务可以并发，但是读写，写写事务之间都是互斥的，基本上就是一个个执行事务，所以叫序列化</p>
-</li>
-</ul>……
-                            </div>
-                            <p class="readmore"><a href="https://blog.mcjy.top/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/">阅读全文</a></p>
-                        </article>
-                    
-                    
                     
 
 
@@ -367,6 +352,10 @@ $ sudo service mysql strat
 <ul class="widget-list">
     
     <li>
+        <a href="https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="clickhouse 比较版本号">clickhouse 比较版本号</a>
+    </li>
+    
+    <li>
         <a href="https://blog.mcjy.top/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/" title="linux的top命令如何保存设置">linux的top命令如何保存设置</a>
     </li>
     
@@ -402,10 +391,6 @@ $ sudo service mysql strat
         <a href="https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux常用命令">Linux常用命令</a>
     </li>
     
-    <li>
-        <a href="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/" title="golang ldfalgs的小技巧">golang ldfalgs的小技巧</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -435,7 +420,7 @@ $ sudo service mysql strat
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/categories/db/">db(1)</a>
+        <a href="https://blog.mcjy.top/categories/db/">db(2)</a>
     </li>
     
     <li>

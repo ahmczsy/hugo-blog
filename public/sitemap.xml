@@ -3,6 +3,55 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.mcjy.top/categories/</loc>
+    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/tags/clickhouse/</loc>
+    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/categories/db/</loc>
+    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/post/</loc>
+    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/tags/</loc>
+    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/</loc>
+    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.mcjy.top/tags/linux/</loc>
     <lastmod>2020-07-10T14:33:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -17,27 +66,6 @@
   </url>
   
   <url>
-    <loc>https://blog.mcjy.top/post/</loc>
-    <lastmod>2020-07-10T14:33:51+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/tags/</loc>
-    <lastmod>2020-07-10T14:33:51+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/</loc>
-    <lastmod>2020-07-10T14:33:51+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</loc>
     <lastmod>2020-06-30T18:37:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -45,28 +73,7 @@
   </url>
   
   <url>
-    <loc>https://blog.mcjy.top/categories/</loc>
-    <lastmod>2020-05-26T13:31:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/tags/clickhouse/</loc>
-    <lastmod>2020-05-26T13:31:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.mcjy.top/categories/code/</loc>
-    <lastmod>2020-05-26T13:31:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/categories/db/</loc>
     <lastmod>2020-05-26T13:31:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
