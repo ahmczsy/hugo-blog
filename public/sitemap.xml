@@ -4,48 +4,55 @@
   
   <url>
     <loc>https://blog.mcjy.top/categories/</loc>
-    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.mcjy.top/tags/clickhouse/</loc>
-    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
-    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <loc>https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</loc>
+    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.mcjy.top/categories/db/</loc>
-    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.mcjy.top/post/</loc>
-    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.mcjy.top/tags/</loc>
-    <lastmod>2020-08-25T19:02:20+08:00</lastmod>
+    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.mcjy.top/</loc>
+    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     <lastmod>2020-08-25T19:02:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
