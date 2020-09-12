@@ -4,7 +4,49 @@
   
   <url>
     <loc>https://blog.mcjy.top/categories/</loc>
-    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
+    <lastmod>2020-09-12T15:04:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/categories/code/</loc>
+    <lastmod>2020-09-12T15:04:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/tags/nginx/</loc>
+    <lastmod>2020-09-12T15:04:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2020-09-12T15:04:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/post/</loc>
+    <lastmod>2020-09-12T15:04:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/tags/</loc>
+    <lastmod>2020-09-12T15:04:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/</loc>
+    <lastmod>2020-09-12T15:04:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -25,27 +67,6 @@
   
   <url>
     <loc>https://blog.mcjy.top/categories/db/</loc>
-    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/post/</loc>
-    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/tags/</loc>
-    <lastmod>2020-09-04T14:11:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/</loc>
     <lastmod>2020-09-04T14:11:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -75,13 +96,6 @@
   <url>
     <loc>https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</loc>
     <lastmod>2020-06-30T18:37:49+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mcjy.top/categories/code/</loc>
-    <lastmod>2020-05-26T13:31:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -266,6 +280,11 @@
     <lastmod>2019-03-16T14:42:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mcjy.top/about/</loc>
+    <priority>0</priority>
   </url>
   
   <url>

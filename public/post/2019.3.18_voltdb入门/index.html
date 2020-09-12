@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.71.0" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -134,26 +134,26 @@
 <ul>
 <li>
 <p>驱动jar</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/org.voltdb/voltdbclient --&gt;</span>
-<span style="color:#f92672">&lt;dependency&gt;</span>
-    <span style="color:#f92672">&lt;groupId&gt;</span>org.voltdb<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId&gt;</span>voltdbclient<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;version&gt;</span>8.4.1<span style="color:#f92672">&lt;/version&gt;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> https://mvnrepository.com/artifact/org.voltdb/voltdbclient </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;dependency</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;groupId</span><span style="color:#f92672">&gt;</span>org.voltdb<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId</span><span style="color:#f92672">&gt;</span>voltdbclient<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>8.4.1<span style="color:#f92672">&lt;/version&gt;</span>
 <span style="color:#f92672">&lt;/dependency&gt;</span>
 </code></pre></div></li>
 <li>
 <p>传统的jdbc方式连接VoltDB</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  String driver <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;org.voltdb.jdbc.Driver&#34;</span><span style="color:#f92672">;</span>
   String url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jdbc:voltdb://host:port?jdbc.committhrowexception=false&amp;jdbc.rollbackthrowexception=false&amp;autoreconnect=true&#34;</span><span style="color:#f92672">;</span>
-  Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span>driver<span style="color:#f92672">);</span>
-  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">connection</span> <span style="color:#f92672">=</span> DriverManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnection</span><span style="color:#f92672">(</span>url<span style="color:#f92672">);</span>
+  Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span>driver<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">connection</span> <span style="color:#f92672">=</span> DriverManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnection</span><span style="color:#f92672">(</span>url<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 </code></pre></div><p>因为voltdb不支持传统的事务方式，所以在jdbc添加两个参数使在使用事务时不报异常</p>
 </li>
 <li>
 <p>使用client来连接VoltDB</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ClientConfig config <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClientConfig<span style="color:#f92672">();</span>
-      <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> ClientFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">createClient</span><span style="color:#f92672">(</span>config<span style="color:#f92672">);</span>
-      client<span style="color:#f92672">.</span><span style="color:#a6e22e">createConnection</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.1.241&#34;</span><span style="color:#f92672">);</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ClientConfig config <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClientConfig<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> ClientFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">createClient</span><span style="color:#f92672">(</span>config<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+      client<span style="color:#f92672">.</span><span style="color:#a6e22e">createConnection</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.1.241&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 </code></pre></div><p>如果使用这种方式来操作数据库，所有的操作只能通过存储过程来实现</p>
 </li>
 </ul>
@@ -211,11 +211,11 @@
         
         <li><a href="/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/">WSL安装和使用LxRunOffline备份</a></li>
         
+        <li><a href="/about/"></a></li>
+        
         <li><a href="/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/">MySql事务等级和幻读</a></li>
         
         <li><a href="/about/">关于</a></li>
-        
-        <li><a href="/archives/">归档</a></li>
         
     </ul>
 </div>
@@ -259,6 +259,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://blog.mcjy.top/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="openresty 开发记录">openresty 开发记录</a>
+    </li>
+    
+    <li>
         <a href="https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/" title="clickhouse如何把两数组转为两列">clickhouse如何把两数组转为两列</a>
     </li>
     
@@ -294,10 +298,6 @@
         <a href="https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/" title="上海办理护照流程">上海办理护照流程</a>
     </li>
     
-    <li>
-        <a href="https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/" title="当github action遇到element-ui-admin">当github action遇到element-ui-admin</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -323,7 +323,7 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://blog.mcjy.top/categories/code/">code(2)</a>
+        <a href="https://blog.mcjy.top/categories/code/">code(3)</a>
     </li>
     
     <li>
@@ -358,6 +358,8 @@
     <a href="https://blog.mcjy.top/tags/golang/">golang</a>
     
     <a href="https://blog.mcjy.top/tags/linux/">linux</a>
+    
+    <a href="https://blog.mcjy.top/tags/nginx/">nginx</a>
     
     <a href="https://blog.mcjy.top/tags/vue/">vue</a>
     

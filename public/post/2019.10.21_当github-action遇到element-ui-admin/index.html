@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.71.0" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -172,7 +172,7 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
 </code></pre></div><h3 id="npm-build">npm build</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">name</span>: npm install, build, and test
   <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">     npm install</span>
+</span><span style="color:#e6db74">    </span><span style="color:#e6db74"> </span><span style="color:#e6db74">npm install</span>
      npm run build:prod --if-present
   <span style="color:#66d9ef">env</span>:
      <span style="color:#66d9ef">CI</span>: <span style="color:#66d9ef">true</span>
@@ -187,13 +187,13 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
        <span style="color:#66d9ef">password</span>:  ${{ secrets.FTP_PASSWORD }}
        <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">22</span>
        <span style="color:#66d9ef">script</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">         cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
+</span><span style="color:#e6db74">        </span><span style="color:#e6db74"> </span><span style="color:#e6db74">cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
 </code></pre></div><p>如果actions的配置文件里重要的信息,比如密码或密钥可以使用秘密环境变量来替代<code>${{secrets.xxxx}}</code></p>
 <p><img src="1571646282881.png" alt="1571646282881"></p>
 <h3 id="把dist部署到生产服务器">把dist部署到生产服务器</h3>
 <p>vue-element-admin build之后的静态文件在根目录的dist文件夹,所以我要把dist文件夹内的文件都上穿到生产服务器里</p>
 <p>这里使用了SamKirkland/FTP-Deploy-Action@2.0.0     <a href="https://github.com/SamKirkland/FTP-Deploy-Action">文档</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">        <span style="color:#66d9ef">uses</span>: SamKirkland/FTP-Deploy-Action@<span style="color:#ae81ff">2.0.0</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">        <span style="color:#66d9ef">uses</span>: SamKirkland/FTP-Deploy-Action@<span style="color:#ae81ff">2.0</span><span style="color:#ae81ff">.0</span>
         <span style="color:#66d9ef">env</span>:
           <span style="color:#66d9ef">FTP_SERVER</span>: ${{ secrets.SERVER_IP }}
           <span style="color:#66d9ef">FTP_USERNAME</span>: root
@@ -223,7 +223,7 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
           <span style="color:#66d9ef">node-version</span>: <span style="color:#e6db74">&#39;12.x&#39;</span>
       - <span style="color:#66d9ef">name</span>: npm install, build, and test
         <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">          npm install</span>
+</span><span style="color:#e6db74">         </span><span style="color:#e6db74"> </span><span style="color:#e6db74">npm install</span>
           npm run build:prod --if-present
         <span style="color:#66d9ef">env</span>:
           <span style="color:#66d9ef">CI</span>: <span style="color:#66d9ef">true</span>
@@ -236,9 +236,9 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
           <span style="color:#66d9ef">password</span>:  ${{ secrets.FTP_PASSWORD }}
           <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">22</span>
           <span style="color:#66d9ef">script</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">            cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
+</span><span style="color:#e6db74">           </span><span style="color:#e6db74"> </span><span style="color:#e6db74">cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
       - <span style="color:#66d9ef">name</span>: deploy to server
-        <span style="color:#66d9ef">uses</span>: SamKirkland/FTP-Deploy-Action@<span style="color:#ae81ff">2.0.0</span>
+        <span style="color:#66d9ef">uses</span>: SamKirkland/FTP-Deploy-Action@<span style="color:#ae81ff">2.0</span><span style="color:#ae81ff">.0</span>
         <span style="color:#66d9ef">env</span>:
           <span style="color:#66d9ef">FTP_SERVER</span>: ${{ secrets.SERVER_IP }}
           <span style="color:#66d9ef">FTP_USERNAME</span>: root
@@ -319,6 +319,10 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
 <ul class="widget-list">
     
     <li>
+        <a href="https://blog.mcjy.top/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="openresty 开发记录">openresty 开发记录</a>
+    </li>
+    
+    <li>
         <a href="https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/" title="clickhouse如何把两数组转为两列">clickhouse如何把两数组转为两列</a>
     </li>
     
@@ -354,10 +358,6 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
         <a href="https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/" title="上海办理护照流程">上海办理护照流程</a>
     </li>
     
-    <li>
-        <a href="https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/" title="当github action遇到element-ui-admin">当github action遇到element-ui-admin</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -383,7 +383,7 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
 <ul class="widget-list">
     
     <li>
-        <a href="https://blog.mcjy.top/categories/code/">code(2)</a>
+        <a href="https://blog.mcjy.top/categories/code/">code(3)</a>
     </li>
     
     <li>
@@ -418,6 +418,8 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
     <a href="https://blog.mcjy.top/tags/golang/">golang</a>
     
     <a href="https://blog.mcjy.top/tags/linux/">linux</a>
+    
+    <a href="https://blog.mcjy.top/tags/nginx/">nginx</a>
     
     <a href="https://blog.mcjy.top/tags/vue/">vue</a>
     

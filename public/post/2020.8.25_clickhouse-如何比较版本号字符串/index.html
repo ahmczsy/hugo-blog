@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.71.0" />
+    <meta name="generator" content="Hugo 0.64.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -111,10 +111,10 @@
 </li>
 </ul>
 <h2 id="完整的-sql">完整的 sql</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">with</span> arrayStringConcat(arrayMap(x <span style="color:#f92672">-&gt;</span> concat(repeat(<span style="color:#e6db74">&#39;0&#39;</span>, toUInt16(<span style="color:#ae81ff">10</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">length</span>(x))), x),
-                                splitByString(<span style="color:#e6db74">&#39;.&#39;</span>, <span style="color:#e6db74">&#39;5.6.8.10&#39;</span>)), <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> ver1,
-    arrayStringConcat(arrayMap(x <span style="color:#f92672">-&gt;</span> concat(repeat(<span style="color:#e6db74">&#39;0&#39;</span>, toUInt16(<span style="color:#ae81ff">10</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">length</span>(x))), x),
-                               splitByString(<span style="color:#e6db74">&#39;.&#39;</span>, <span style="color:#e6db74">&#39;5.6.8.2&#39;</span>)), <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> ver2
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">with</span> arrayStringConcat(arrayMap(x <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> concat(repeat(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span>, toUInt16(<span style="color:#ae81ff">10</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">length</span>(x))), x),
+                                splitByString(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">.</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">5.6.8.10</span><span style="color:#e6db74">&#39;</span>)), <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> ver1,
+    arrayStringConcat(arrayMap(x <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> concat(repeat(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span>, toUInt16(<span style="color:#ae81ff">10</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">length</span>(x))), x),
+                               splitByString(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">.</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">5.6.8.2</span><span style="color:#e6db74">&#39;</span>)), <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> ver2
 
 <span style="color:#66d9ef">select</span> ver1 <span style="color:#f92672">&gt;</span> ver2;
 </code></pre></div><h2 id="参考">参考</h2>
@@ -192,6 +192,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://blog.mcjy.top/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="openresty 开发记录">openresty 开发记录</a>
+    </li>
+    
+    <li>
         <a href="https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/" title="clickhouse如何把两数组转为两列">clickhouse如何把两数组转为两列</a>
     </li>
     
@@ -227,10 +231,6 @@
         <a href="https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/" title="上海办理护照流程">上海办理护照流程</a>
     </li>
     
-    <li>
-        <a href="https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/" title="当github action遇到element-ui-admin">当github action遇到element-ui-admin</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -256,7 +256,7 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://blog.mcjy.top/categories/code/">code(2)</a>
+        <a href="https://blog.mcjy.top/categories/code/">code(3)</a>
     </li>
     
     <li>
@@ -291,6 +291,8 @@
     <a href="https://blog.mcjy.top/tags/golang/">golang</a>
     
     <a href="https://blog.mcjy.top/tags/linux/">linux</a>
+    
+    <a href="https://blog.mcjy.top/tags/nginx/">nginx</a>
     
     <a href="https://blog.mcjy.top/tags/vue/">vue</a>
     
