@@ -2,49 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Zshell的博客</title>
-    <link>https://blog.mcjy.top/post/</link>
+    <link>https://blog.18881888.xyz/post/</link>
     <description>Recent content in Posts on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 12 Sep 2020 15:04:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2020 16:29:18 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.mcjy.top/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.18881888.xyz/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</title>
+      <link>https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sun, 01 Nov 2020 16:29:18 +0800</pubDate>
+      
+      <guid>https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</guid>
+      <description>问题 今天在修改 ClickHouse 集群数据库表结构的时候 , 不知道由于什么原因 , 造成有两个节点 ( A 和 B , 其中 B 是副本节点 ) 的 zookeeper 的 metadata 数据不一致</description>
+    </item>
+    
+    <item>
       <title>openresty 开发记录</title>
-      <link>https://blog.mcjy.top/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</link>
+      <link>https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Sat, 12 Sep 2020 15:04:00 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</guid>
       <description>这段时间需要做一个签名验证的模块 . 因为 golang 的 rsa 性能问题需要用 nginx-opensty 来开发 , 在这个过程中遇到了一些问题和结果方法 , 在这里记录一下 .</description>
     </item>
     
     <item>
       <title>clickhouse如何把两数组转为两列</title>
-      <link>https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</link>
+      <link>https://blog.18881888.xyz/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</link>
       <pubDate>Fri, 04 Sep 2020 14:11:48 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</guid>
       <description>在 clickhouse 中经常遇到把数组转为列的情况 .
 一个数组转为列 一个数组转列的情况很简单 , 直接使用 arrayjoin 函数来实现</description>
     </item>
     
     <item>
       <title>clickhouse 比较版本号</title>
-      <link>https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <link>https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
       <pubDate>Tue, 25 Aug 2020 19:02:20 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
       <description>如果想要比较两个版本号的字符串, 比如 select &#39;5.6.8.10&#39;&amp;gt;&#39;5.6.8.2&#39; 结果肯定是0即后者比较大, 但是在版本号的语义中明明是前者比较大. 在 mysql 中已经有了解决方案, 但是在 clickhouse 中我还没有在网络上搜索到.</description>
     </item>
     
     <item>
       <title>linux的top命令如何保存设置</title>
-      <link>https://blog.mcjy.top/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</link>
+      <link>https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Fri, 10 Jul 2020 14:33:51 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</guid>
       <description>问题 linux的top命令的默认显示方式不是很直观。比如内存的显示方式是以字节为单位；每次刷新的间隔太慢；多个cpu核心没有全部显示等。每次进入top的界面都要设置一阵子才能舒适的使用。但是每次都要设置就很麻烦，所以这篇文章就是来展示我的top命令的一些设置以及如果保存这些设置。
 如何保存设置 使用大写的W来保存自定义的设置，按下W后top界面上会显示设置保存的路径，如下图所示
 个人设置 下面是我的一些个性化设置
@@ -55,10 +64,10 @@
     
     <item>
       <title>使用Postman发送经过gzip压缩的request body</title>
-      <link>https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</link>
+      <link>https://blog.18881888.xyz/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Tue, 30 Jun 2020 18:37:49 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</guid>
       <description>最近需要测试gzip相关的内容。其中有一项需要对经过gzip压缩的request body进行处理。平时测试接口都是使用postman，这次我也希望用postman来完成
 实现  首先请求的header中必须有Content-Encoding=gzip，如图所示    想要使用postman发送gzip压缩的请求，只能通过发送文件的方式。所以要先把要发送的内容生成gzip文件
 func TestGzip(t *testing.</description>
@@ -66,10 +75,10 @@ func TestGzip(t *testing.</description>
     
     <item>
       <title>golang处理数据库返回大量数据</title>
-      <link>https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>
+      <link>https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Tue, 26 May 2020 13:31:38 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</guid>
       <description>问题 这两天需要把ClickHouse的查询结果进行统计然后存储起来，但是每一次查询的出来的数据量非常大。行数很多，某一天的count统计如下：
 每次查询的数据有上亿行😢。在ClickHouse查询出结果后返回给client(就是我写的程序)，但是由于这个任务是在k8s内运行，限制只有400m的内存。所以很快就因为内存溢出而崩溃。
 之前的代码 一般的情况下都是把查询结果都放到slice内再返回比如这样：
@@ -78,10 +87,10 @@ for scanner.Next() { value := reflect.</description>
     
     <item>
       <title>Mac下clash教程</title>
-      <link>https://blog.mcjy.top/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</link>
+      <link>https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</link>
       <pubDate>Tue, 18 Feb 2020 22:44:13 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</guid>
       <description>问题 在Mac下想要舒服的使用UnblockNeteaseMusic肯定要和clashx配合使用，我在使用clashx时遇到了一些问题，现在记录下来方便大家参考
 简单使用   下载地址
   clashx的配置文件夹路径在~/.config/clash/下，或者直接在状态栏通过gui操作
@@ -90,20 +99,20 @@ for scanner.Next() { value := reflect.</description>
     
     <item>
       <title>当golang多个字段的json tag相同时会怎么样?</title>
-      <link>https://blog.mcjy.top/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</link>
+      <link>https://blog.18881888.xyz/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</link>
       <pubDate>Wed, 04 Dec 2019 18:39:58 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</guid>
       <description>问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思
 情况1 都是普通字段 type sameTag struct { A string `json:&amp;#34;a&amp;#34;` B string `json:&amp;#34;a&amp;#34;` Other string `json:&amp;#34;other&amp;#34;` } func TestSameJson(t *testing.</description>
     </item>
     
     <item>
       <title>MarshalJSON没有调用、无效？</title>
-      <link>https://blog.mcjy.top/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</link>
+      <link>https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</link>
       <pubDate>Fri, 08 Nov 2019 19:07:02 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</guid>
       <description>问题 今天我在golang自定义json的序列化时，发现我的struct实现MarshalJSON()竟然没有效果，还是按照默认的方式来序列化。这让我非常郁闷☹，后来我查找了一些资料发现这个问题不简单。。
 下面是我有问题的代码
 type str string func (s *str) MarshalJSON() (data []byte, err error) { return json.</description>
@@ -111,10 +120,10 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
     
     <item>
       <title>上海办理护照流程</title>
-      <link>https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/</link>
+      <link>https://blog.18881888.xyz/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Sun, 03 Nov 2019 20:23:48 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/</guid>
       <description>前言 我办理护照并不是因为目前有出过国的需求。而是国外的一些平台的身份认证需要上传护照，中国居民身份证在国外平台的认可度是没有护照高的。所以现在闲着没事办个护照，以备不时之需。
 必要条件和证件 在上海办理护照要满足以下三个条件其中之一
  上海户籍 上海居住证 在上海连续缴纳一年社保  我就是以第三个条件来办理的护照</description>
@@ -122,10 +131,10 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
     
     <item>
       <title>当github action遇到element-ui-admin</title>
-      <link>https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/</link>
+      <link>https://blog.18881888.xyz/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/</link>
       <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.10.21_%E5%BD%93github-action%E9%81%87%E5%88%B0element-ui-admin/</guid>
       <description>Github Actions是github搞的一个持续集成服务,现在还在测试中,如果想要使用需要到官网去申请.
 现在我想使用github actions实现vue-element-admin做的一个管理后台的自动构建发布到生产服务器的一系列过程
 新建github workflow 进入github仓库的主页点击actions就可以创建一个新的workflow
@@ -136,10 +145,10 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
     
     <item>
       <title>Linux常用命令</title>
-      <link>https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>https://blog.18881888.xyz/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 13 Oct 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错
 在要解压的目的地的前面加个参数－d，就能新建一个不存的目录
  mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下
@@ -148,10 +157,10 @@ mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补
     
     <item>
       <title>golang ldfalgs的小技巧</title>
-      <link>https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <link>https://blog.18881888.xyz/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Mon, 26 Aug 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
       <description>&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
 &lt;p&gt;如果想要在go build生成的可执行文件中注入编译时间，git hash等信息。可以在编译的时候使用-ldflags -X参数来注入变量&lt;/p&gt;
 &lt;p&gt;-ldfflags -X 可以在go install 、go build、go run  、go test中使用&lt;/p&gt;
@@ -160,10 +169,10 @@ mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补
     
     <item>
       <title>Receiver has generic name</title>
-      <link>https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/</link>
+      <link>https://blog.18881888.xyz/post/2019.8.26_receiver-has-generic-name/</link>
       <pubDate>Mon, 26 Aug 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.8.26_receiver-has-generic-name/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.8.26_receiver-has-generic-name/</guid>
       <description>&lt;h4 id=&#34;问题&#34;&gt;问题&lt;/h4&gt;
 &lt;p&gt;Golang的&lt;strong&gt;方法接收者&lt;/strong&gt;就是在函数名前的括号内的东西  如&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Car&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;run&lt;/span&gt;() &lt;span style=&#34;color:#75715e&#34;&gt;// (self car)就是方法接收者
@@ -173,19 +182,19 @@ mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补
     
     <item>
       <title>Systemd集成Golang程序</title>
-      <link>https://blog.mcjy.top/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/</link>
+      <link>https://blog.18881888.xyz/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/</link>
       <pubDate>Mon, 29 Jul 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/</guid>
       <description>&lt;p&gt;当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>golang time包相关的一些问题</title>
-      <link>https://blog.mcjy.top/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</link>
+      <link>https://blog.18881888.xyz/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 25 Jul 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://blog.18881888.xyz/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;h3 id=&#34;获取毫秒时间戳&#34;&gt;获取毫秒时间戳&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//第一种
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Now&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;UnixNano&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; int64(&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Millisecond&lt;/span&gt;)
@@ -196,19 +205,19 @@ mysql -u root -p --auto-rehash 开启后能自动补全了 但是这个只能补
     
     <item>
       <title>MySql索引优化</title>
-      <link>https://blog.mcjy.top/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</link>
+      <link>https://blog.18881888.xyz/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</link>
       <pubDate>Mon, 25 Mar 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</guid>
       <description>MySql索引优化 语法 create table user_info ( id int AUTO_INCREMENT, name varchar(20), age int(3), email varchar(256), PRIMARY KEY (id) ); create index idx_user_nameAgeEmail on user_info (name,age,email); create table t ( a varchar(20), b int(3), c varchar(20) ); create index idx_a_b_c on t (a,b,c); create index &amp;lt;索引名称&amp;gt; on &amp;lt;表名&amp;gt; （&amp;lt;列名&amp;gt;,.</description>
     </item>
     
     <item>
       <title>使用idea自带的plugin反编译jar</title>
-      <link>https://blog.mcjy.top/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/</link>
+      <link>https://blog.18881888.xyz/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/</link>
       <pubDate>Mon, 25 Mar 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/</guid>
+      <guid>https://blog.18881888.xyz/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/</guid>
       <description>问题 之前想反编译jar包,在网上了找了一些反编译的工具感觉都不太好用.就来我发现idea自带的反编译插件挺好用,但是没有GUI只能使用命令.
 使用 这个插件在&amp;lt;idea_home&amp;gt;/plugins/java-decompiler/lib/java-decompiler.jar.这个jar不能直接用java -jar运行,这个jar没有只能main函数,直接java -jar会报错,下面是使用方法
 java -cp java-decompiler.jar org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler -dgs=true siddhi-core.</description>
@@ -216,10 +225,10 @@ java -cp java-decompiler.jar org.jetbrains.java.decompiler.main.decompiler.Conso
     
     <item>
       <title>B-树的一些概念</title>
-      <link>https://blog.mcjy.top/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</link>
+      <link>https://blog.18881888.xyz/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</link>
       <pubDate>Thu, 21 Mar 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</guid>
       <description>&lt;h3 id=&#34;阶的含义&#34;&gt;“阶”的含义&lt;/h3&gt;
 &lt;p&gt;B-树的所有结点中&lt;strong&gt;最多可以拥有的子结点的个数&lt;/strong&gt;为“阶”，用M表示，下图是一个三阶B-树&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://imgchr.com/i/A3Ce7n&#34;&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/03/21/A3Ce7n.png&#34; alt=&#34;A3Ce7n.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -228,10 +237,10 @@ java -cp java-decompiler.jar org.jetbrains.java.decompiler.main.decompiler.Conso
     
     <item>
       <title>VoltDB入门</title>
-      <link>https://blog.mcjy.top/post/2019.3.18_voltdb%E5%85%A5%E9%97%A8/</link>
+      <link>https://blog.18881888.xyz/post/2019.3.18_voltdb%E5%85%A5%E9%97%A8/</link>
       <pubDate>Mon, 18 Mar 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.3.18_voltdb%E5%85%A5%E9%97%A8/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.3.18_voltdb%E5%85%A5%E9%97%A8/</guid>
       <description>&lt;h1 id=&#34;安装运行&#34;&gt;安装运行&lt;/h1&gt;
 &lt;h3 id=&#34;环境要求&#34;&gt;环境要求&lt;/h3&gt;
 &lt;ul&gt;
@@ -258,10 +267,10 @@ java -cp java-decompiler.jar org.jetbrains.java.decompiler.main.decompiler.Conso
     
     <item>
       <title>Ubuntu18.04 修改Mysql5.7默认root密码</title>
-      <link>https://blog.mcjy.top/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/</link>
+      <link>https://blog.18881888.xyz/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/</link>
       <pubDate>Sat, 16 Mar 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/</guid>
       <description>&lt;h4 id=&#34;步骤&#34;&gt;步骤&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;设置mysql免密码登陆
@@ -279,10 +288,10 @@ $ sudo service mysql strat
     
     <item>
       <title>WSL安装和使用LxRunOffline备份</title>
-      <link>https://blog.mcjy.top/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/</link>
+      <link>https://blog.18881888.xyz/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/</link>
       <pubDate>Sat, 16 Mar 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.3.16_wsl%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8lxrunoffline%E5%A4%87%E4%BB%BD/</guid>
       <description>&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;
 &lt;h3 id=&#34;开启wsl组件&#34;&gt;开启WSL组件&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
@@ -293,10 +302,10 @@ $ sudo service mysql strat
     
     <item>
       <title>MySql事务等级和幻读</title>
-      <link>https://blog.mcjy.top/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/</link>
+      <link>https://blog.18881888.xyz/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/</guid>
       <description>&lt;h3 id=&#34;四个事物等级&#34;&gt;四个事物等级&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;

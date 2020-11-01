@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.64.1" />
+    <meta name="generator" content="Hugo 0.71.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,7 +20,7 @@
     <meta name="description" content="golang ldfalgs的小技巧">
         
     <meta name="author" content="Noel">
-    <meta property="og:url" content="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+    <meta property="og:url" content="https://blog.18881888.xyz/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -43,7 +43,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="https://blog.mcjy.top/">
+                    <a id="logo" href="https://blog.18881888.xyz/">
                         Zshell的博客
                     </a>
                 
@@ -51,11 +51,11 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="https://blog.mcjy.top/">首页</a>
+                    <a class="current" href="https://blog.18881888.xyz/">首页</a>
                     
-                    <a  href="https://blog.mcjy.top/archives/" title="归档">归档</a>
+                    <a  href="https://blog.18881888.xyz/archives/" title="归档">归档</a>
                     
-                    <a  href="https://blog.mcjy.top/about/" title="关于">关于</a>
+                    <a  href="https://blog.18881888.xyz/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -107,9 +107,9 @@
 }
 </code></pre></div><p>想要在build的时候改变time和git的值，可以这么做：</p>
 <p>powershell(<strong>cmd有问题</strong>):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-X &#39;main.buildTime=</span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;main.gitHash=</span><span style="color:#66d9ef">$(</span>git log --pretty<span style="color:#f92672">=</span>format:<span style="color:#e6db74">&#34;%h&#34;</span> -1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#34;</span>  main.go
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -ldflags <span style="color:#e6db74">&#34;-X &#39;main.buildTime=</span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;main.gitHash=</span><span style="color:#66d9ef">$(</span>git log --pretty<span style="color:#f92672">=</span>format:<span style="color:#e6db74">&#34;%h&#34;</span> -1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39;&#34;</span>  main.go
 </code></pre></div><p>linux:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build  -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-X &#39;main.time=</span><span style="color:#66d9ef">$(</span>date -u --rfc-3339<span style="color:#f92672">=</span>seconds<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;main.git=</span><span style="color:#66d9ef">$(</span>git log --pretty<span style="color:#f92672">=</span>format:<span style="color:#e6db74">&#34;%h&#34;</span> -1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#34;</span>  main.go
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build  -ldflags <span style="color:#e6db74">&#34;-X &#39;main.time=</span><span style="color:#66d9ef">$(</span>date -u --rfc-3339<span style="color:#f92672">=</span>seconds<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;main.git=</span><span style="color:#66d9ef">$(</span>git log --pretty<span style="color:#f92672">=</span>format:<span style="color:#e6db74">&#34;%h&#34;</span> -1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39;&#34;</span>  main.go
 </code></pre></div><p>运行结果:</p>
 <pre><code>build date: 2019-09-12 06:57:45+00:00
 git hash: e1ac7a6
@@ -130,8 +130,8 @@ git hash: e1ac7a6
                         
 <div class="post-archive">
     <ul class="post-copyright">
-        <li><strong>原文作者：</strong><a rel="author" href="https://blog.mcjy.top/">Noel</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">https://blog.mcjy.top/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</a></li>
+        <li><strong>原文作者：</strong><a rel="author" href="https://blog.18881888.xyz/">Noel</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.18881888.xyz/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">https://blog.18881888.xyz/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -187,7 +187,7 @@ git hash: e1ac7a6
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://blog.mcjy.top/">
+      <input type="hidden" name="sitesearch" value="https://blog.18881888.xyz/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -197,43 +197,43 @@ git hash: e1ac7a6
 <ul class="widget-list">
     
     <li>
-        <a href="https://blog.mcjy.top/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="openresty 开发记录">openresty 开发记录</a>
+        <a href="https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/" title="ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)">ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/" title="clickhouse如何把两数组转为两列">clickhouse如何把两数组转为两列</a>
+        <a href="https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="openresty 开发记录">openresty 开发记录</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="clickhouse 比较版本号">clickhouse 比较版本号</a>
+        <a href="https://blog.18881888.xyz/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/" title="clickhouse如何把两数组转为两列">clickhouse如何把两数组转为两列</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/" title="linux的top命令如何保存设置">linux的top命令如何保存设置</a>
+        <a href="https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="clickhouse 比较版本号">clickhouse 比较版本号</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/" title="使用Postman发送经过gzip压缩的request body">使用Postman发送经过gzip压缩的request body</a>
+        <a href="https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/" title="linux的top命令如何保存设置">linux的top命令如何保存设置</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/" title="golang处理数据库返回大量数据">golang处理数据库返回大量数据</a>
+        <a href="https://blog.18881888.xyz/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/" title="使用Postman发送经过gzip压缩的request body">使用Postman发送经过gzip压缩的request body</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/" title="Mac下clash教程">Mac下clash教程</a>
+        <a href="https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/" title="golang处理数据库返回大量数据">golang处理数据库返回大量数据</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/" title="当golang多个字段的json tag相同时会怎么样?">当golang多个字段的json tag相同时会怎么样?</a>
+        <a href="https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/" title="Mac下clash教程">Mac下clash教程</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/" title="MarshalJSON没有调用、无效？">MarshalJSON没有调用、无效？</a>
+        <a href="https://blog.18881888.xyz/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/" title="当golang多个字段的json tag相同时会怎么样?">当golang多个字段的json tag相同时会怎么样?</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/" title="上海办理护照流程">上海办理护照流程</a>
+        <a href="https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/" title="MarshalJSON没有调用、无效？">MarshalJSON没有调用、无效？</a>
     </li>
     
 </ul>
@@ -261,23 +261,23 @@ git hash: e1ac7a6
 <ul class="widget-list">
     
     <li>
-        <a href="https://blog.mcjy.top/categories/code/">code(3)</a>
+        <a href="https://blog.18881888.xyz/categories/code/">code(3)</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/categories/db/">db(3)</a>
+        <a href="https://blog.18881888.xyz/categories/db/">db(4)</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/categories/tool/">tool(1)</a>
+        <a href="https://blog.18881888.xyz/categories/tool/">tool(1)</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/categories/%E7%94%9F%E6%B4%BB/">生活(1)</a>
+        <a href="https://blog.18881888.xyz/categories/%E7%94%9F%E6%B4%BB/">生活(1)</a>
     </li>
     
     <li>
-        <a href="https://blog.mcjy.top/categories/%E7%BC%96%E7%A8%8B/">编程(1)</a>
+        <a href="https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/">编程(1)</a>
     </li>
     
 </ul>
@@ -287,23 +287,23 @@ git hash: e1ac7a6
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="https://blog.mcjy.top/tags/clash/">clash</a>
+    <a href="https://blog.18881888.xyz/tags/clash/">clash</a>
     
-    <a href="https://blog.mcjy.top/tags/clickhouse/">clickhouse</a>
+    <a href="https://blog.18881888.xyz/tags/clickhouse/">clickhouse</a>
     
-    <a href="https://blog.mcjy.top/tags/git/">git</a>
+    <a href="https://blog.18881888.xyz/tags/git/">git</a>
     
-    <a href="https://blog.mcjy.top/tags/golang/">golang</a>
+    <a href="https://blog.18881888.xyz/tags/golang/">golang</a>
     
-    <a href="https://blog.mcjy.top/tags/linux/">linux</a>
+    <a href="https://blog.18881888.xyz/tags/linux/">linux</a>
     
-    <a href="https://blog.mcjy.top/tags/nginx/">nginx</a>
+    <a href="https://blog.18881888.xyz/tags/nginx/">nginx</a>
     
-    <a href="https://blog.mcjy.top/tags/vue/">vue</a>
+    <a href="https://blog.18881888.xyz/tags/vue/">vue</a>
     
-    <a href="https://blog.mcjy.top/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+    <a href="https://blog.18881888.xyz/tags/%E5%89%8D%E7%AB%AF/">前端</a>
     
-    <a href="https://blog.mcjy.top/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+    <a href="https://blog.18881888.xyz/tags/%E7%94%9F%E6%B4%BB/">生活</a>
     
 </div>
     </section>
@@ -324,7 +324,7 @@ git hash: e1ac7a6
     <section class="widget">
         <h3 class="widget-title">其它</h3>
         <ul class="widget-list">
-            <li><a href="https://blog.mcjy.top/index.xml">文章 RSS</a></li>
+            <li><a href="https://blog.18881888.xyz/index.xml">文章 RSS</a></li>
         </ul>
     </section>
 </div>
@@ -333,7 +333,7 @@ git hash: e1ac7a6
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2020 <a href="https://blog.mcjy.top/">Zshell的博客 By Noel</a>.
+        &copy; 2020 <a href="https://blog.18881888.xyz/">Zshell的博客 By Noel</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         

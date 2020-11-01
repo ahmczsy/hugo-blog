@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Zshell的博客</title>
-    <link>https://blog.mcjy.top/categories/</link>
+    <link>https://blog.18881888.xyz/categories/</link>
     <description>Recent content in Categories on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 12 Sep 2020 15:04:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2020 16:29:18 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.mcjy.top/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.18881888.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>code</title>
-      <link>https://blog.mcjy.top/categories/code/</link>
-      <pubDate>Sat, 12 Sep 2020 15:04:00 +0800</pubDate>
+      <title>db</title>
+      <link>https://blog.18881888.xyz/categories/db/</link>
+      <pubDate>Sun, 01 Nov 2020 16:29:18 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/categories/code/</guid>
+      <guid>https://blog.18881888.xyz/categories/db/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>db</title>
-      <link>https://blog.mcjy.top/categories/db/</link>
-      <pubDate>Fri, 04 Sep 2020 14:11:48 +0800</pubDate>
+      <title>code</title>
+      <link>https://blog.18881888.xyz/categories/code/</link>
+      <pubDate>Sat, 12 Sep 2020 15:04:00 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/categories/db/</guid>
+      <guid>https://blog.18881888.xyz/categories/code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tool</title>
-      <link>https://blog.mcjy.top/categories/tool/</link>
+      <link>https://blog.18881888.xyz/categories/tool/</link>
       <pubDate>Tue, 18 Feb 2020 22:44:13 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/categories/tool/</guid>
+      <guid>https://blog.18881888.xyz/categories/tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>编程</title>
-      <link>https://blog.mcjy.top/categories/%E7%BC%96%E7%A8%8B/</link>
+      <link>https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Fri, 08 Nov 2019 19:07:02 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/categories/%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>生活</title>
-      <link>https://blog.mcjy.top/categories/%E7%94%9F%E6%B4%BB/</link>
+      <link>https://blog.18881888.xyz/categories/%E7%94%9F%E6%B4%BB/</link>
       <pubDate>Sun, 03 Nov 2019 20:23:48 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/categories/%E7%94%9F%E6%B4%BB/</guid>
+      <guid>https://blog.18881888.xyz/categories/%E7%94%9F%E6%B4%BB/</guid>
       <description></description>
     </item>
     

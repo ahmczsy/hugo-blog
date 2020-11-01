@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on Zshell的博客</title>
-    <link>https://blog.mcjy.top/tags/linux/</link>
+    <link>https://blog.18881888.xyz/tags/linux/</link>
     <description>Recent content in linux on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 10 Jul 2020 14:33:51 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.mcjy.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.18881888.xyz/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>linux的top命令如何保存设置</title>
-      <link>https://blog.mcjy.top/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</link>
+      <link>https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Fri, 10 Jul 2020 14:33:51 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</guid>
       <description>问题 linux的top命令的默认显示方式不是很直观。比如内存的显示方式是以字节为单位；每次刷新的间隔太慢；多个cpu核心没有全部显示等。每次进入top的界面都要设置一阵子才能舒适的使用。但是每次都要设置就很麻烦，所以这篇文章就是来展示我的top命令的一些设置以及如果保存这些设置。
 如何保存设置 使用大写的W来保存自定义的设置，按下W后top界面上会显示设置保存的路径，如下图所示
 个人设置 下面是我的一些个性化设置
@@ -27,10 +27,10 @@
     
     <item>
       <title>Linux常用命令</title>
-      <link>https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>https://blog.18881888.xyz/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 13 Oct 2019 14:42:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://blog.18881888.xyz/post/2019.10.13_linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>zip命令 使用unzip的时候有时候想把文件解压到一个新的文件夹，如果直接写一个新目录会报错
 在要解压的目的地的前面加个参数－d，就能新建一个不存的目录
  mysql相关命令 自动补全 mysql的命令也是有自动补全的．需要的参数如下

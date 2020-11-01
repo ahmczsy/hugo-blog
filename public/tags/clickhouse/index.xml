@@ -2,40 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>clickhouse on Zshell的博客</title>
-    <link>https://blog.mcjy.top/tags/clickhouse/</link>
+    <link>https://blog.18881888.xyz/tags/clickhouse/</link>
     <description>Recent content in clickhouse on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 04 Sep 2020 14:11:48 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2020 16:29:18 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.mcjy.top/tags/clickhouse/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.18881888.xyz/tags/clickhouse/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</title>
+      <link>https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sun, 01 Nov 2020 16:29:18 +0800</pubDate>
+      
+      <guid>https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</guid>
+      <description>问题 今天在修改 ClickHouse 集群数据库表结构的时候 , 不知道由于什么原因 , 造成有两个节点 ( A 和 B , 其中 B 是副本节点 ) 的 zookeeper 的 metadata 数据不一致</description>
+    </item>
+    
+    <item>
       <title>clickhouse如何把两数组转为两列</title>
-      <link>https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</link>
+      <link>https://blog.18881888.xyz/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</link>
       <pubDate>Fri, 04 Sep 2020 14:11:48 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</guid>
       <description>在 clickhouse 中经常遇到把数组转为列的情况 .
 一个数组转为列 一个数组转列的情况很简单 , 直接使用 arrayjoin 函数来实现</description>
     </item>
     
     <item>
       <title>clickhouse 比较版本号</title>
-      <link>https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <link>https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
       <pubDate>Tue, 25 Aug 2020 19:02:20 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
       <description>如果想要比较两个版本号的字符串, 比如 select &#39;5.6.8.10&#39;&amp;gt;&#39;5.6.8.2&#39; 结果肯定是0即后者比较大, 但是在版本号的语义中明明是前者比较大. 在 mysql 中已经有了解决方案, 但是在 clickhouse 中我还没有在网络上搜索到.</description>
     </item>
     
     <item>
       <title>golang处理数据库返回大量数据</title>
-      <link>https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>
+      <link>https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Tue, 26 May 2020 13:31:38 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</guid>
       <description>问题 这两天需要把ClickHouse的查询结果进行统计然后存储起来，但是每一次查询的出来的数据量非常大。行数很多，某一天的count统计如下：
 每次查询的数据有上亿行😢。在ClickHouse查询出结果后返回给client(就是我写的程序)，但是由于这个任务是在k8s内运行，限制只有400m的内存。所以很快就因为内存溢出而崩溃。
 之前的代码 一般的情况下都是把查询结果都放到slice内再返回比如这样：

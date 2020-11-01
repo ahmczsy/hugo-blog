@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Zshell的博客</title>
-    <link>https://blog.mcjy.top/tags/</link>
+    <link>https://blog.18881888.xyz/tags/</link>
     <description>Recent content in Tags on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 12 Sep 2020 15:04:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2020 16:29:18 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.mcjy.top/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.18881888.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>nginx</title>
-      <link>https://blog.mcjy.top/tags/nginx/</link>
-      <pubDate>Sat, 12 Sep 2020 15:04:00 +0800</pubDate>
+      <title>clickhouse</title>
+      <link>https://blog.18881888.xyz/tags/clickhouse/</link>
+      <pubDate>Sun, 01 Nov 2020 16:29:18 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/nginx/</guid>
+      <guid>https://blog.18881888.xyz/tags/clickhouse/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>clickhouse</title>
-      <link>https://blog.mcjy.top/tags/clickhouse/</link>
-      <pubDate>Fri, 04 Sep 2020 14:11:48 +0800</pubDate>
+      <title>nginx</title>
+      <link>https://blog.18881888.xyz/tags/nginx/</link>
+      <pubDate>Sat, 12 Sep 2020 15:04:00 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/clickhouse/</guid>
+      <guid>https://blog.18881888.xyz/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://blog.mcjy.top/tags/linux/</link>
+      <link>https://blog.18881888.xyz/tags/linux/</link>
       <pubDate>Fri, 10 Jul 2020 14:33:51 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/linux/</guid>
+      <guid>https://blog.18881888.xyz/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>https://blog.mcjy.top/tags/golang/</link>
+      <link>https://blog.18881888.xyz/tags/golang/</link>
       <pubDate>Tue, 26 May 2020 13:31:38 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/golang/</guid>
+      <guid>https://blog.18881888.xyz/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>clash</title>
-      <link>https://blog.mcjy.top/tags/clash/</link>
+      <link>https://blog.18881888.xyz/tags/clash/</link>
       <pubDate>Tue, 18 Feb 2020 22:44:13 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/clash/</guid>
+      <guid>https://blog.18881888.xyz/tags/clash/</guid>
       <description></description>
     </item>
     
     <item>
       <title>生活</title>
-      <link>https://blog.mcjy.top/tags/%E7%94%9F%E6%B4%BB/</link>
+      <link>https://blog.18881888.xyz/tags/%E7%94%9F%E6%B4%BB/</link>
       <pubDate>Sun, 03 Nov 2019 20:23:48 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/%E7%94%9F%E6%B4%BB/</guid>
+      <guid>https://blog.18881888.xyz/tags/%E7%94%9F%E6%B4%BB/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://blog.mcjy.top/tags/git/</link>
+      <link>https://blog.18881888.xyz/tags/git/</link>
       <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/git/</guid>
+      <guid>https://blog.18881888.xyz/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vue</title>
-      <link>https://blog.mcjy.top/tags/vue/</link>
+      <link>https://blog.18881888.xyz/tags/vue/</link>
       <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/vue/</guid>
+      <guid>https://blog.18881888.xyz/tags/vue/</guid>
       <description></description>
     </item>
     
     <item>
       <title>前端</title>
-      <link>https://blog.mcjy.top/tags/%E5%89%8D%E7%AB%AF/</link>
+      <link>https://blog.18881888.xyz/tags/%E5%89%8D%E7%AB%AF/</link>
       <pubDate>Mon, 21 Oct 2019 13:55:11 +0800</pubDate>
       
-      <guid>https://blog.mcjy.top/tags/%E5%89%8D%E7%AB%AF/</guid>
+      <guid>https://blog.18881888.xyz/tags/%E5%89%8D%E7%AB%AF/</guid>
       <description></description>
     </item>
     
