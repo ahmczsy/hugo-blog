@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Receiver has generic name | Zshell的博客</title>
-    <meta property="og:title" content="Receiver has generic name - Zshell的博客">
+    <title>ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据) | Zshell的博客</title>
+    <meta property="og:title" content="ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据) - Zshell的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-08-26T14:42:11&#43;08:00">
+    <meta property="article:published_time" content="2020-11-01T16:29:18&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2019-08-26T14:42:11&#43;08:00">
+    <meta property="article:modified_time" content="2020-11-01T16:29:18&#43;08:00">
         
-    <meta name="Keywords" content="golang,go语言,VPS,zshell,java,博客,项目管理,python,软件架构,公众号,小程序">
-    <meta name="description" content="Receiver has generic name">
+    <meta name="Keywords" content="[clickchouse Metadata on replica is not up to date with common metadata in Zookeeper 重建 zookeeper clickhouse 恢复]">
+    <meta name="description" content="ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)">
         
     <meta name="author" content="Noel">
-    <meta property="og:url" content="https://blog.18881888.xyz/post/2019.8.26_receiver-has-generic-name/">
+    <meta property="og:url" content="https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -74,11 +74,18 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">Receiver has generic name</h1>
+                            <h1 class="post-title">ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</h1>
                         </header>
                         <date class="post-meta meta-date">
-                            2019年8月26日
+                            2020年11月1日
                         </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/db">db</a></span>
+                            
+                        </div>
                         
                         
                         <div class="post-meta">
@@ -87,59 +94,69 @@
                         
                         
                         <div class="post-content">
-                            <h4 id="问题">问题</h4>
-<p>Golang的<strong>方法接收者</strong>就是在函数名前的括号内的东西  如</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">self</span> <span style="color:#a6e22e">Car</span>) <span style="color:#a6e22e">run</span>() <span style="color:#75715e">// (self car)就是方法接收者
-</span></code></pre></div><p>在JetBrains系类的开发工具中（IntelliJ、Goland）如果方法接收者名字是<strong>self  me  this</strong>类似的词，IDE会提示<em>Receiver has generic name</em>信息 如下图所示</p>
-<p><img src="https://s2.ax1x.com/2019/08/26/mW6QpQ.png" alt="mW6QpQ.png"></p>
-<h4 id="go中的函数">Go中的函数</h4>
-<p>在Go中，无论是方法还是函数都可以把他作为一个普通的函数来调用</p>
-<p>Demo:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Car</span> <span style="color:#66d9ef">struct</span> {
-	<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">Car</span>) <span style="color:#a6e22e">run</span>() {
-	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;my receiver is:&#34;</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">i</span>)
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestSelf</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
-	<span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Car</span>{<span style="color:#ae81ff">1</span>}
-	<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">run</span>()
-	<span style="color:#a6e22e">Car</span>.<span style="color:#a6e22e">run</span>(<span style="color:#a6e22e">Car</span>{<span style="color:#ae81ff">22</span>})
-}
-</code></pre></div><p>运行结果如下：</p>
-<pre><code>my receiver is: 1
-my receiver is: 22
-</code></pre><p>Go的方法只是语法糖而已，本质还是第一个参数是接收者的普通函数</p>
-<h4 id="解释">解释</h4>
-<p>在其他面向对象的语言中<strong>this self me</strong>这些字段都有具体的含义，比如可以访问自己的私有方法或字段或者有其他特殊的含义。</p>
-<p>但是在go中最好不用使用这些词，因为方法接收者只是一个普通的参数而，起不到这些词字面上的含义</p>
-<p>go官方的代码规范也提到了这一点</p>
+                            <h2 id="问题">问题</h2>
+<p>今天在修改 ClickHouse 集群数据库表结构的时候 , 不知道由于什么原因 , 造成有两个节点 ( A 和 B , 其中 B 是副本节点 ) 的 zookeeper 的 metadata 数据不一致</p>
+<p>每次在两个节点执行 <code>alter table</code> 的语句都会报  <code>Metadata on replica is not up to date with common metadata in Zookeeper</code>  错误</p>
+<p>一开始的想法是把 A B 节点的 zookeeper 内的 <code>columns</code> 的值改成一样的就行了 . 没想到改了之后还是这个错 . 没办法 , 只能重建 zookeeper 上的 metadata 数据 (只重建出问题的表 , 其他的表不动)</p>
 <blockquote>
-<p>The name of a method&rsquo;s receiver should be a reflection of its identity; often a one or two letter abbreviation of its type suffices (such as &ldquo;c&rdquo; or &ldquo;cl&rdquo; for &ldquo;Client&rdquo;). Don&rsquo;t use generic names such as &ldquo;me&rdquo;, &ldquo;this&rdquo; or &ldquo;self&rdquo;, identifiers typical of object-oriented languages that gives the method a special meaning. In Go, the receiver of a method is just another parameter and therefore, should be named accordingly. The name need not be as descriptive as that of a method argument, as its role is obvious and serves no documentary purpose. It can be very short as it will appear on almost every line of every method of the type; familiarity admits brevity. Be consistent, too: if you call the receiver &ldquo;c&rdquo; in one method, don&rsquo;t call it &ldquo;cl&rdquo; in another.</p>
+<p>注意 : 下面所有的操作没有特别的说明都是在 A 节点上进行的</p>
 </blockquote>
-<p>如果想关闭掉这个提示可以在Setting-&gt;Editor-&gt;Inspections-&gt;Go-&gt;Code style issues 中把Receiver has generic name这一项取消</p>
-<p><img src="https://s2.ax1x.com/2019/08/26/mWcE34.png" alt="mWcE34.png"></p>
-<h4 id="参考">参考</h4>
-<ul>
-<li>
-<p><a href="https://stackoverflow.com/questions/23482068/in-go-is-naming-the-receiver-variable-self-misleading-or-good-practice">https://stackoverflow.com/questions/23482068/in-go-is-naming-the-receiver-variable-self-misleading-or-good-practice</a></p>
-</li>
-<li>
-<p><a href="https://stackoverflow.com/questions/38025743/go-why-shouldnt-use-this-for-method-receiver-name">https://stackoverflow.com/questions/38025743/go-why-shouldnt-use-this-for-method-receiver-name</a></p>
-</li>
-<li>
-<p><a href="https://github.com/golang/go/wiki/CodeReviewComments#receiver-names">https://github.com/golang/go/wiki/CodeReviewComments#receiver-names</a></p>
-</li>
+<h2 id="备份数据">备份数据</h2>
+<p>数据数据时有两个情况 :</p>
+<h4 id="clickhouse-在运行中">ClickHouse 在运行中</h4>
+<blockquote>
+<p>关于 <code>freeze  </code>具体的说明可以参考<a href="https://clickhouse.tech/docs/en/sql-reference/statements/alter/partition/#alter_freeze-partition">官方文档</a></p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#960050;background-color:#1e0010">$</span>tab <span style="color:#66d9ef">FREEZE</span>
+</code></pre></div><ul>
+<li>这个语句是在 ClickHouse 运行的情况下产生一份 <code>$tab</code> 这个表的数据备份</li>
+<li>备份的数据的数据在 <code>$ck主目录/shadow/$N/data/....</code> 中</li>
+<li>路径中的 <code>$N</code>  是个变量 , 表示备份次数 , 如果是第一次运行那么值就是 <code>1</code></li>
 </ul>
+<p>例如 :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> hera.<span style="color:#66d9ef">user</span> <span style="color:#66d9ef">freeze</span>;
+</code></pre></div><p>运行上面的语句后 , 进入对应的目录运行 <code>tree</code> 命令看下结果</p>
+<p><img src="image-20201101212933284.png" alt="image-20201101212933284"></p>
+<p><code>user</code> 目录下就是备份的各个 partition 数据</p>
+<h4 id="clickhouse-已经停止运行了">ClickHouse 已经停止运行了</h4>
+<p>直接进入 data 目录把数据复制一份到其他目录</p>
+<p>使用这种方式一定要确保 Clickhouse 已经停止运行 , 要不然备份的数据会有损坏的风险</p>
+<h2 id="恢复数据">恢复数据</h2>
+<h4 id="建临时表">建临时表</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> hera.temp  (.....)
+</code></pre></div><h4 id="把上一步备份的数据转移到或复制到临时表的-detached-目录里">把上一步备份的数据转移到或复制到临时表的 <code>detached</code> 目录里</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mv或cp /ck/shadow/1/data/hera/user/*  /ck/data/hera/temp/detached
+chown clickhouse:clickhouse -R /ck/data/hera/temp/detached
+</code></pre></div><p>上面的第二行是确保 <code>detacehd</code>目录下的所有文件的用户和组是 <code>clickhouse</code> 要不然有权限问题</p>
+<h4 id="恢复-a-节点数据">恢复 A 节点数据</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd /ck/data/hera/temp/detached
+let i<span style="color:#f92672">=</span>1;<span style="color:#66d9ef">for</span> f in <span style="color:#e6db74">`</span>ls -1<span style="color:#e6db74">`</span> ; <span style="color:#66d9ef">do</span> echo $i $f;<span style="color:#f92672">((</span>i++<span style="color:#f92672">))</span>; echo <span style="color:#e6db74">&#34;alter table hera.temp attach part &#39;</span>$f<span style="color:#e6db74">&#39;;&#34;</span>|clickhouse-client ; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>这一步是把备份的数据 attach 到 <code>temp</code> 表中</p>
+<p>这一步完成后 A 节点的数据恢复就完成了</p>
+<h4 id="恢复-b-节点数据">恢复 B 节点数据</h4>
+<p>在 B 节点上也建立一个临时表 , ClickHouse 自动会从 A 节点上拉取数据</p>
+<h2 id="扫尾工作">扫尾工作</h2>
+<ul>
+<li>在 A B 节点上 <code>drop </code> 掉zookeeper 不一致的表</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> <span style="color:#66d9ef">user</span>
+</code></pre></div><ul>
+<li>在 A B 节点上把 temp 表的名字修改为原表的名字</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">rename</span> temp <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">user</span>
+</code></pre></div><h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://github.com/ClickHouse/ClickHouse/issues/7972">https://github.com/ClickHouse/ClickHouse/issues/7972</a></li>
+<li><a href="https://clickhouse.tech/docs/en/sql-reference/statements/alter/partition/#alter_freeze-partition">https://clickhouse.tech/docs/en/sql-reference/statements/alter/partition/#alter_freeze-partition</a></li>
+</ul>
+
                         </div>
 
                         
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://blog.18881888.xyz/">Noel</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.18881888.xyz/post/2019.8.26_receiver-has-generic-name/">https://blog.18881888.xyz/post/2019.8.26_receiver-has-generic-name/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/">https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -153,15 +170,11 @@ my receiver is: 22
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/post/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">golang ldfalgs的小技巧</a></li>
+        <li><a href="/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/">clickhouse如何把两数组转为两列</a></li>
         
-        <li><a href="/post/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/">Systemd集成Golang程序</a></li>
+        <li><a href="/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/">clickhouse 比较版本号</a></li>
         
-        <li><a href="/post/time%E5%8C%85%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">golang time包相关的一些问题</a></li>
-        
-        <li><a href="/post/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/">MySql索引优化</a></li>
-        
-        <li><a href="/post/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/">使用idea自带的plugin反编译jar</a></li>
+        <li><a href="/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/">golang处理数据库返回大量数据</a></li>
         
     </ul>
 </div>
@@ -169,7 +182,11 @@ my receiver is: 22
 
                         <div class="post-meta meta-tags">
                             
-                            没有标签
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://blog.18881888.xyz/tags/clickhouse">clickhouse</a></li>
+                                
+                            </ul>
                             
                         </div>
                     </article>

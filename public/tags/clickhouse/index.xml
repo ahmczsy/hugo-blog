@@ -13,10 +13,10 @@
     
     <item>
       <title>ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</title>
-      <link>https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</link>
+      <link>https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Sun, 01 Nov 2020 16:29:18 +0800</pubDate>
       
-      <guid>https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/</guid>
       <description>问题 今天在修改 ClickHouse 集群数据库表结构的时候 , 不知道由于什么原因 , 造成有两个节点 ( A 和 B , 其中 B 是副本节点 ) 的 zookeeper 的 metadata 数据不一致</description>
     </item>
     
