@@ -69,6 +69,32 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/" title="ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)" >ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2020年12月31日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/db">db</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                前言 今天有个业务是需要在某个表中新增一列。新增的列是个字典列，值的种类很少。一开始我想要使用 LowCardinality(String) 来存储，但有个同事说用uInt32 来存储。我的理由是看着直观，不用维护 int 的映射关系，他的理由是存储和查询的效率高。但是我从clickhouse 的官方文档中看到：
+ The efficiency of using LowCardinality data type depends on data diversity.……
+                            </div>
+                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/">阅读全文</a></p>
+                        </article>
+                    
+                    
+		    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/" title="ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)" >ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</a>
                                 </h1>
                             </header>
@@ -293,33 +319,6 @@ for scanner.Next() { value := reflect.……
                         </article>
                     
                     
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/" title="MarshalJSON没有调用、无效？" >MarshalJSON没有调用、无效？</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年11月8日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B">编程</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                问题 今天我在golang自定义json的序列化时，发现我的struct实现MarshalJSON()竟然没有效果，还是按照默认的方式来序列化。这让我非常郁闷☹，后来我查找了一些资料发现这个问题不简单。。
-下面是我有问题的代码
-type str string func (s *str) MarshalJSON() (data []byte, err error) { return json.……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/">阅读全文</a></p>
-                        </article>
-                    
-                    
                     
 
 
@@ -368,6 +367,10 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
 <ul class="widget-list">
     
     <li>
+        <a href="https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/" title="ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)">ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</a>
+    </li>
+    
+    <li>
         <a href="https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/" title="ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)">ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</a>
     </li>
     
@@ -403,10 +406,6 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
         <a href="https://blog.18881888.xyz/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/" title="当golang多个字段的json tag相同时会怎么样?">当golang多个字段的json tag相同时会怎么样?</a>
     </li>
     
-    <li>
-        <a href="https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/" title="MarshalJSON没有调用、无效？">MarshalJSON没有调用、无效？</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -436,7 +435,7 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
     </li>
     
     <li>
-        <a href="https://blog.18881888.xyz/categories/db/">db(4)</a>
+        <a href="https://blog.18881888.xyz/categories/db/">db(5)</a>
     </li>
     
     <li>
@@ -461,6 +460,8 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
     <a href="https://blog.18881888.xyz/tags/clash/">clash</a>
     
     <a href="https://blog.18881888.xyz/tags/clickhouse/">clickhouse</a>
+    
+    <a href="https://blog.18881888.xyz/tags/clickhousue/">clickhousue</a>
     
     <a href="https://blog.18881888.xyz/tags/git/">git</a>
     
@@ -504,7 +505,7 @@ type str string func (s *str) MarshalJSON() (data []byte, err error) { return js
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2020 <a href="https://blog.18881888.xyz/">Zshell的博客 By Noel</a>.
+        &copy; 2021 <a href="https://blog.18881888.xyz/">Zshell的博客 By Noel</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         

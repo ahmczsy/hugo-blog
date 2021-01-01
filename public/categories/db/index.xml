@@ -6,10 +6,20 @@
     <description>Recent content in db on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Nov 2020 16:29:18 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 18:03:46 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.18881888.xyz/categories/db/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</title>
+      <link>https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/</link>
+      <pubDate>Thu, 31 Dec 2020 18:03:46 +0800</pubDate>
+      
+      <guid>https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/</guid>
+      <description>前言 今天有个业务是需要在某个表中新增一列。新增的列是个字典列，值的种类很少。一开始我想要使用 LowCardinality(String) 来存储，但有个同事说用uInt32 来存储。我的理由是看着直观，不用维护 int 的映射关系，他的理由是存储和查询的效率高。但是我从clickhouse 的官方文档中看到：
+ The efficiency of using LowCardinality data type depends on data diversity.</description>
+    </item>
     
     <item>
       <title>ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</title>
