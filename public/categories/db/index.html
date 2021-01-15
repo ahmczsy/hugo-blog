@@ -164,7 +164,8 @@
                             </div>
                             
                             <div class="post-content">
-                                如果想要比较两个版本号的字符串, 比如 select '5.6.8.10'&gt;'5.6.8.2' 结果肯定是0即后者比较大, 但是在版本号的语义中明明是前者比较大. 在 mysql 中已经有了解决方案, 但是在 clickhouse 中我还没有在网络上搜索到.……
+                                2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。
+select IPv4StringToNum(&#39;2.7.14.23&#39;) &lt; IPv4StringToNum(&#39;2.12.8.12&#39;) comparse; 上面的结果是 1 符合我们的预期……
                                 <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/">阅读全文</a></p>
                             </div>
                         </article>
