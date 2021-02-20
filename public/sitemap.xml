@@ -4,7 +4,49 @@
   
   <url>
     <loc>https://blog.18881888.xyz/categories/</loc>
-    <lastmod>2020-12-31T18:03:46+08:00</lastmod>
+    <lastmod>2021-02-20T15:51:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.18881888.xyz/categories/db/</loc>
+    <lastmod>2021-02-20T15:51:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.18881888.xyz/tags/mysql/</loc>
+    <lastmod>2021-02-20T15:51:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/</loc>
+    <lastmod>2021-02-20T15:51:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.18881888.xyz/post/</loc>
+    <lastmod>2021-02-20T15:51:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.18881888.xyz/tags/</loc>
+    <lastmod>2021-02-20T15:51:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.18881888.xyz/</loc>
+    <lastmod>2021-02-20T15:51:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -18,34 +60,6 @@
   
   <url>
     <loc>https://blog.18881888.xyz/tags/clickhousue/</loc>
-    <lastmod>2020-12-31T18:03:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.18881888.xyz/categories/db/</loc>
-    <lastmod>2020-12-31T18:03:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.18881888.xyz/post/</loc>
-    <lastmod>2020-12-31T18:03:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.18881888.xyz/tags/</loc>
-    <lastmod>2020-12-31T18:03:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.18881888.xyz/</loc>
     <lastmod>2020-12-31T18:03:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

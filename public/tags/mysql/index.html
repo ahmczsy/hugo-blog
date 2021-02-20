@@ -7,22 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>编程 | Zshell的博客</title>
-    <meta property="og:title" content="编程 - Zshell的博客">
+    <title>mysql | Zshell的博客</title>
+    <meta property="og:title" content="mysql - Zshell的博客">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="golang,go语言,VPS,zshell,java,博客,项目管理,python,软件架构,公众号,小程序">
-    <meta name="description" content="编程">
+    <meta name="description" content="mysql">
         
     <meta name="author" content="Noel">
-    <meta property="og:url" content="https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/">
+    <meta property="og:url" content="https://blog.18881888.xyz/tags/mysql/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
     
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml+xml" href="https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/index.xml" title="Zshell的博客" />
+    <link rel="alternate" type="application/rss+xml+xml" href="https://blog.18881888.xyz/tags/mysql/index.xml" title="Zshell的博客" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -68,9 +68,9 @@
                 <div class="res-cons">
                     
                     <h3 class="archive-title">
-                        分类
-                        <span class="keyword">编程</span>
-                        中的文章
+                        包含标签
+                        <span class="keyword">mysql</span>
+                        的文章
                     </h3>
                     
 
@@ -78,25 +78,24 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/">MarshalJSON没有调用、无效？</a>
+                                    <a href="https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/">mysql 如何查看，修改 collate</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
-                                2019年11月8日
+                                2021年2月20日
                             </date>
                             
                             <div class="post-meta meta-category">
                                 |
                                 
-                                    <a href="https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                                    <a href="https://blog.18881888.xyz/categories/db">db</a>
                                 
                             </div>
                             
                             <div class="post-content">
-                                问题 今天我在golang自定义json的序列化时，发现我的struct实现MarshalJSON()竟然没有效果，还是按照默认的方式来序列化。这让我非常郁闷☹，后来我查找了一些资料发现这个问题不简单。。
-下面是我有问题的代码
-type str string func (s *str) MarshalJSON() (data []byte, err error) { return json.……
-                                <p class="readmore"><a href="https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/">阅读全文</a></p>
+                                问题 今天偶然发现 mysql 在比较字符时会忽略大小写，这让我非常意外。
+比如 select 'a' = 'A' 这行运行的结果是 1也就是在 mysql 看来 a 和 A 是相等的……
+                                <p class="readmore"><a href="https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/">阅读全文</a></p>
                             </div>
                         </article>
                     

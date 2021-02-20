@@ -6,11 +6,7 @@
     <description>Recent content in linux on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 10 Jul 2020 14:33:51 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.18881888.xyz/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 10 Jul 2020 14:33:51 +0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linux的top命令如何保存设置</title>
       <link>https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</link>

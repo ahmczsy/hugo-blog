@@ -6,10 +6,15 @@
     <description>Recent content in Tags on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 31 Dec 2020 18:03:46 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.18881888.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 20 Feb 2021 15:51:35 +0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql</title>
+      <link>https://blog.18881888.xyz/tags/mysql/</link>
+      <pubDate>Sat, 20 Feb 2021 15:51:35 +0800</pubDate>
+      
+      <guid>https://blog.18881888.xyz/tags/mysql/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>clickhousue</title>

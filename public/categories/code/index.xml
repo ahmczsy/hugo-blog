@@ -6,11 +6,7 @@
     <description>Recent content in code on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 12 Sep 2020 15:04:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.18881888.xyz/categories/code/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 12 Sep 2020 15:04:00 +0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>openresty 开发记录</title>
       <link>https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</link>

@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.71.0" />
+    <meta name="generator" content="Hugo 0.78.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -115,17 +115,17 @@
 <p>详细的配置文档可以参考这个<a href="https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml">链接</a>，下面说的都是我经常用到的</p>
 <h3 id="proxy字段">Proxy字段</h3>
 <p>proxy字段接受对象数组，该字段用来制定代理服务器的描述，比如代理服务器的类型，ip地址，端口等</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">Proxy</span>:
-- <span style="color:#66d9ef">name</span>: <span style="color:#e6db74">&#34;Unblock&#34;</span>
-  <span style="color:#66d9ef">type</span>: ss
-  <span style="color:#66d9ef">server</span>: music.desperadoj.com
-  <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">30001</span>
-  <span style="color:#66d9ef">cipher</span>: aes<span style="color:#ae81ff">-128</span>-gcm
-  <span style="color:#66d9ef">password</span>: desperadoj.com
-- <span style="color:#66d9ef">name</span>: <span style="color:#e6db74">&#34;http_proxy&#34;</span>
-	<span style="color:#66d9ef">type</span>: http
-	<span style="color:#66d9ef">server</span>: <span style="color:#ae81ff">111.168.1.1</span>
-	<span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">1111</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">Proxy</span>:
+- <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Unblock&#34;</span>
+  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ss</span>
+  <span style="color:#f92672">server</span>: <span style="color:#ae81ff">music.desperadoj.com</span>
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">30001</span>
+  <span style="color:#f92672">cipher</span>: <span style="color:#ae81ff">aes-128-gcm</span>
+  <span style="color:#f92672">password</span>: <span style="color:#ae81ff">desperadoj.com</span>
+- <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;http_proxy&#34;</span>
+	<span style="color:#f92672">type</span>: <span style="color:#ae81ff">http</span>
+	<span style="color:#f92672">server</span>: <span style="color:#ae81ff">111.168.1.1</span>
+	<span style="color:#f92672">port</span>: <span style="color:#ae81ff">1111</span>
 </code></pre></div><p>上面就声明了两个代理，在后面的字段中使用</p>
 <h3 id="proxy-group字段">Proxy Group字段</h3>
 <p>该字段在有多个代理源的情况下，根据策略不同选择不用的代理源</p>
@@ -137,27 +137,27 @@
 <li><code>select</code> 用来允许用户手动选择 代理服务器 或 服务器组</li>
 </ul>
 <p>下面的事例是<code>select</code>类型的策略</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"> <span style="color:#66d9ef">Proxy Group</span>:
-- <span style="color:#66d9ef">name</span>: <span style="color:#e6db74">&#34;🎵 Netease Music&#34;</span>
-  <span style="color:#66d9ef">type</span>: select
-  <span style="color:#66d9ef">proxies</span>: 
-    - 🎶 Unblock
-    - DIRECT
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"> <span style="color:#f92672">Proxy Group</span>:
+- <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;🎵 Netease Music&#34;</span>
+  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">select</span>
+  <span style="color:#f92672">proxies</span>: 
+    - <span style="color:#ae81ff">🎶 Unblock</span>
+    - <span style="color:#ae81ff">DIRECT</span>
 </code></pre></div><p>上面的配置里我指定了两个代理源，在gui里的反馈就是这样的：</p>
 <p><img src="image-20200219203346100.png" alt="image-20200219203346100"></p>
 <p>这种策略方便我们手动的切换</p>
 <h3 id="rule字段">Rule字段</h3>
 <p>该字段也是数组，数组的item是字符串</p>
 <p>该字符串由逗号分隔,具体的规则是：<code>匹配规则,匹配源,使用哪个代理</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">Rule</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">Rule</span>:
 <span style="color:#75715e"># domain类型是全匹配，只有访问的url是apps.apple.com时，才是使用名为“🎵 Netease Music”的代理</span>
-- DOMAIN,apps.apple.com,🎵 Netease Music
+- <span style="color:#ae81ff">DOMAIN,apps.apple.com,🎵 Netease Music</span>
 <span style="color:#75715e">#DOMAIN-SUFFIX是后缀域名匹配,例如这个规则可以匹配blog.126.com这个url，之后使用&#34;direct&#34;这个代理</span>
-- DOMAIN-SUFFIX,<span style="color:#ae81ff">126.</span>com,DIRECT
+- <span style="color:#ae81ff">DOMAIN-SUFFIX,126.com,DIRECT</span>
 <span style="color:#75715e">#domain-keyword是关键词匹配</span>
-- DOMAIN-KEYWORD,baidu,DIRECT
+- <span style="color:#ae81ff">DOMAIN-KEYWORD,baidu,DIRECT</span>
 <span style="color:#75715e">#ip匹配</span>
-- IP-CIDR,<span style="color:#ae81ff">127.0.0.0</span>/<span style="color:#ae81ff">8</span>,DIRECT
+- <span style="color:#ae81ff">IP-CIDR,127.0.0.0/8,DIRECT</span>
 </code></pre></div><h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml">https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml</a></li>
@@ -224,6 +224,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/" title="mysql 如何查看，修改 collate">mysql 如何查看，修改 collate</a>
+    </li>
+    
+    <li>
         <a href="https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/" title="ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)">ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</a>
     </li>
     
@@ -259,10 +263,6 @@
         <a href="https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/" title="Mac下clash教程">Mac下clash教程</a>
     </li>
     
-    <li>
-        <a href="https://blog.18881888.xyz/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/" title="当golang多个字段的json tag相同时会怎么样?">当golang多个字段的json tag相同时会怎么样?</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -292,7 +292,7 @@
     </li>
     
     <li>
-        <a href="https://blog.18881888.xyz/categories/db/">db(5)</a>
+        <a href="https://blog.18881888.xyz/categories/db/">db(6)</a>
     </li>
     
     <li>
@@ -325,6 +325,8 @@
     <a href="https://blog.18881888.xyz/tags/golang/">golang</a>
     
     <a href="https://blog.18881888.xyz/tags/linux/">linux</a>
+    
+    <a href="https://blog.18881888.xyz/tags/mysql/">mysql</a>
     
     <a href="https://blog.18881888.xyz/tags/nginx/">nginx</a>
     

@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.71.0" />
+    <meta name="generator" content="Hugo 0.78.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -98,29 +98,29 @@
 <ul>
 <li>
 <p><code>name</code>  字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: CI
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">name</span>: <span style="color:#ae81ff">CI</span>
 </code></pre></div></li>
 <li>
 <p><code>on</code> 字段指定触发 workflow 的条件</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">//push时触发
-<span style="color:#66d9ef">on</span>: [push]
-//push和pull时触发
-<span style="color:#66d9ef">on</span>: [push, pull_request]
-//只在master分支push时触发
-<span style="color:#66d9ef">on</span>:
-  <span style="color:#66d9ef">push</span>:
-    <span style="color:#66d9ef">branches</span>:    
-      - master
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">//push时触发</span>
+<span style="color:#f92672">on</span>: [<span style="color:#ae81ff">push]</span>
+<span style="color:#ae81ff">//push和pull时触发</span>
+<span style="color:#f92672">on</span>: [<span style="color:#ae81ff">push, pull_request]</span>
+<span style="color:#ae81ff">//只在master分支push时触发</span>
+<span style="color:#f92672">on</span>:
+  <span style="color:#f92672">push</span>:
+    <span style="color:#f92672">branches</span>:    
+      - <span style="color:#ae81ff">master</span>
 </code></pre></div></li>
 <li>
 <p><code>jobs</code> 表示要执行的一项或多项任务</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">jobs</span>: 
-  <span style="color:#66d9ef">my_job1</span>:
-      xxxxxxx
-      xxxx
-  <span style="color:#66d9ef">my_job2</span>: 
-      xxxxx
-      xxx
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">jobs</span>: 
+  <span style="color:#f92672">my_job1</span>:
+      <span style="color:#ae81ff">xxxxxxx</span>
+      <span style="color:#ae81ff">xxxx</span>
+  <span style="color:#f92672">my_job2</span>: 
+      <span style="color:#ae81ff">xxxxx</span>
+      <span style="color:#ae81ff">xxx</span>
 </code></pre></div><p>my_job1和my_job2称为job_id</p>
 </li>
 <li>
@@ -145,15 +145,15 @@
 </li>
 <li>
 <p><code>steps.uses.with</code>:该步骤是填入别人定义好的参数,比如在hellow_action中定义好了三个参数( <code>first_name</code>, <code>middle_name</code>, and <code>last_name</code> )</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">jobs</span>:
-  <span style="color:#66d9ef">my_first_job</span>:
-    <span style="color:#66d9ef">steps</span>:
-      - <span style="color:#66d9ef">name</span>: My first step
-        <span style="color:#66d9ef">uses</span>: actions/hello_world@master
-        <span style="color:#66d9ef">with</span>:
-          <span style="color:#66d9ef">first_name</span>: Mona
-          <span style="color:#66d9ef">middle_name</span>: The
-          <span style="color:#66d9ef">last_name</span>: Octocat  
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">my_first_job</span>:
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">My first step</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/hello_world@master</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">first_name</span>: <span style="color:#ae81ff">Mona</span>
+          <span style="color:#f92672">middle_name</span>: <span style="color:#ae81ff">The</span>
+          <span style="color:#f92672">last_name</span>: <span style="color:#ae81ff">Octocat  </span>
 </code></pre></div><ul>
 <li><code>steps.uses.env</code>和<code>with</code>类似</li>
 </ul>
@@ -163,90 +163,90 @@
 </ul>
 <h2 id="我的action">我的action</h2>
 <h3 id="下载项目代码">下载项目代码</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">uses</span>: actions/checkout@master
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@master</span>
 </code></pre></div><p>@master是指定master的代码
 如果想要下载某个tag或某个commit的代码,如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">actions/checkout@74bc508 <span style="color:#75715e"># 指向一个 commit</span>
-actions/checkout@v1<span style="color:#ae81ff">.0</span>    <span style="color:#75715e"># 指向一个标签</span>
-actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">actions/checkout@74bc508</span> <span style="color:#75715e"># 指向一个 commit</span>
+<span style="color:#ae81ff">actions/checkout@v1.0   </span> <span style="color:#75715e"># 指向一个标签</span>
+<span style="color:#ae81ff">actions/checkout@master </span> <span style="color:#75715e"># 指向一个分支</span>
 </code></pre></div><h3 id="npm-build">npm build</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">name</span>: npm install, build, and test
-  <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">     npm install</span>
-     npm run build:prod --if-present
-  <span style="color:#66d9ef">env</span>:
-     <span style="color:#66d9ef">CI</span>: <span style="color:#66d9ef">true</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">npm install, build, and test</span>
+  <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">     npm install
+</span><span style="color:#e6db74">     npm run build:prod --if-present</span>     
+  <span style="color:#f92672">env</span>:
+     <span style="color:#f92672">CI</span>: <span style="color:#66d9ef">true</span>
 </code></pre></div><h3 id="ssh到生产服务器备份现在正在运行的静态网页">ssh到生产服务器备份现在正在运行的静态网页</h3>
 <p>这一部使用了appleboy的ssh-action,这个action就是从action market中找到的
 具体文档<a href="https://github.com/appleboy/ssh-action">在这</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#66d9ef">name</span>: backup admin-web
-  <span style="color:#66d9ef">uses</span>: appleboy/ssh-action@master
-  <span style="color:#66d9ef">with</span>:
-       <span style="color:#66d9ef">host</span>: ${{ secrets.SERVER_IP }}
-       <span style="color:#66d9ef">username</span>: root
-       <span style="color:#66d9ef">password</span>:  ${{ secrets.FTP_PASSWORD }}
-       <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">22</span>
-       <span style="color:#66d9ef">script</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">         cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">backup admin-web</span>
+  <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">appleboy/ssh-action@master</span>
+  <span style="color:#f92672">with</span>:
+       <span style="color:#f92672">host</span>: <span style="color:#ae81ff">${{ secrets.SERVER_IP }}</span>
+       <span style="color:#f92672">username</span>: <span style="color:#ae81ff">root</span>
+       <span style="color:#f92672">password</span>:  <span style="color:#ae81ff">${{ secrets.FTP_PASSWORD }}</span>
+       <span style="color:#f92672">port</span>: <span style="color:#ae81ff">22</span>
+       <span style="color:#f92672">script</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">         </span>         <span style="color:#ae81ff">cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
 </code></pre></div><p>如果actions的配置文件里重要的信息,比如密码或密钥可以使用秘密环境变量来替代<code>${{secrets.xxxx}}</code></p>
 <p><img src="1571646282881.png" alt="1571646282881"></p>
 <h3 id="把dist部署到生产服务器">把dist部署到生产服务器</h3>
 <p>vue-element-admin build之后的静态文件在根目录的dist文件夹,所以我要把dist文件夹内的文件都上穿到生产服务器里</p>
 <p>这里使用了SamKirkland/FTP-Deploy-Action@2.0.0     <a href="https://github.com/SamKirkland/FTP-Deploy-Action">文档</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">        <span style="color:#66d9ef">uses</span>: SamKirkland/FTP-Deploy-Action@<span style="color:#ae81ff">2.0.0</span>
-        <span style="color:#66d9ef">env</span>:
-          <span style="color:#66d9ef">FTP_SERVER</span>: ${{ secrets.SERVER_IP }}
-          <span style="color:#66d9ef">FTP_USERNAME</span>: root
-          <span style="color:#66d9ef">FTP_PASSWORD</span>: ${{ secrets.FTP_PASSWORD }}
-          <span style="color:#66d9ef">METHOD</span>: sftp
-          <span style="color:#66d9ef">LOCAL_DIR</span>: dist   <span style="color:#75715e">#要上传的目录</span>
-          <span style="color:#66d9ef">REMOTE_DIR</span>: /root/glass/admin-web  <span style="color:#75715e">#上传到服务器的目录</span>
-          <span style="color:#66d9ef">ARGS</span>: --delete
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">SamKirkland/FTP-Deploy-Action@2.0.0</span>
+        <span style="color:#f92672">env</span>:
+          <span style="color:#f92672">FTP_SERVER</span>: <span style="color:#ae81ff">${{ secrets.SERVER_IP }}</span>
+          <span style="color:#f92672">FTP_USERNAME</span>: <span style="color:#ae81ff">root</span>
+          <span style="color:#f92672">FTP_PASSWORD</span>: <span style="color:#ae81ff">${{ secrets.FTP_PASSWORD }}</span>
+          <span style="color:#f92672">METHOD</span>: <span style="color:#ae81ff">sftp</span>
+          <span style="color:#f92672">LOCAL_DIR</span>: <span style="color:#ae81ff">dist  </span> <span style="color:#75715e">#要上传的目录</span>
+          <span style="color:#f92672">REMOTE_DIR</span>: <span style="color:#ae81ff">/root/glass/admin-web </span> <span style="color:#75715e">#上传到服务器的目录</span>
+          <span style="color:#f92672">ARGS</span>: --<span style="color:#ae81ff">delete</span>
 </code></pre></div><h2 id="全部action文件">全部action文件</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: Node CI
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Node CI</span>
 
-<span style="color:#66d9ef">on</span>:
-  <span style="color:#66d9ef">push</span>:
-    <span style="color:#66d9ef">branches</span>:
-      - master
+<span style="color:#f92672">on</span>:
+  <span style="color:#f92672">push</span>:
+    <span style="color:#f92672">branches</span>:
+      - <span style="color:#ae81ff">master</span>
 
-<span style="color:#66d9ef">jobs</span>:
-  <span style="color:#66d9ef">build</span>:
-    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
+<span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">build</span>:
+    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
 
-    <span style="color:#66d9ef">steps</span>:
-      - <span style="color:#66d9ef">uses</span>: actions/checkout@master
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@master</span>
 
-      - <span style="color:#66d9ef">name</span>: Use Node.js <span style="color:#ae81ff">12.</span>x
-        <span style="color:#66d9ef">uses</span>: actions/setup-node@v1
-        <span style="color:#66d9ef">with</span>:
-          <span style="color:#66d9ef">node-version</span>: <span style="color:#e6db74">&#39;12.x&#39;</span>
-      - <span style="color:#66d9ef">name</span>: npm install, build, and test
-        <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">          npm install</span>
-          npm run build:prod --if-present
-        <span style="color:#66d9ef">env</span>:
-          <span style="color:#66d9ef">CI</span>: <span style="color:#66d9ef">true</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Use Node.js 12.x</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-node@v1</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">node-version</span>: <span style="color:#e6db74">&#39;12.x&#39;</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">npm install, build, and test</span>
+        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">          npm install
+</span><span style="color:#e6db74">          npm run build:prod --if-present</span>          
+        <span style="color:#f92672">env</span>:
+          <span style="color:#f92672">CI</span>: <span style="color:#66d9ef">true</span>
 
-      - <span style="color:#66d9ef">name</span>: backup admin-web
-        <span style="color:#66d9ef">uses</span>: appleboy/ssh-action@master
-        <span style="color:#66d9ef">with</span>:
-          <span style="color:#66d9ef">host</span>: ${{ secrets.SERVER_IP }}
-          <span style="color:#66d9ef">username</span>: root
-          <span style="color:#66d9ef">password</span>:  ${{ secrets.FTP_PASSWORD }}
-          <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">22</span>
-          <span style="color:#66d9ef">script</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">            cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
-      - <span style="color:#66d9ef">name</span>: deploy to server
-        <span style="color:#66d9ef">uses</span>: SamKirkland/FTP-Deploy-Action@<span style="color:#ae81ff">2.0.0</span>
-        <span style="color:#66d9ef">env</span>:
-          <span style="color:#66d9ef">FTP_SERVER</span>: ${{ secrets.SERVER_IP }}
-          <span style="color:#66d9ef">FTP_USERNAME</span>: root
-          <span style="color:#66d9ef">FTP_PASSWORD</span>: ${{ secrets.FTP_PASSWORD }}
-          <span style="color:#66d9ef">METHOD</span>: sftp
-          <span style="color:#66d9ef">LOCAL_DIR</span>: dist
-          <span style="color:#66d9ef">REMOTE_DIR</span>: /root/glass/admin-web
-          <span style="color:#66d9ef">ARGS</span>: --delete
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">backup admin-web</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">appleboy/ssh-action@master</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">host</span>: <span style="color:#ae81ff">${{ secrets.SERVER_IP }}</span>
+          <span style="color:#f92672">username</span>: <span style="color:#ae81ff">root</span>
+          <span style="color:#f92672">password</span>:  <span style="color:#ae81ff">${{ secrets.FTP_PASSWORD }}</span>
+          <span style="color:#f92672">port</span>: <span style="color:#ae81ff">22</span>
+          <span style="color:#f92672">script</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">            </span>            <span style="color:#ae81ff">cp -r /root/glass/admin-web /root/glass/admin-web-old</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">deploy to server</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">SamKirkland/FTP-Deploy-Action@2.0.0</span>
+        <span style="color:#f92672">env</span>:
+          <span style="color:#f92672">FTP_SERVER</span>: <span style="color:#ae81ff">${{ secrets.SERVER_IP }}</span>
+          <span style="color:#f92672">FTP_USERNAME</span>: <span style="color:#ae81ff">root</span>
+          <span style="color:#f92672">FTP_PASSWORD</span>: <span style="color:#ae81ff">${{ secrets.FTP_PASSWORD }}</span>
+          <span style="color:#f92672">METHOD</span>: <span style="color:#ae81ff">sftp</span>
+          <span style="color:#f92672">LOCAL_DIR</span>: <span style="color:#ae81ff">dist</span>
+          <span style="color:#f92672">REMOTE_DIR</span>: <span style="color:#ae81ff">/root/glass/admin-web</span>
+          <span style="color:#f92672">ARGS</span>: --<span style="color:#ae81ff">delete</span>
 </code></pre></div><p>运行结果</p>
 <p><img src="1571647840346.png" alt="1571647840346"></p>
 <h2 id="参考">参考</h2>
@@ -319,6 +319,10 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
 <ul class="widget-list">
     
     <li>
+        <a href="https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/" title="mysql 如何查看，修改 collate">mysql 如何查看，修改 collate</a>
+    </li>
+    
+    <li>
         <a href="https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/" title="ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)">ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</a>
     </li>
     
@@ -354,10 +358,6 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
         <a href="https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/" title="Mac下clash教程">Mac下clash教程</a>
     </li>
     
-    <li>
-        <a href="https://blog.18881888.xyz/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/" title="当golang多个字段的json tag相同时会怎么样?">当golang多个字段的json tag相同时会怎么样?</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -387,7 +387,7 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
     </li>
     
     <li>
-        <a href="https://blog.18881888.xyz/categories/db/">db(5)</a>
+        <a href="https://blog.18881888.xyz/categories/db/">db(6)</a>
     </li>
     
     <li>
@@ -420,6 +420,8 @@ actions/checkout@master  <span style="color:#75715e"># 指向一个分支</span>
     <a href="https://blog.18881888.xyz/tags/golang/">golang</a>
     
     <a href="https://blog.18881888.xyz/tags/linux/">linux</a>
+    
+    <a href="https://blog.18881888.xyz/tags/mysql/">mysql</a>
     
     <a href="https://blog.18881888.xyz/tags/nginx/">nginx</a>
     

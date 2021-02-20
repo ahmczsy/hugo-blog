@@ -6,10 +6,16 @@
     <description>Recent content in Posts on Zshell的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 31 Dec 2020 18:03:46 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.18881888.xyz/post/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 20 Feb 2021 15:51:35 +0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql 如何查看，修改 collate</title>
+      <link>https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/</link>
+      <pubDate>Sat, 20 Feb 2021 15:51:35 +0800</pubDate>
+      
+      <guid>https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/</guid>
+      <description>问题 今天偶然发现 mysql 在比较字符时会忽略大小写，这让我非常意外。
+比如 select &#39;a&#39; = &#39;A&#39; 这行运行的结果是 1也就是在 mysql 看来 a 和 A 是相等的</description>
+    </item>
     
     <item>
       <title>ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</title>
