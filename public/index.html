@@ -1,543 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+    <head>
+	<meta name="generator" content="Hugo 0.80.0" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>noel的个人博客</title><meta name="Description" content="noel 的个人博客"><meta property="og:title" content="noel的个人博客" />
+<meta property="og:description" content="noel 的个人博客" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.18881888.xyz/" />
+<meta property="og:updated_time" content="2021-02-20T15:51:35+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="noel的个人博客"/>
+<meta name="twitter:description" content="noel 的个人博客"/>
+<meta name="application-name" content="noel">
+<meta name="apple-mobile-web-app-title" content="noel"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.18881888.xyz/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="noel的个人博客">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="noel的个人博客"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https:\/\/blog.18881888.xyz\/","inLanguage": "zh-CN","author": {
+                "@type": "Person",
+                "name": "noel"
+            },"description": "noel 的个人博客","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","name": "noel的个人博客"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-    <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.78.2" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Zshell的博客 | 专注于Golang、VPS、移动互联网、软件架构</title>
-    <meta property="og:title" content="Zshell的博客 | 专注于Golang、VPS、移动互联网、软件架构">
-    <meta property="og:type" content="website">
-    <meta name="Keywords" content="golang,go语言,VPS,zshell,java,博客,项目管理,python,软件架构,公众号,小程序">
-    <meta name="description" content="专注于IT互联网，包括但不限于Golang、Java、Android、VPS、软件架构等">
-    <meta property="og:url" content="https://blog.18881888.xyz/">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/css/normalize.css">
-    
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml+xml" href="https://blog.18881888.xyz/index.xml" title="Zshell的博客" />
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    
-
-
-    
-    
-</head>
-
-
-<body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                
-                    <h1>
-                        <a id="logo" href="https://blog.18881888.xyz/">
-                            Zshell的博客
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="noel的个人博客">👨‍💻‍ noel 的博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/ahmczsy" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
                         </a>
-                    </h1>
-                
-                <p class="description">专注于Golang、VPS、移动互联网、软件架构</p>
-            </div>
-            <div>
-                <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="https://blog.18881888.xyz/">首页</a>
-                    
-                    <a  href="https://blog.18881888.xyz/archives/" title="归档">归档</a>
-                    
-                    <a  href="https://blog.18881888.xyz/about/" title="关于">关于</a>
-                    
-                </nav>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
             </div>
         </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="noel的个人博客">👨‍💻‍ noel 的博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/ahmczsy" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
     </div>
 </header>
-
-
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/" title="mysql 如何查看，修改 collate" >mysql 如何查看，修改 collate</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2021年2月20日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/db">db</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                问题 今天偶然发现 mysql 在比较字符时会忽略大小写，这让我非常意外。
-比如 select 'a' = 'A' 这行运行的结果是 1也就是在 mysql 看来 a 和 A 是相等的……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/" title="ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)" >ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年12月31日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/db">db</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                前言 今天有个业务是需要在某个表中新增一列。新增的列是个字典列，值的种类很少。一开始我想要使用 LowCardinality(String) 来存储，但有个同事说用uInt32 来存储。我的理由是看着直观，不用维护 int 的映射关系，他的理由是存储和查询的效率高。但是我从clickhouse 的官方文档中看到：
- The efficiency of using LowCardinality data type depends on data diversity.……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/" title="ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)" >ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年11月1日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/db">db</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                问题 今天在修改 ClickHouse 集群数据库表结构的时候 , 不知道由于什么原因 , 造成有两个节点 ( A 和 B , 其中 B 是副本节点 ) 的 zookeeper 的 metadata 数据不一致……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="openresty 开发记录" >openresty 开发记录</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年9月12日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/code">code</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                这段时间需要做一个签名验证的模块 . 因为 golang 的 rsa 性能问题需要用 nginx-opensty 来开发 , 在这个过程中遇到了一些问题和结果方法 , 在这里记录一下 .……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/" title="clickhouse如何把两数组转为两列" >clickhouse如何把两数组转为两列</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年9月4日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/db">db</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                在 clickhouse 中经常遇到把数组转为列的情况 .
-一个数组转为列 一个数组转列的情况很简单 , 直接使用 arrayjoin 函数来实现……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="clickhouse 比较版本号" >clickhouse 比较版本号</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年8月25日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/db">db</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。
-select IPv4StringToNum(&#39;2.7.14.23&#39;) &lt; IPv4StringToNum(&#39;2.12.8.12&#39;) comparse; 上面的结果是 1 符合我们的预期……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/" title="linux的top命令如何保存设置" >linux的top命令如何保存设置</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年7月10日
-                            </date>
-                            
-                            <div class="post-content">
-                                问题 linux的top命令的默认显示方式不是很直观。比如内存的显示方式是以字节为单位；每次刷新的间隔太慢；多个cpu核心没有全部显示等。每次进入top的界面都要设置一阵子才能舒适的使用。但是每次都要设置就很麻烦，所以这篇文章就是来展示我的top命令的一些设置以及如果保存这些设置。
-如何保存设置 使用大写的W来保存自定义的设置，按下W后top界面上会显示设置保存的路径，如下图所示
-个人设置 下面是我的一些个性化设置
-内存为MB为单位显示 按多次e切换各个进程的内存单位
-按多次E切换概览信息的内存单位，调整前后的效果如下所示
-调整前：……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/" title="使用Postman发送经过gzip压缩的request body" >使用Postman发送经过gzip压缩的request body</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年6月30日
-                            </date>
-                            
-                            <div class="post-content">
-                                最近需要测试gzip相关的内容。其中有一项需要对经过gzip压缩的request body进行处理。平时测试接口都是使用postman，这次我也希望用postman来完成
-实现  首先请求的header中必须有Content-Encoding=gzip，如图所示    想要使用postman发送gzip压缩的请求，只能通过发送文件的方式。所以要先把要发送的内容生成gzip文件
-func TestGzip(t *testing.……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/" title="golang处理数据库返回大量数据" >golang处理数据库返回大量数据</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年5月26日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/code">code</a></span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/db">db</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                问题 这两天需要把ClickHouse的查询结果进行统计然后存储起来，但是每一次查询的出来的数据量非常大。行数很多，某一天的count统计如下：
-每次查询的数据有上亿行😢。在ClickHouse查询出结果后返回给client(就是我写的程序)，但是由于这个任务是在k8s内运行，限制只有400m的内存。所以很快就因为内存溢出而崩溃。
-之前的代码 一般的情况下都是把查询结果都放到slice内再返回比如这样：
-for scanner.Next() { value := reflect.……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/" title="Mac下clash教程" >Mac下clash教程</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年2月18日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://blog.18881888.xyz/categories/tool">tool</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                问题 在Mac下想要舒服的使用UnblockNeteaseMusic肯定要和clashx配合使用，我在使用clashx时遇到了一些问题，现在记录下来方便大家参考
-简单使用   下载地址
-  clashx的配置文件夹路径在~/.config/clash/下，或者直接在状态栏通过gui操作
-   配置文件都是以yaml类型的。在配置文件夹下可以存在多个配置文件，方便在界面上切换不同的配置，如上图的三个配置文件test，config，ali 只有在设置为系统代理的情况下才能使代理有效  我使用到的配置 详细的配置文档可以参考这个链接，下面说的都是我经常用到的……
-                            </div>
-                            <p class="readmore"><a href="https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/">阅读全文</a></p>
-                        </article>
-                    
-                    
-                    
-
-
-
-<ol class="page-navigator">
-    
-
-    
-    <li  class="current">
-        <a href="https://blog.18881888.xyz/">1</a>
-    </li>
-    
-    <li >
-        <a href="https://blog.18881888.xyz/page/2/">2</a>
-    </li>
-    
-    <li >
-        <a href="https://blog.18881888.xyz/page/3/">3</a>
-    </li>
-    
-
-    
-    <li class="next">
-        <a href="https://blog.18881888.xyz/page/2/">下一页</a>
-    </li>
-    
-</ol>
-
-
-
-                </div>
-            </div>
-
-            <div id="secondary">
-    <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
-      
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://blog.18881888.xyz/">
-      <button type="submit" class="submit icon-search"></button>
-</form>
-    </section>
-    
-    <section class="widget">
-        <h3 class="widget-title">最近文章</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/" title="mysql 如何查看，修改 collate">mysql 如何查看，修改 collate</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/" title="ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)">ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/" title="ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)">ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="openresty 开发记录">openresty 开发记录</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/" title="clickhouse如何把两数组转为两列">clickhouse如何把两数组转为两列</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="clickhouse 比较版本号">clickhouse 比较版本号</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/" title="linux的top命令如何保存设置">linux的top命令如何保存设置</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/" title="使用Postman发送经过gzip压缩的request body">使用Postman发送经过gzip压缩的request body</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/" title="golang处理数据库返回大量数据">golang处理数据库返回大量数据</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/" title="Mac下clash教程">Mac下clash教程</a>
-    </li>
-    
-</ul>
-    </section>
-
-    
-<section class="widget">
-    <h3 class="widget-title" style="color:red">福利派送</h3>
-    <ul class="widget-list">
-        
-        <li>
-            <a href="https://evolution-host.com/free-vps.php" title="免费VPS领取" target="_blank" style="color:red">
-                
-                    <img src="https://s2.ax1x.com/2020/01/21/1ksj1A.png">
-                
-            </a>
-        </li>
-        
-    </ul>
-</section>
-
-
-    <section class="widget">
-        <h3 class="widget-title">分类</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://blog.18881888.xyz/categories/code/">code(3)</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/categories/db/">db(6)</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/categories/tool/">tool(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/categories/%E7%94%9F%E6%B4%BB/">生活(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/">编程(1)</a>
-    </li>
-    
-</ul>
-    </section>
-
-    <section class="widget">
-        <h3 class="widget-title">标签</h3>
-<div class="tagcloud">
-    
-    <a href="https://blog.18881888.xyz/tags/clash/">clash</a>
-    
-    <a href="https://blog.18881888.xyz/tags/clickhouse/">clickhouse</a>
-    
-    <a href="https://blog.18881888.xyz/tags/clickhousue/">clickhousue</a>
-    
-    <a href="https://blog.18881888.xyz/tags/git/">git</a>
-    
-    <a href="https://blog.18881888.xyz/tags/golang/">golang</a>
-    
-    <a href="https://blog.18881888.xyz/tags/linux/">linux</a>
-    
-    <a href="https://blog.18881888.xyz/tags/mysql/">mysql</a>
-    
-    <a href="https://blog.18881888.xyz/tags/nginx/">nginx</a>
-    
-    <a href="https://blog.18881888.xyz/tags/vue/">vue</a>
-    
-    <a href="https://blog.18881888.xyz/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-    
-    <a href="https://blog.18881888.xyz/tags/%E7%94%9F%E6%B4%BB/">生活</a>
-    
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
 </div>
-    </section>
-
-    
-<section class="widget">
-    <h3 class="widget-title">友情链接</h3>
-    <ul class="widget-list">
-        
-        <li>
-            <a target="_blank" href="http://mirrors.flysnow.org/" title="常用开发工具CDN镜像">常用开发工具CDN镜像</a>
-        </li>
-        
-    </ul>
-</section>
-
-
-    <section class="widget">
-        <h3 class="widget-title">其它</h3>
-        <ul class="widget-list">
-            <li><a href="https://blog.18881888.xyz/index.xml">文章 RSS</a></li>
-        </ul>
-    </section>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
 </div>
+<main class="main">
+                <div class="container"><div class="page home" posts><div class="home-profile"><div class="home-avatar"><a href="/posts/" title="所有文章"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.ax1x.com/2019/08/05/egNJkd.jpg"
+        data-srcset="https://s2.ax1x.com/2019/08/05/egNJkd.jpg, https://s2.ax1x.com/2019/08/05/egNJkd.jpg 1.5x, https://s2.ax1x.com/2019/08/05/egNJkd.jpg 2x"
+        data-sizes="auto"
+        alt="https://s2.ax1x.com/2019/08/05/egNJkd.jpg"
+        title="https://s2.ax1x.com/2019/08/05/egNJkd.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/ahmczsy" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://t.me/tgnoel" title="Telegram" target="_blank" rel="noopener noreffer me"><i class="fab fa-telegram-plane fa-fw"></i></a><a href="mailto:ahmczsy@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/">mysql 如何查看，修改 collate</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-02-20">2021-02-20</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/db/"><i class="far fa-folder fa-fw"></i>db</a></span></div><div class="content">问题 今天偶然发现 mysql 在比较字符时会忽略大小写，这让我非常意外。 比如 select 'a' = 'A' 这行运行的结果是 1也就是在 mysql 看来 a 和 A 是相等的 经过一番的查找原来是 mysql</div><div class="post-footer">
+        <a href="/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/">ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-12-31">2020-12-31</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/db/"><i class="far fa-folder fa-fw"></i>db</a></span></div><div class="content">前言 今天有个业务是需要在某个表中新增一列。新增的列是个字典列，值的种类很少。一开始我想要使用 LowCardinality(String) 来存储，但有个同事说用uInt32 来存储。我的</div><div class="post-footer">
+        <a href="/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/clickhousue/">clickhousue</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/">ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-11-01">2020-11-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/db/"><i class="far fa-folder fa-fw"></i>db</a></span></div><div class="content">问题 今天在修改 ClickHouse 集群数据库表结构的时候 , 不知道由于什么原因 , 造成有两个节点 ( A 和 B , 其中 B 是副本节点 ) 的 zookeeper 的 metadata 数据不一致 每次在两个节点执行 alter</div><div class="post-footer">
+        <a href="/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/clickhouse/">clickhouse</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">openresty 开发记录</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-09-12">2020-09-12</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/code/"><i class="far fa-folder fa-fw"></i>code</a></span></div><div class="content">这段时间需要做一个签名验证的模块 . 因为 golang 的 rsa 性能问题需要用 nginx-opensty 来开发 , 在这个过程中遇到了一些问题和结果方法 , 在这里记录一下 . 安装 在 mac 下可以直接</div><div class="post-footer">
+        <a href="/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">nginx</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/">clickhouse如何把两数组转为两列</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-09-04">2020-09-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/db/"><i class="far fa-folder fa-fw"></i>db</a></span></div><div class="content">在 clickhouse 中经常遇到把数组转为列的情况 . 一个数组转为列 一个数组转列的情况很简单 , 直接使用 arrayjoin 函数来实现 1 select arrayJoin([1,2,3,4]) n 两个数组转为两列遇到的问题 现有两个数组</div><div class="post-footer">
+        <a href="/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/clickhouse/">clickhouse</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/">clickhouse 比较版本号</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-08-25">2020-08-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/db/"><i class="far fa-folder fa-fw"></i>db</a></span></div><div class="content">2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。 1 select IPv4StringToNum(&#39;2.7.14.23&#39;) &lt; IPv4StringToNum(&#39;2.12.8.12&#39;) comparse; 上面的结果是 1 符合我们的预期 但是这个函数有个缺点，版本号必须符合 ipv4 的</div><div class="post-footer">
+        <a href="/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/clickhouse/">clickhouse</a></div></div>
+</article><ul class="pagination"><li class="page-item active">
+                    <span class="page-link">
+                        <a href="/">1</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/2/">2</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/3/">3</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/5/">5</a>
+                    </span>
+                </li></ul></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
-    </div>
-</div>
-<footer id="footer">
-    <div class="container">
-        &copy; 2021 <a href="https://blog.18881888.xyz/">Zshell的博客 By Noel</a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
-        
-    </div>
-</footer>
+    </footer></div>
 
-
-
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-151122324-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
-
-
-
-
-
-</body>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"data":{"id-1":"一个 golang 程序员的个人博客"},"search":{"algoliaAppID":"APVHGPESBV","algoliaIndex":"index.zh-cn","algoliaSearchKey":"feaac50093f949bb1df2f02801bae913","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"]},"duration":null,"speed":null}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-151122324-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-151122324-1" async></script></body>
 </html>

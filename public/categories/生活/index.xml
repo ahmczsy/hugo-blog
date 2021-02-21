@@ -1,22 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>生活 on Zshell的博客</title>
-    <link>https://blog.18881888.xyz/categories/%E7%94%9F%E6%B4%BB/</link>
-    <description>Recent content in 生活 on Zshell的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 03 Nov 2019 20:23:48 +0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>上海办理护照流程</title>
-      <link>https://blog.18881888.xyz/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/</link>
-      <pubDate>Sun, 03 Nov 2019 20:23:48 +0800</pubDate>
-      
-      <guid>https://blog.18881888.xyz/post/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/</guid>
-      <description>前言 我办理护照并不是因为目前有出过国的需求。而是国外的一些平台的身份认证需要上传护照，中国居民身份证在国外平台的认可度是没有护照高的。所以现在闲着没事办个护照，以备不时之需。
-必要条件和证件 在上海办理护照要满足以下三个条件其中之一
- 上海户籍 上海居住证 在上海连续缴纳一年社保  我就是以第三个条件来办理的护照</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>生活 - 分类 - noel的个人博客</title>
+        <link>https://blog.18881888.xyz/categories/%E7%94%9F%E6%B4%BB/</link>
+        <description>生活 - 分类 - noel的个人博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 03 Nov 2019 20:23:48 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/%E7%94%9F%E6%B4%BB/" rel="self" type="application/rss+xml" /><item>
+    <title>上海办理护照流程</title>
+    <link>https://blog.18881888.xyz/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/</link>
+    <pubDate>Sun, 03 Nov 2019 20:23:48 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2019.11.03_%E4%B8%8A%E6%B5%B7%E5%8A%9E%E7%90%86%E6%8A%A4%E7%85%A7%E6%B5%81%E7%A8%8B/</guid>
+    <description><![CDATA[前言 我办理护照并不是因为目前有出过国的需求。而是国外的一些平台的身份认证需要上传护照，中国居民身份证在国外平台的认可度是没有护照高的。所以现]]></description>
+</item></channel>
 </rss>

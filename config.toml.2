@@ -1,0 +1,70 @@
+baseURL = "https://blog.18881888.xyz/"
+name = "Zshell"
+license = "MIT"
+licenselink = ""
+description = "Zshell的个人博客"
+tags = ["maupassant"]
+features = ["Tag","Category","Menu","Recent Post","Archives"]
+min_version = "0.30"
+
+languageCode = "zh-CN"
+title = "Zshell的博客"
+theme = "maupassant"
+
+
+googleAnalytics = "UA-151122324-1"
+summaryLength = 10
+
+[author]
+  name = "Noel"
+  homepage = ""
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+
+
+[[menu.main]]
+  name = "归档"
+  weight = 2
+  identifier = "archives"
+  url = "/archives/"
+
+[[menu.main]]
+  name = "关于"
+  weight = 3
+  identifier = "about"
+  url = "/about/"
+
+[params]
+  author = "Zshell"
+  subtitle = "专注于Golang、VPS、移动互联网、软件架构"
+  keywords = "golang,go语言,VPS,zshell,java,博客,项目管理,python,软件架构,公众号,小程序"
+  description = "专注于IT互联网，包括但不限于Golang、Java、Android、VPS、软件架构等"
+
+  busuanzi = true  #点击统计
+
+
+
+[[params.links]]
+  title = "常用开发工具CDN镜像"
+  name = "常用开发工具CDN镜像"
+  url = "http://mirrors.flysnow.org/"
+
+
+[params.cc]
+    name = "知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议"
+    link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+
+[[params.ads]]
+  title = "免费VPS领取"
+  url = "https://evolution-host.com/free-vps.php"
+  img = "https://s2.ax1x.com/2020/01/21/1ksj1A.png"
+
+[params.utteranc]
+    enable = true
+    repo = "ahmczsy/blog_comment"    # 存储评论的Repo，格式为 owner/repo
+    issueTerm = "pathname"  #表示你选择以那种方式让github issue的评论和你的文章关联。
+    theme = "github-light" # 样式主题，有github-light和github-dark两种

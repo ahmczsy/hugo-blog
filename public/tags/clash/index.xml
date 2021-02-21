@@ -1,23 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>clash on Zshell的博客</title>
-    <link>https://blog.18881888.xyz/tags/clash/</link>
-    <description>Recent content in clash on Zshell的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Feb 2020 22:44:13 +0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/tags/clash/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Mac下clash教程</title>
-      <link>https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Tue, 18 Feb 2020 22:44:13 +0800</pubDate>
-      
-      <guid>https://blog.18881888.xyz/post/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</guid>
-      <description>问题 在Mac下想要舒服的使用UnblockNeteaseMusic肯定要和clashx配合使用，我在使用clashx时遇到了一些问题，现在记录下来方便大家参考
-简单使用   下载地址
-  clashx的配置文件夹路径在~/.config/clash/下，或者直接在状态栏通过gui操作
-   配置文件都是以yaml类型的。在配置文件夹下可以存在多个配置文件，方便在界面上切换不同的配置，如上图的三个配置文件test，config，ali 只有在设置为系统代理的情况下才能使代理有效  我使用到的配置 详细的配置文档可以参考这个链接，下面说的都是我经常用到的</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>clash - 标签 - noel的个人博客</title>
+        <link>https://blog.18881888.xyz/tags/clash/</link>
+        <description>clash - 标签 - noel的个人博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 Feb 2020 22:44:13 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/tags/clash/" rel="self" type="application/rss+xml" /><item>
+    <title>Mac下clash教程</title>
+    <link>https://blog.18881888.xyz/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</link>
+    <pubDate>Tue, 18 Feb 2020 22:44:13 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/</guid>
+    <description><![CDATA[问题 在Mac下想要舒服的使用UnblockNeteaseMusic肯定要和clashx配合使用，我在使用clashx时遇到了一些问题，现在记]]></description>
+</item></channel>
 </rss>

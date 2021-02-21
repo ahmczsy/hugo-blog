@@ -1,0 +1,171 @@
+# MarshalJSON没有调用、无效？
+
+
+## 问题
+
+今天我在golang自定义json的序列化时，发现我的struct实现`MarshalJSON()`竟然没有效果，还是按照默认的方式来序列化。这让我非常郁闷☹，后来我查找了一些资料发现这个问题不简单。。
+
+下面是我有问题的代码
+
+```go
+type str string
+
+func (s *str) MarshalJSON() (data []byte, err error) {
+	return json.Marshal("bbb")
+}
+
+func TestStr(t *testing.T) {
+	var s str = "aaa"
+	bytes, _ := json.Marshal(s)
+	fmt.Println(string(bytes))
+    //我想让他序列化为"bbb"但是输出结果还是"aaa"
+}
+```
+
+##  pointer receiver  和value receiver
+
+```go
+type T struct{}
+func (t *T) pointerMethod() { } // pointer receiver
+func (t T) valueMethod() { } // value receiver
+```
+
+上面两个方法分别就是pointer receiver和value receiver
+
+由于golang没有面向对象那一套东西，上面的两行代码可以视为下面的形式
+
+```go
+func  pointerMethod(t *T) { } 
+func  valueMethod(t T) { } 
+```
+
+所以在golang中value变量只能调用value receiver的方法，pointer只能调用pointer receiver的方法。比如：
+
+```go
+var t1 T
+t1.valueMethod()//正确
+t1.pointerMethod()//错误?
+
+var t2 *T
+t2.valueMethod()//错误？
+t2.pointerMethod()//正确
+```
+
+其实我们实际可以相互调用的
+
+```go
+var t1 T
+t1.valueMethod()//正确
+t1.pointerMethod()//正确
+
+var t2 *T
+t2.valueMethod()//正确
+t2.pointerMethod()//正确
+```
+
+因为golang的底层帮我们做了一层隐式转换
+
+`t1.pointerMethod()` == `(&t1).pointerMethod()`
+
+`t2.valueMethod()`==`(*t2).valueMethod()`
+
+**总的来说**
+
+* `T`可以调用value receiver和pointer receiver方法
+* `*T`如果是可以取地址(*addressable*)的变量，也是可以调用value receiver和pointer receiver方法
+* 如果`*T`是不可去地址的变量，那只能调用pointer receiver方法
+
+关于什么是可以去地址的变量，什么是不可以取地址。可以参考这篇文章[链接]( https://colobu.com/2018/02/27/go-addressable/ )
+
+## Interface的value receiver 和pointer receiver
+
+在讨论interface的receiver之前，先看下interface在使用中的一些问题。
+
+```go
+type S struct {
+}
+
+func (s *S) pointerMethod() {
+}
+func (s S) valueMethod() {
+}
+
+type I interface {
+	pointerMethod()
+	valueMethod()
+}
+
+func TestInterface(t *testing.T) {
+	value := S{}
+	pointer := &S{}
+	
+	var i I
+	i = pointer //可以赋值
+	i=value  //编译错误  
+	// cannot use value (type S) as type I in assignment:
+	//S does not implement I (pointerMethod method has pointer receiver)
+}
+```
+
+上面的代码为什么pointer可以赋值给i，而value却不行？
+
+因为pointer变量可以通过`*pointer`来调用value receiver也就是`valueMethod`
+
+但是value变量就不行。
+
+因为存储在interface里的值是不能取地址的，所以调用不了`pointerMethod`
+
+总的来说当一个接口`I`有value receiver和pointer receiver时，指针变量（`*T`）是满足这个接口的
+
+但是值类型的变量(`T`)就不行，因为`T`赋值给`I`后，不能取地址
+
+## 解决问题
+
+经过上面的解释，我们现在自然的找到了解决我一开始遇到的问题的方法
+
+这里有两种解决方法
+
+* 把`s`的类型改为指针
+
+  ```go
+  type str string
+  
+  func (s *str) MarshalJSON() (data []byte, err error) {
+  	return json.Marshal("bbb")
+  }
+  
+  func TestStr(t *testing.T) {
+  	temp := "aaa"
+  	var s *str = (*str)(&temp) //改为指针
+  	bytes, _ := json.Marshal(s)
+  	fmt.Println(string(bytes))
+  }
+  ```
+
+* 从pointer receiver改为value receiver
+
+  ```go
+  type str string
+  
+  func (s str) MarshalJSON() (data []byte, err error) { //把 * 去掉
+  	return json.Marshal("bbb")
+  }
+  
+  func TestStr(t *testing.T) {
+  	var s str = "aaa"
+  	bytes, _ := json.Marshal(s)
+  	fmt.Println(string(bytes))
+  }
+  ```
+
+  
+
+## 参考
+
+*  https://stackoverflow.com/questions/33587227/golang-method-sets-pointer-vs-value-receiver 
+*  https://stackoverflow.com/questions/21390979/custom-marshaljson-never-gets-called-in-go 
+*  http://shanks.leanote.com/post/Untitled-55ca439338f41148cd000759-17 
+*  https://sanyuesha.com/2017/07/22/how-to-understand-go-interface/ 
+*  https://colobu.com/2018/02/27/go-addressable/ 
+
+*  https://tonybai.com/2015/09/17/7-things-you-may-not-pay-attation-to-in-go/ 

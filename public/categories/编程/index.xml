@@ -1,22 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>编程 on Zshell的博客</title>
-    <link>https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/</link>
-    <description>Recent content in 编程 on Zshell的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Fri, 08 Nov 2019 19:07:02 +0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>MarshalJSON没有调用、无效？</title>
-      <link>https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</link>
-      <pubDate>Fri, 08 Nov 2019 19:07:02 +0800</pubDate>
-      
-      <guid>https://blog.18881888.xyz/post/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</guid>
-      <description>问题 今天我在golang自定义json的序列化时，发现我的struct实现MarshalJSON()竟然没有效果，还是按照默认的方式来序列化。这让我非常郁闷☹，后来我查找了一些资料发现这个问题不简单。。
-下面是我有问题的代码
-type str string func (s *str) MarshalJSON() (data []byte, err error) { return json.</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>编程 - 分类 - noel的个人博客</title>
+        <link>https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/</link>
+        <description>编程 - 分类 - noel的个人博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 08 Nov 2019 19:07:02 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>MarshalJSON没有调用、无效？</title>
+    <link>https://blog.18881888.xyz/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</link>
+    <pubDate>Fri, 08 Nov 2019 19:07:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/</guid>
+    <description><![CDATA[问题 今天我在golang自定义json的序列化时，发现我的struct实现MarshalJSON()竟然没有效果，还是按照默认的方式来序列化]]></description>
+</item></channel>
 </rss>

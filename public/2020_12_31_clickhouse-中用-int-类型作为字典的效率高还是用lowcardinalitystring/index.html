@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String) - noel的个人博客</title><meta name="Description" content="noel 的个人博客"><meta property="og:title" content="ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)" />
+<meta property="og:description" content="前言 今天有个业务是需要在某个表中新增一列。新增的列是个字典列，值的种类很少。一开始我想要使用 LowCardinality(String) 来存储，但有个同事说用uInt32 来存储。我的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.18881888.xyz/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/" />
+<meta property="article:published_time" content="2020-12-31T18:03:46+08:00" />
+<meta property="article:modified_time" content="2020-12-31T18:03:46+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)"/>
+<meta name="twitter:description" content="前言 今天有个业务是需要在某个表中新增一列。新增的列是个字典列，值的种类很少。一开始我想要使用 LowCardinality(String) 来存储，但有个同事说用uInt32 来存储。我的"/>
+<meta name="application-name" content="noel">
+<meta name="apple-mobile-web-app-title" content="noel"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.18881888.xyz/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/" /><link rel="prev" href="https://blog.18881888.xyz/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/" /><link rel="next" href="https://blog.18881888.xyz/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.18881888.xyz\/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring\/"
+        },"genre": "posts","keywords": "clickhousue","wordcount":  944 ,
+        "url": "https:\/\/blog.18881888.xyz\/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring\/","datePublished": "2020-12-31T18:03:46+08:00","dateModified": "2020-12-31T18:03:46+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "noel"},"author": {
+                "@type": "Person",
+                "name": "noel"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="noel的个人博客">👨‍💻‍ noel 的博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/ahmczsy" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="noel的个人博客">👨‍💻‍ noel 的博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/ahmczsy" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/db/"><i class="far fa-folder fa-fw"></i>db</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-31">2020-12-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 944 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#数据准备">数据准备</a>
+      <ul>
+        <li><a href="#建表语句">建表语句</a></li>
+        <li><a href="#产生数据">产生数据</a></li>
+      </ul>
+    </li>
+    <li><a href="#测试结果">测试结果</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#group-查询">group 查询</a>
+              <ul>
+                <li><a href="#int-类型">int 类型</a></li>
+                <li><a href="#lowcardinalitystring-类型">LowCardinality(String) 类型</a></li>
+              </ul>
+            </li>
+            <li><a href="#in--查询">in  查询</a>
+              <ul>
+                <li><a href="#int-类型-1">int 类型</a></li>
+                <li><a href="#lowcardinalitystring-类型-1">LowCardinality(String) 类型</a></li>
+              </ul>
+            </li>
+            <li><a href="#单个值查询">单个值查询</a>
+              <ul>
+                <li><a href="#int-类型-2">int 类型</a></li>
+                <li><a href="#lowcardinalitystring-类型-2">LowCardinality(String) 类型</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="前言">前言</h2>
+<p>今天有个业务是需要在某个表中新增一列。新增的列是个字典列，值的种类很少。一开始我想要使用 <code>LowCardinality(String)</code> 来存储，但有个同事说用<code>uInt32</code> 来存储。我的理由是看着直观，不用维护 int 的映射关系，他的理由是存储和查询的效率高。但是我从clickhouse 的官方文档中看到：</p>
+<blockquote>
+<p>The efficiency of using <code>LowCardinality</code> data type depends on data diversity. If a dictionary contains less than 10,000 distinct values, then ClickHouse mostly shows higher efficiency of data reading and storing. If a dictionary contains more than 100,000 distinct values, then ClickHouse can perform worse in comparison with using ordinary data types.</p>
+</blockquote>
+<p>文档说数据的种类在十万以下时，效率很高，但不知道有多高。于是我打算 benchmark 测试下 <code>LowCardinality(String)</code> 和 <code>uInt32 </code>的性能差多少。</p>
+<h2 id="数据准备">数据准备</h2>
+<h3 id="建表语句">建表语句</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">Dict</span>
+<span class="p">(</span>
+    <span class="n">id</span>      <span class="n">UInt32</span><span class="p">,</span>
+    <span class="n">int_dic</span> <span class="n">UInt32</span><span class="p">,</span>
+    <span class="n">str_dic</span> <span class="n">LowCardinality</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+<span class="p">)</span>
+    <span class="n">ENGINE</span> <span class="o">=</span> <span class="n">MergeTree</span><span class="p">()</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="产生数据">产生数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">Dict</span>
+<span class="k">SELECT</span> <span class="nb">number</span>                                                                                           <span class="k">AS</span> <span class="n">id</span><span class="p">,</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">][</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>                                                     <span class="k">AS</span> <span class="n">int_dic</span><span class="p">,</span>
+       <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="s1">&#39;seven&#39;</span><span class="p">,</span> <span class="s1">&#39;eight&#39;</span><span class="p">,</span> <span class="s1">&#39;nine&#39;</span><span class="p">,</span> <span class="s1">&#39;ten&#39;</span><span class="p">][</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">AS</span> <span class="n">str_dic</span>
+<span class="k">FROM</span> <span class="n">numbers</span><span class="p">(</span><span class="mi">10000000</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="测试结果">测试结果</h2>
+<h4 id="group-查询">group 查询</h4>
+<h5 id="int-类型">int 类型</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">SELECT
+    int_dic,
+    count<span class="o">()</span>
+FROM Dict
+GROUP BY int_dic
+
+┌─int_dic─┬─count<span class="o">()</span>─┐
+│       <span class="m">4</span> │  <span class="m">999772</span> │
+│       <span class="m">3</span> │  <span class="m">999515</span> │
+│       <span class="m">2</span> │  <span class="m">999412</span> │
+│       <span class="m">5</span> │ <span class="m">1000329</span> │
+│       <span class="m">1</span> │ <span class="m">1000159</span> │
+│       <span class="m">6</span> │ <span class="m">1000936</span> │
+│       <span class="m">7</span> │  <span class="m">999680</span> │
+│       <span class="m">9</span> │ <span class="m">1000776</span> │
+│       <span class="m">8</span> │  <span class="m">999922</span> │
+│      <span class="m">10</span> │  <span class="m">999499</span> │
+└─────────┴─────────┘
+
+<span class="m">10</span> rows in set. Elapsed: 0.343 sec. Processed 10.00 million rows, 40.00 MB <span class="o">(</span>29.19 million rows/s., 116.74 MB/s.<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="lowcardinalitystring-类型">LowCardinality(String) 类型</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">SELECT
+    str_dic,
+    count<span class="o">()</span>
+FROM Dict
+GROUP BY str_dic
+
+┌─str_dic─┬─count<span class="o">()</span>─┐
+│ nine    │ <span class="m">1000776</span> │
+│ six     │ <span class="m">1000936</span> │
+│ two     │  <span class="m">999412</span> │
+│ three   │  <span class="m">999515</span> │
+│ one     │ <span class="m">1000159</span> │
+│ four    │  <span class="m">999772</span> │
+│ five    │ <span class="m">1000329</span> │
+│ ten     │  <span class="m">999499</span> │
+│ seven   │  <span class="m">999680</span> │
+│ eight   │  <span class="m">999922</span> │
+└─────────┴─────────┘
+
+<span class="m">10</span> rows in set. Elapsed: 0.159 sec. Processed 10.00 million rows, 10.02 MB <span class="o">(</span>62.71 million rows/s., 62.84 MB/s.<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="in--查询">in  查询</h4>
+<h5 id="int-类型-1">int 类型</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">SELECT count<span class="o">()</span>
+FROM Dict
+WHERE int_dic IN <span class="o">(</span>1, 2, 3<span class="o">)</span>
+
+┌─count<span class="o">()</span>─┐
+│ <span class="m">2999086</span> │
+└─────────┘
+
+<span class="m">1</span> rows in set. Elapsed: 0.094 sec. Processed 10.00 million rows, 40.00 MB <span class="o">(</span>106.04 million rows/s., 424.17 MB/s.<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="lowcardinalitystring-类型-1">LowCardinality(String) 类型</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">SELECT count<span class="o">()</span>
+FROM Dict
+WHERE str_dic IN <span class="o">(</span><span class="s1">&#39;one&#39;</span>, <span class="s1">&#39;two&#39;</span>, <span class="s1">&#39;three&#39;</span><span class="o">)</span>
+
+┌─count<span class="o">()</span>─┐
+│ <span class="m">2999086</span> │
+└─────────┘
+
+<span class="m">1</span> rows in set. Elapsed: 0.041 sec. Processed 10.00 million rows, 10.02 MB <span class="o">(</span>240.81 million rows/s., 241.32 MB/s.<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="单个值查询">单个值查询</h4>
+<h5 id="int-类型-2">int 类型</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">SELECT count<span class="o">()</span>
+FROM Dict
+WHERE <span class="nv">int_dic</span> <span class="o">=</span> <span class="m">1</span>
+
+┌─count<span class="o">()</span>─┐
+│ <span class="m">1000159</span> │
+└─────────┘
+
+<span class="m">1</span> rows in set. Elapsed: 0.047 sec. Processed 10.00 million rows, 40.00 MB <span class="o">(</span>213.06 million rows/s., 852.26 MB/s.<span class="o">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="lowcardinalitystring-类型-2">LowCardinality(String) 类型</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">SELECT count<span class="o">()</span>
+FROM Dict
+WHERE <span class="nv">str_dic</span> <span class="o">=</span> <span class="s1">&#39;one&#39;</span>
+
+┌─count<span class="o">()</span>─┐
+│ <span class="m">1000159</span> │
+└─────────┘
+
+<span class="m">1</span> rows in set. Elapsed: 0.032 sec. Processed 10.00 million rows, 10.02 MB <span class="o">(</span>310.69 million rows/s., 311.35 MB/s.<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="结论">结论</h2>
+<p>从测试结果来看，<code>LowCardinality(String)</code> 类型的性能大大超过我的预期。一开以为会比 int 类型稍微慢点</p>
+<p>谁知却比 int 的性能好上一倍。通过这个测试顺利说服了同事😁</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-12-31</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2020_12_31_clickhouse-%E4%B8%AD%E7%94%A8-int-%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%88%E7%8E%87%E9%AB%98%E8%BF%98%E6%98%AF%E7%94%A8lowcardinalitystring/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/clickhousue/">clickhousue</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020.11.1_clickhouse-%E9%87%8D%E5%BB%BA-zookeeper-%E9%87%8C%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE/" class="prev" rel="prev" title="ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)"><i class="fas fa-angle-left fa-fw"></i>ClickHouse 重建 zookeeper 里的元数据(ClickHouse 恢复数据)</a>
+            <a href="/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/" class="next" rel="next" title="mysql 如何查看，修改 collate">mysql 如何查看，修改 collate<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"ahmczsy/blog_comment"}},"search":{"algoliaAppID":"APVHGPESBV","algoliaIndex":"index.zh-cn","algoliaSearchKey":"feaac50093f949bb1df2f02801bae913","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-151122324-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-151122324-1" async></script></body>
+</html>

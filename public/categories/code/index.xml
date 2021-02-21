@@ -1,42 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>code on Zshell的博客</title>
-    <link>https://blog.18881888.xyz/categories/code/</link>
-    <description>Recent content in code on Zshell的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 12 Sep 2020 15:04:00 +0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/code/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>openresty 开发记录</title>
-      <link>https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Sat, 12 Sep 2020 15:04:00 +0800</pubDate>
-      
-      <guid>https://blog.18881888.xyz/post/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</guid>
-      <description>这段时间需要做一个签名验证的模块 . 因为 golang 的 rsa 性能问题需要用 nginx-opensty 来开发 , 在这个过程中遇到了一些问题和结果方法 , 在这里记录一下 .</description>
-    </item>
-    
-    <item>
-      <title>golang处理数据库返回大量数据</title>
-      <link>https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>
-      <pubDate>Tue, 26 May 2020 13:31:38 +0800</pubDate>
-      
-      <guid>https://blog.18881888.xyz/post/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</guid>
-      <description>问题 这两天需要把ClickHouse的查询结果进行统计然后存储起来，但是每一次查询的出来的数据量非常大。行数很多，某一天的count统计如下：
-每次查询的数据有上亿行😢。在ClickHouse查询出结果后返回给client(就是我写的程序)，但是由于这个任务是在k8s内运行，限制只有400m的内存。所以很快就因为内存溢出而崩溃。
-之前的代码 一般的情况下都是把查询结果都放到slice内再返回比如这样：
-for scanner.Next() { value := reflect.</description>
-    </item>
-    
-    <item>
-      <title>当golang多个字段的json tag相同时会怎么样?</title>
-      <link>https://blog.18881888.xyz/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</link>
-      <pubDate>Wed, 04 Dec 2019 18:39:58 +0800</pubDate>
-      
-      <guid>https://blog.18881888.xyz/post/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</guid>
-      <description>问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思
-情况1 都是普通字段 type sameTag struct { A string `json:&amp;#34;a&amp;#34;` B string `json:&amp;#34;a&amp;#34;` Other string `json:&amp;#34;other&amp;#34;` } func TestSameJson(t *testing.</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>code - 分类 - noel的个人博客</title>
+        <link>https://blog.18881888.xyz/categories/code/</link>
+        <description>code - 分类 - noel的个人博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 12 Sep 2020 15:04:00 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/code/" rel="self" type="application/rss+xml" /><item>
+    <title>openresty 开发记录</title>
+    <link>https://blog.18881888.xyz/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</link>
+    <pubDate>Sat, 12 Sep 2020 15:04:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</guid>
+    <description><![CDATA[这段时间需要做一个签名验证的模块 . 因为 golang 的 rsa 性能问题需要用 nginx-opensty 来开发 , 在这个过程中遇到了一些问题和结果方法 , 在这里记录一下 . 安装 在 mac 下可以直接]]></description>
+</item><item>
+    <title>golang处理数据库返回大量数据</title>
+    <link>https://blog.18881888.xyz/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>
+    <pubDate>Tue, 26 May 2020 13:31:38 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</guid>
+    <description><![CDATA[问题 这两天需要把ClickHouse的查询结果进行统计然后存储起来，但是每一次查询的出来的数据量非常大。行数很多，某一天的count统计如下]]></description>
+</item><item>
+    <title>当golang多个字段的json tag相同时会怎么样?</title>
+    <link>https://blog.18881888.xyz/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</link>
+    <pubDate>Wed, 04 Dec 2019 18:39:58 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2019.12.04_%E5%BD%93golang%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84json-tag%E7%9B%B8%E5%90%8C%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7/</guid>
+    <description><![CDATA[问题 今天我在写代码的时候遇到了标题所说的问题，我用google搜索了下也没有找到想要的答案。后来通过几个测试用例试了下这个发现问题有点意思 情]]></description>
+</item></channel>
 </rss>

@@ -1,70 +1,339 @@
 baseURL = "https://blog.18881888.xyz/"
-name = "Zshell"
+defaultContentLanguage = "zh-cn"
 license = "MIT"
 licenselink = ""
-description = "Zshell的个人博客"
 tags = ["maupassant"]
-features = ["Tag","Category","Menu","Recent Post","Archives"]
-min_version = "0.30"
+features = ["Tag", "Category", "Menu", "Recent Post", "Archives"]
 
-languageCode = "zh-CN"
-title = "Zshell的博客"
-theme = "maupassant"
+title = "noel的个人博客"
+theme = "LoveIt"
 
-
-googleAnalytics = "UA-151122324-1"
-summaryLength = 10
-
-[author]
-  name = "Noel"
-  homepage = ""
-
-[sitemap]
-  changefreq = "weekly"
-  priority = 0.5
-  filename = "sitemap.xml"
-
-
-
-[[menu.main]]
-  name = "归档"
-  weight = 2
-  identifier = "archives"
-  url = "/archives/"
-
-[[menu.main]]
-  name = "关于"
-  weight = 3
-  identifier = "about"
-  url = "/about/"
+enableRobotsTXT = true
+enableEmoji = true
 
 [params]
-  author = "Zshell"
-  subtitle = "专注于Golang、VPS、移动互联网、软件架构"
-  keywords = "golang,go语言,VPS,zshell,java,博客,项目管理,python,软件架构,公众号,小程序"
-  description = "专注于IT互联网，包括但不限于Golang、Java、Android、VPS、软件架构等"
+author = "Zshell"
+subtitle = "专注于Golang、VPS、移动互联网、软件架构"
+keywords = "golang,go语言,VPS,zshell,java,博客,项目管理,python,软件架构,公众号,小程序"
 
-  busuanzi = true  #点击统计
+busuanzi = true  #点击统计
 
-
-
-[[params.links]]
-  title = "常用开发工具CDN镜像"
-  name = "常用开发工具CDN镜像"
-  url = "http://mirrors.flysnow.org/"
+#   loveIt 配置
+version = "0.2.X"
+defaultTheme = "auto"
 
 
-[params.cc]
-    name = "知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议"
-    link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
 
-[[params.ads]]
-  title = "免费VPS领取"
-  url = "https://evolution-host.com/free-vps.php"
-  img = "https://s2.ax1x.com/2020/01/21/1ksj1A.png"
+[params.header]
+# 桌面端导航栏模式 ("fixed", "normal", "auto")
+desktopMode = "fixed"
+# 移动端导航栏模式 ("fixed", "normal", "auto")
+mobileMode = "auto"
+# 页面头部导航栏标题配置
+[params.header.title]
+# LOGO 的 URL
+logo = ""
+# 标题名称
+name = "👨‍💻‍ noel 的博客"
+# 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
+pre = ""
+# 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
+post = ""
+# 是否为标题显示打字机动画
+typeit = false
 
-[params.utteranc]
-    enable = true
-    repo = "ahmczsy/blog_comment"    # 存储评论的Repo，格式为 owner/repo
-    issueTerm = "pathname"  #表示你选择以那种方式让github issue的评论和你的文章关联。
-    theme = "github-light" # 样式主题，有github-light和github-dark两种
+[params.footer]
+enable = true
+# 自定义内容 (支持 HTML 格式)
+custom = ''
+# 是否显示 Hugo 和主题信息
+hugo = true
+# 是否显示版权信息
+copyright = true
+# 是否显示作者
+author = true
+# 网站创立年份
+since = 2018
+# 许可协议信息 (支持 HTML 格式)
+license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+
+
+# Section (所有文章) 页面配置
+[params.section]
+# special amount of posts in each section page
+# section 页面每页显示文章数量
+paginate = 20
+# date format (month and day)
+# 日期格式 (月和日)
+dateFormat = "01-02"
+# amount of RSS pages
+# RSS 文章数目
+rss = 10
+
+# List (category or tag) page config
+# List (目录或标签) 页面配置
+[params.list]
+# special amount of posts in each list page
+# list 页面每页显示文章数量
+paginate = 20
+# date format (month and day)
+# 日期格式 (月和日)
+dateFormat = "01-02"
+# amount of RSS pages
+# RSS 文章数目
+rss = 10
+
+# Hugo 解析文档的配置
+[markup]
+# 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
+[markup.highlight]
+codeFences = true
+guessSyntax = true
+lineNos = true
+lineNumbersInTable = true
+# false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
+noClasses = false
+# Goldmark 是 Hugo 0.60 以来的默认 Markdown 解析库
+[markup.goldmark]
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+linkify = true
+strikethrough = true
+table = true
+taskList = true
+typographer = true
+[markup.goldmark.renderer]
+# 是否在文档中直接使用 HTML 标签
+unsafe = true
+# 目录设置
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 6
+
+[params.page]
+# 是否在主页隐藏一篇文章
+hiddenFromHomePage = false
+# 是否在搜索结果中隐藏一篇文章
+hiddenFromSearch = false
+# 是否使用 twemoji
+twemoji = false
+# 是否使用 lightgallery
+lightgallery = false
+# 是否使用 ruby 扩展语法
+ruby = true
+# 是否使用 fraction 扩展语法
+fraction = true
+# 是否使用 fontawesome 扩展语法
+fontawesome = true
+# 是否显示原始 Markdown 文档内容的链接
+linkToMarkdown = true
+# 是否在 RSS 中显示全文内容
+rssFullText = false
+
+
+
+# 目录配置
+[params.page.toc]
+# 是否使用目录
+enable = true
+# 是否保持使用文章前面的静态目录
+keepStatic = false
+# 是否使侧边目录自动折叠展开
+auto = true
+# 代码配置
+[params.page.code]
+# 是否显示代码块的复制按钮
+copy = true
+# 默认展开显示的代码行数
+maxShownLines = 10
+
+
+
+# 网站分析配置
+[params.analytics]
+enable = true
+[params.analytics.google]
+id = "UA-151122324-1"
+anonymizeIP = true
+
+
+
+[params.page.comment.utterances]
+enable = true
+repo = "ahmczsy/blog_comment"
+issueTerm = "pathname"
+label = ""
+lightTheme = "github-light"
+darkTheme = "github-dark"
+
+[params.page.comment]
+enable = true
+
+# 作者配置
+[author]
+name = "noel"
+email = ""
+link = ""
+
+# 网站地图配置
+[sitemap]
+changefreq = "weekly"
+filename = "sitemap.xml"
+priority = 0.5
+
+# Permalinks 配置 (https://gohugo.io/content-management/urls/#permalinks)
+[Permalinks]
+# posts = ":year/:month/:filename"
+posts = ":filename"
+
+# 用于输出 Markdown 格式文档的设置
+[mediaTypes]
+[mediaTypes."text/plain"]
+suffixes = ["md"]
+
+# 用于输出 Markdown 格式文档的设置
+[outputFormats.MarkDown]
+mediaType = "text/plain"
+isPlainText = true
+isHTML = false
+
+# 用于 Hugo 输出文档的设置
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+page = ["HTML", "MarkDown"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+taxonomyTerm = ["HTML"]
+
+
+
+[languages.zh-cn]
+weight = 2
+# 网站语言, 仅在这里 CN 大写
+languageCode = "zh-CN"
+# 语言名称
+languageName = "简体中文"
+# 是否包括中日韩文字
+hasCJKLanguage = true
+# 默认每页列表显示的文章数目
+paginate = 12
+# [UA-XXXXXXXX-X] 谷歌分析代号
+googleAnalytics = "UA-151122324-1"
+# 版权描述，仅仅用于 SEO
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+# 菜单配置
+[languages.zh-cn.menu]
+[[languages.zh-cn.menu.main]]
+identifier = "posts"
+pre = ""
+post = ""
+name = "所有文章"
+url = "/posts/"
+title = ""
+weight = 1
+[[languages.zh-cn.menu.main]]
+identifier = "tags"
+pre = ""
+post = ""
+name = "标签"
+url = "/tags/"
+title = ""
+weight = 2
+[[languages.zh-cn.menu.main]]
+identifier = "categories"
+pre = ""
+post = ""
+name = "分类"
+url = "/categories/"
+title = ""
+weight = 3
+[[languages.zh-cn.menu.main]]
+identifier = "about"
+pre = ""
+post = ""
+name = "关于"
+url = "/about/"
+title = ""
+weight = 5
+[[languages.zh-cn.menu.main]]
+identifier = "github"
+pre = "<i class='fab fa-github fa-fw'></i>"
+post = ""
+name = ""
+url = "https://github.com/ahmczsy"
+title = "GitHub"
+weight = 6
+[languages.zh-cn.params]
+# 网站描述
+description = "noel 的个人博客"
+# 网站关键词
+keywords = ["golang", "vps","go 语言","clickhouse"]
+# 应用图标配置
+[languages.zh-cn.params.app]
+# 当添加到 iOS 主屏幕或者 Android 启动器时的标题, 覆盖默认标题
+title = "noel"
+# 是否隐藏网站图标资源链接
+noFavicon = false
+# 更现代的 SVG 网站图标, 可替代旧的 .png 和 .ico 文件
+svgFavicon = ""
+# Android 浏览器主题色
+themeColor = "#ffffff"
+# Safari 图标颜色
+iconColor = "#5bbad5"
+# Windows v8-10 磁贴颜色
+tileColor = "#da532c"
+# 搜索配置
+[languages.zh-cn.params.search]
+enable = true
+# 搜索引擎的类型 ("lunr", "algolia")
+type = "algolia"
+# 文章内容最长索引长度
+contentLength = 4000
+# 搜索框的占位提示语
+placeholder = ""
+# 最大结果数目
+maxResultLength = 10
+# 结果内容片段长度
+snippetLength = 50
+# 搜索结果中高亮部分的 HTML 标签
+highlightTag = "em"
+# 是否在搜索索引中使用基于 baseURL 的绝对路径
+absoluteURL = false
+[languages.zh-cn.params.search.algolia]
+index = "index.zh-cn"
+appID = "APVHGPESBV"
+searchKey = "feaac50093f949bb1df2f02801bae913"
+# 主页信息设置
+[languages.zh-cn.params.home]
+# RSS 文章数目
+rss = 10
+# 主页个人信息
+[languages.zh-cn.params.home.profile]
+enable = true
+# Gravatar 邮箱，用于优先在主页显示的头像
+gravatarEmail = ""
+# 主页显示头像的 URL
+avatarURL = "https://s2.ax1x.com/2019/08/05/egNJkd.jpg"
+# 主页显示的网站标题 (支持 HTML 格式)
+title = ""
+# 主页显示的网站副标题
+subtitle = "一个 golang 程序员的个人博客"
+# 是否为副标题显示打字机动画
+typeit = true
+# 是否显示社交账号
+social = true
+# 免责声明 (支持 HTML 格式)
+disclaimer = ""
+# 主页文章列表
+[languages.zh-cn.params.home.posts]
+enable = true
+# 主页每页显示文章数量
+paginate = 6
+# 主页的社交信息设置
+[languages.zh-cn.params.social]
+GitHub = "ahmczsy"
+Telegram = "tgnoel"
+Bilibili = ""
+Email = "ahmczsy@gmail.com"
+RSS = true

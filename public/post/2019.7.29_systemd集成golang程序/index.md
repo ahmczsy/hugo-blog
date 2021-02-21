@@ -1,0 +1,86 @@
+# Systemd集成Golang程序
+
+当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务
+<!--more-->
+
+
+### 新建Systemd的Service
+
+目前go build得到的可执行文件放在/root/glass/go下
+
+首先新建Service，名称叫做glass-api
+
+```shell
+touch /lib/systemd/system/glass-api.service
+```
+
+下一步，编辑该文件
+
+```
+[Unit]
+Description=Glass admin's api
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart=/root/glass/go/main
+WorkingDirectory=/root/glass/go/
+
+[Install]
+WantedBy=multi-user.target
+```
+
+ExecStart是go可执行文件的路径
+
+WorkingDirectory要注意，如果程序中使用了相对路径来加载一些配置文件，如果在Service中没有配置WorkingDirectory，默认是根路径，所以配置文件就从根路径来寻找，会造成一些意向不到的情况
+
+
+
+### 运行Service
+
+启动
+
+```shell
+service glass-api start
+```
+
+停止
+
+```shell
+service glass-api stop
+```
+
+查看状态
+
+```she
+service glass-api status
+```
+
+输出结果
+
+```shell
+Redirecting to /bin/systemctl status  glass-api.service
+● glass-api.service - Glass admin's api
+   Loaded: loaded (/usr/lib/systemd/system/glass-api.service; disabled; vendor preset: disabled)
+   Active: active (running) since Sat 2019-07-27 19:00:09 CST; 1 day 15h ago
+ Main PID: 22559 (main)
+   Memory: 7.3M
+   CGroup: /system.slice/glass-api.service
+           └─22559 /root/glass/go/main
+```
+
+如果想要开机启动
+
+```shell
+service glass-api enable
+```
+
+
+
+### 参考
+
+* https://liqiang.io/post/run-golang-binary-with-systemd
+* https://github.com/kardianos/service
+
+

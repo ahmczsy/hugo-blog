@@ -1,0 +1,49 @@
+# MySql索引优化
+
+
+# MySql索引优化
+
+### 语法
+
+```sql
+create table user_info (
+	id int AUTO_INCREMENT,
+	name varchar(20),
+	age int(3),
+	email varchar(256),
+	PRIMARY KEY (id)
+);
+create index idx_user_nameAgeEmail on user_info (name,age,email);
+
+create table t (
+	a varchar(20),
+	b int(3),
+	c varchar(20)
+);
+
+create index idx_a_b_c on t (a,b,c);
+
+
+
+create index <索引名称> on <表名> （<列名>,.....）
+```
+
+
+
+### 不合适创建索引的情况
+
+* 更新多，查询少
+
+* 数据重复度高的字段：
+
+  比如一张表有两个字段“名”和“姓”，“名”就合适建立索引，“姓”不合适
+
+### 索引优化
+
+#### 最左前缀
+
+使用索引的时候要一定要注意在创建索引时的顺序
+
+
+
+
