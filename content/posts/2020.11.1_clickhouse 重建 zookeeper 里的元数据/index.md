@@ -103,7 +103,7 @@ drop table user
 ```
 * 在 A B 节点上把 temp 表的名字修改为原表的名字
 ```sql
-rename temp to user
+rename table temp to user
 ```
 
 
