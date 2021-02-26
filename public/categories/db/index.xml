@@ -5,10 +5,10 @@
         <description>db - 分类 - noel的个人博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 20 Feb 2021 15:51:35 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/db/" rel="self" type="application/rss+xml" /><item>
     <title>mysql 如何查看，修改 collate</title>
-    <link>https://blog.18881888.xyz/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/</link>
+    <link>https://blog.18881888.xyz/2021_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/</link>
     <pubDate>Sat, 20 Feb 2021 15:51:35 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://blog.18881888.xyz/2020_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/</guid>
+    <guid>https://blog.18881888.xyz/2021_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/</guid>
     <description><![CDATA[问题 今天偶然发现 mysql 在比较字符时会忽略大小写，这让我非常意外。 比如 select 'a' = 'A' 这行运行的结果是 1也就是在 mysql 看来 a 和 A 是相等的 经过一番的查找原来是 mysql]]></description>
 </item><item>
     <title>ClickHouse 中用 int 类型作为字典的效率高，还是用LowCardinality(String)</title>

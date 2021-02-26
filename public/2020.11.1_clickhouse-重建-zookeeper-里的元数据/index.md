@@ -97,7 +97,7 @@ drop table user
 ```
 * 在 A B 节点上把 temp 表的名字修改为原表的名字
 ```sql
-rename temp to user
+rename table temp to user
 ```
 
 
@@ -106,3 +106,4 @@ rename temp to user
 
 * https://github.com/ClickHouse/ClickHouse/issues/7972
 * https://clickhouse.tech/docs/en/sql-reference/statements/alter/partition/#alter_freeze-partition
+

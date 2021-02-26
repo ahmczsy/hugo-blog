@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>docker 中的overlay 存储原理 - noel的个人博客</title><meta name="Description" content="noel 的个人博客"><meta property="og:title" content="docker 中的overlay 存储原理" />
+<meta property="og:description" content="在 linux 中手动的体验 overlay2 什么是UnionFS 联合文件系统（Union File System）可以把多个目录(也叫分支)内容联合挂载到同一个目录下，而目录的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.18881888.xyz/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/" />
+<meta property="article:published_time" content="2021-02-26T15:51:35+08:00" />
+<meta property="article:modified_time" content="2021-02-26T15:51:35+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="docker 中的overlay 存储原理"/>
+<meta name="twitter:description" content="在 linux 中手动的体验 overlay2 什么是UnionFS 联合文件系统（Union File System）可以把多个目录(也叫分支)内容联合挂载到同一个目录下，而目录的"/>
+<meta name="application-name" content="noel">
+<meta name="apple-mobile-web-app-title" content="noel"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.18881888.xyz/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/" /><link rel="prev" href="https://blog.18881888.xyz/2021_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "docker 中的overlay 存储原理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.18881888.xyz\/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86\/"
+        },"genre": "posts","keywords": "docker","wordcount":  1989 ,
+        "url": "https:\/\/blog.18881888.xyz\/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86\/","datePublished": "2021-02-26T15:51:35+08:00","dateModified": "2021-02-26T15:51:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "noel"},"author": {
+                "@type": "Person",
+                "name": "noel"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="noel的个人博客">👨‍💻‍ noel 的博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/ahmczsy" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="noel的个人博客">👨‍💻‍ noel 的博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/ahmczsy" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">docker 中的overlay 存储原理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-26">2021-02-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1989 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#在-linux-中手动的体验-overlay2">在 linux 中手动的体验 <code>overlay2</code></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#什么是unionfs">什么是UnionFS</a></li>
+            <li><a href="#手动的挂载-overlay2">手动的挂载 overlay2</a></li>
+            <li><a href="#修改-merge-后的文件">修改 merge 后的文件</a></li>
+            <li><a href="#总结">总结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#docker-中的-overlay">docker 中的 overlay</a>
+      <ul>
+        <li><a href="#下载-image">下载 image</a></li>
+        <li><a href="#观察-image-和-container-的文件结构">观察 image 和 container 的文件结构</a>
+          <ul>
+            <li><a href="#image">image</a></li>
+            <li><a href="#container">container</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="在-linux-中手动的体验-overlay2">在 linux 中手动的体验 <code>overlay2</code></h2>
+<h4 id="什么是unionfs">什么是UnionFS</h4>
+<p><code>联合文件系统</code>（Union File System）可以把多个目录(也叫分支)内容联合挂载到同一个目录下，而目录的物理位置是分开的。linux 中 UnionFS 的实现有很多，docker 目前用的是 <code>overlay2</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled.png"
+        data-srcset="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled.png, docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled.png 1.5x, /2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled.png 2x"
+        data-sizes="auto"
+        alt="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled.png"
+        title="docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled.png" /></p>
+<p>上面这张图就是联合文件系统的一个示例：把 <code>lower1</code>，<code>lower2</code>，<code>upper</code> 三个文件的内容联合挂载到 <code>merge</code> 文件夹。要想知道overlay2是如何把这三个文件夹合并的，要先理解<code>lowerdir,upperdir,work,merged</code> 这四种文件夹</p>
+<ul>
+<li><code>lowerdir</code> ：表示较为底层的目录，修改联合挂载点不会影响到lowerdir。就是上图中的 lower1 ，lower2 文件夹</li>
+<li><code>upperdir</code>：表示较为上层的目录，修改联合挂载点会在upperdir同步修改。就是上图中的 upper 文件夹</li>
+<li><code>merged</code>：是 lowerdir 和 upperdir 合并后的联合挂载点。就是上图中蓝色的 merge 文件夹</li>
+<li><code>workdir</code>：用来存放挂载后的临时文件与间接文件。</li>
+</ul>
+<h4 id="手动的挂载-overlay2">手动的挂载 overlay2</h4>
+<p>首先下面的命令会创建这四种目录，并在这文件中创建了一些文件，用来观察 overlay 是如何联合挂载的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir overlay-test
+<span class="nb">cd</span> overlay-test
+mkdir low1
+mkdir low2
+mkdir up
+mkdir merge
+mkdir work
+
+touch low1/a
+<span class="nb">echo</span> <span class="s2">&#34;a in low1&#34;</span> &gt; low1/a
+touch low1/b
+touch low2/a
+<span class="nb">echo</span> <span class="s2">&#34;a in low2&#34;</span> &gt; low2/a
+touch low2/c
+touch  up/d
+</code></pre></td></tr></table>
+</div>
+</div><p>运行后的目录结构应该是下面这样的</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%201.png"
+        data-srcset="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%201.png, docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%201.png 1.5x, /2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%201.png 2x"
+        data-sizes="auto"
+        alt="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%201.png"
+        title="docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%201.png" /></p>
+<p>然后执行 <code>overlay</code> 的挂载命令</p>
+<p><code>sudo mount -t overlay overlay -o lowerdir=low1:low2,upperdir=up,workdir=work merge</code></p>
+<p>执行后的目录结构：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%202.png"
+        data-srcset="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%202.png, docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%202.png 1.5x, /2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%202.png 2x"
+        data-sizes="auto"
+        alt="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%202.png"
+        title="docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%202.png" /></p>
+<p>从上图看出 merge 文件夹已经有了 low1，low2，up 三个文件夹的文件</p>
+<p>由于 low1 和 low2 都有 a 文件，所以需要看下 merge 里的 a 文件来自于哪个文件夹</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# cat merge/a
+a in low1
+</code></pre></td></tr></table>
+</div>
+</div><p>由于上面的命名中 <code>lowerdir</code> 文件夹挂载了两个文件，如果挂载了多个文件，左面的优先级高。所以 a 文件来自于 low1 文件夹</p>
+<h4 id="修改-merge-后的文件">修改 merge 后的文件</h4>
+<ul>
+<li>在 merge 文件夹新增 new_file ，在 up 文件夹也新增了改文件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# touch merge/new_file
+root@noel:~/overlay-test# tree
+.
+├── low1
+│   ├── a
+│   └── b
+├── low2
+│   ├── a
+│   └── c
+├── merge
+│   ├── a
+│   ├── b
+│   ├── c
+│   ├── d
+│   └── new_file
+├── up
+│   ├── d
+│   └── new_file
+└── work
+    └── work
+
+<span class="m">6</span> directories, <span class="m">12</span> files
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>修改 merge 下的 b 文件，low1 文件夹内的 b 文件没有改变</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# <span class="nb">echo</span> <span class="s2">&#34;bbbb&#34;</span> &gt;merge/b
+root@noel:~/overlay-test# cat merge/b
+bbbb
+root@noel:~/overlay-test# cat low1/b
+root@noel:~/overlay-test#
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>修改 merge 下的 d 文件，up 文件夹内的 d 文件随之改变</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# <span class="nb">echo</span> <span class="s2">&#34;ddddd&#34;</span> &gt; merge/d
+root@noel:~/overlay-test# cat merge/d
+ddddd
+root@noel:~/overlay-test# cat up/d
+ddddd
+root@noel:~/overlay-test#
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="总结">总结</h4>
+<p>从上面的一些现象来看，<code>lowerdir</code> 就像是 docker 中的 image，<strong>low1</strong> 和 <strong>low2</strong> 就是 image 中 <code>layer</code> 的概念。upperdir 就是 docker 中的 container。</p>
+<p>下图就是 dcoker 官网中的一个图片</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%203.png"
+        data-srcset="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%203.png, docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%203.png 1.5x, /2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%203.png 2x"
+        data-sizes="auto"
+        alt="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%203.png"
+        title="docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%203.png" /></p>
+<h2 id="docker-中的-overlay">docker 中的 overlay</h2>
+<h3 id="下载-image">下载 image</h3>
+<p>使用docker pull ubuntu 来下载 image 来研究</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~# docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+83ee3a23efb7: Pull <span class="nb">complete</span>
+db98fc6f11f0: Pull <span class="nb">complete</span>
+f611acd52c6c: Pull <span class="nb">complete</span>
+Digest: sha256:703218c0465075f4425e58fac086e09e1de5c340b12976ab9eb8ad26615c3715
+Status: Downloaded newer image <span class="k">for</span> ubuntu:latest
+docker.io/library/ubuntu:latest
+root@noel:~#
+</code></pre></td></tr></table>
+</div>
+</div><p>上面命令可以看出我们下载了的 ubuntu 镜像有三层，那上面的例子来对比就是有 low1，low2，low3 三个文件夹</p>
+<h3 id="观察-image-和-container-的文件结构">观察 image 和 container 的文件结构</h3>
+<h4 id="image">image</h4>
+<p>docker 下载的镜像都在 <code>/var/lib/docker/overlay2</code> 进入该目录后看下目录结构</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# tree -L <span class="m">2</span>
+.
+├── 18533d22086c0f91c14a11499d506f53452c92a0179ce20de5d8de21b084b05c
+│   ├── committed
+│   ├── diff
+│   └── link
+├── 78e6965c4bca0f7a6da0d72a1dc361933e9635ceec89519625b03bd4253d73b9
+│   ├── diff
+│   ├── link
+│   ├── lower
+│   └── work
+├── 7979e6ce4b2f7675255db2aec3d01a1f545425652952802cae4e42b8e8d56d78
+│   ├── committed
+│   ├── diff
+│   ├── link
+│   ├── lower
+│   └── work
+└── l
+    ├── 6CZZH722UFGUBASNSUFY24SAVT -&gt; ../18533d22086c0f91c14a11499d506f53452c92a0179ce20de5d8de21b084b05c/diff
+    ├── PJGLJKKB3IET6REXBDXWWZPJPB -&gt; ../7979e6ce4b2f7675255db2aec3d01a1f545425652952802cae4e42b8e8d56d78/diff
+    └── UFLIZTAI4O6KBT4XSDYLFFRVIQ -&gt; ../78e6965c4bca0f7a6da0d72a1dc361933e9635ceec89519625b03bd4253d73b9/diff
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>diff</code> ：文件实际存放位置</li>
+<li><code>lower</code>：存储的是父 layer 的 id，如果没有该文件，说明该 layer 是根节点</li>
+<li><code>link</code>：存储的是该文件夹的 <code>短id</code> 和 <code>l</code> 文件夹内的软连接相符</li>
+</ul>
+<h4 id="container">container</h4>
+<p><code>docker run -it ubuntu</code> 启动容器后再观察文件的变化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# tree -L <span class="m">2</span>
+.
+├── 18533d22086c0f91c14a11499d506f53452c92a0179ce20de5d8de21b084b05c
+│   ├── committed
+│   ├── diff
+│   └── link
+├── 78e6965c4bca0f7a6da0d72a1dc361933e9635ceec89519625b03bd4253d73b9
+│   ├── committed
+│   ├── diff
+│   ├── link
+│   ├── lower
+│   └── work
+├── 7979e6ce4b2f7675255db2aec3d01a1f545425652952802cae4e42b8e8d56d78
+│   ├── committed
+│   ├── diff
+│   ├── link
+│   ├── lower
+│   └── work
+├── bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68
+│   ├── diff
+│   ├── link
+│   ├── lower
+│   ├── merged
+│   └── work
+├── bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68-init
+│   ├── committed
+│   ├── diff
+│   ├── link
+│   ├── lower
+│   └── work
+└── l
+    ├── 6CZZH722UFGUBASNSUFY24SAVT -&gt; ../18533d22086c0f91c14a11499d506f53452c92a0179ce20de5d8de21b084b05c/diff
+    ├── PJGLJKKB3IET6REXBDXWWZPJPB -&gt; ../7979e6ce4b2f7675255db2aec3d01a1f545425652952802cae4e42b8e8d56d78/diff
+    ├── SIVTPIQFVUBGEQPAQABNZKAO4Q -&gt; ../bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/diff
+    ├── UFLIZTAI4O6KBT4XSDYLFFRVIQ -&gt; ../78e6965c4bca0f7a6da0d72a1dc361933e9635ceec89519625b03bd4253d73b9/diff
+    └── XWLNFDN6UKH5MVFD32HLGEH57U -&gt; ../bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68-init/diff
+</code></pre></td></tr></table>
+</div>
+</div><p>可以发现多了两个文件夹 <code>bd9fd7613.....8f54e68</code> 和 <code>bd9fd7613.....8f54e68-init</code></p>
+<p><code>bd9fd7613.....8f54e68</code> 就是 container 的工作目录</p>
+<p><code>init</code> 为结尾的文件夹属于 lowerdir 层。init 层是 docker 项目单独生成的一个内部层，专门用来存放 /etc/hosts、/etc/resolv.conf 等信息。需要这样一层的原因是，这些文件本来属于只读的系统镜像层的一部分，但是用户往往需要在启动容器时写入一些指定的值比如hostname，所以就需要在可读写层对它们进行修改。可是，这些修改往往只对当前的容器有效，我们并不希望执行 docker commit 时，把这些信息连同可读写层一起提交掉。所以，docker 做法是，在修改了这些文件之后，以一个单独的层挂载了出来。而用户执行 docker commit 只会提交可读写层，所以是不包含这些内容的。</p>
+<p>这时运行 <code>mount | grep docker</code> 查看系统目前挂载了什么文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">overlay on /var/lib/docker/overlay2/bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/merged type overlay 
+(
+rw,relatime,
+lowerdir=
+/var/lib/docker/overlay2/l/XWLNFDN6UKH5MVFD32HLGEH57U:
+/var/lib/docker/overlay2/l/UFLIZTAI4O6KBT4XSDYLFFRVIQ:
+/var/lib/docker/overlay2/l/PJGLJKKB3IET6REXBDXWWZPJPB:
+/var/lib/docker/overlay2/l/6CZZH722UFGUBASNSUFY24SAVT,
+
+upperdir=/var/lib/docker/overlay2/bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/diff,
+workdir=/var/lib/docker/overlay2/bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/work
+)
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到 <code>upperdir</code> 在 <code>bd9fd7613.....8f54e68/diff</code>  目录</p>
+<p>在容器内使用 <code>touch inner_container.txt</code> 新建一个文件，看看该文件在文件在宿主机的哪个文件夹下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# find ./ -name inner_container.txt
+./bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/diff/inner_container.txt
+./bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/merged/inner_container.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到在容器内新增了一个文件，只会在宿主机的 <code>upperdir</code> 和 <code>merged</code> 做出修改</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p><a href="https://zhuanlan.zhihu.com/p/95590072">https://zhuanlan.zhihu.com/p/95590072</a>、</p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/luckyapple1028/article/details/78075358">https://blog.csdn.net/luckyapple1028/article/details/78075358</a></p>
+</li>
+<li>
+<p><a href="https://staight.github.io/2019/10/04/%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0-overlay2/">https://staight.github.io/2019/10/04/%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0-overlay2/</a></p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-02-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/docker/">docker</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2021_02_20_mysql-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9-collate/" class="prev" rel="prev" title="mysql 如何查看，修改 collate"><i class="fas fa-angle-left fa-fw"></i>mysql 如何查看，修改 collate</a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"ahmczsy/blog_comment"}},"search":{"algoliaAppID":"APVHGPESBV","algoliaIndex":"index.zh-cn","algoliaSearchKey":"feaac50093f949bb1df2f02801bae913","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-151122324-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-151122324-1" async></script></body>
+</html>
