@@ -3,7 +3,14 @@
         <title>linux - 标签 - noel的个人博客</title>
         <link>https://blog.18881888.xyz/tags/linux/</link>
         <description>linux - 标签 - noel的个人博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 10 Jul 2020 14:33:51 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/tags/linux/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 16 Jul 2021 10:43:06 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>linux中的socket和piple文件类型</title>
+    <link>https://blog.18881888.xyz/2021.07.16_linux%E4%B8%AD%E7%9A%84socket%E5%92%8Cpiple%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/</link>
+    <pubDate>Fri, 16 Jul 2021 10:43:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2021.07.16_linux%E4%B8%AD%E7%9A%84socket%E5%92%8Cpiple%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/</guid>
+    <description><![CDATA[前置知识 $$ 和 $BASHPID 的用处和区别 $$ 和 $BASHPID 都是打印当前 bash 进程的进程编号，在下面的例子两者是没有区别的，输出结果相同 1 2 3 4 noel@noel:~$ echo $$ 2948 noel@noel:~$ echo $BASHPID 2948 但是在下面的]]></description>
+</item><item>
     <title>linux的top命令如何保存设置</title>
     <link>https://blog.18881888.xyz/2020.7.10_linux%E7%9A%84top%E5%91%BD%E4%BB%A4%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE/</link>
     <pubDate>Fri, 10 Jul 2020 14:33:51 &#43;0800</pubDate>

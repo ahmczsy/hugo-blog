@@ -1,4 +1,4 @@
-# docker 中的overlay 存储原理
+# docker 中的 overlay 存储原理
 
 
 ## 在 linux 中手动的体验 `overlay2`
@@ -37,6 +37,8 @@ echo "a in low2" > low2/a
 touch low2/c
 touch  up/d
 ```
+
+
 
 运行后的目录结构应该是下面这样的
 
@@ -117,13 +119,21 @@ root@noel:~/overlay-test#
 
 下图就是 dcoker 官网中的一个图片
 
+
+
 ![docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%203.png](docker%20share%20481e7009cb6540a5b1fba4a3cc3921b4/Untitled%203.png)
+
+
+
+
 
 ## docker 中的 overlay
 
 ### 下载 image
 
 使用docker pull ubuntu 来下载 image 来研究
+
+
 
 ```bash
 root@noel:~# docker pull ubuntu
@@ -258,5 +268,5 @@ root@noel:/var/lib/docker/overlay2# find ./ -name inner_container.txt
 
 * https://zhuanlan.zhihu.com/p/95590072、
 * https://blog.csdn.net/luckyapple1028/article/details/78075358
-
 * https://staight.github.io/2019/10/04/%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0-overlay2/
+* https://docs.docker.com/storage/storagedriver/overlayfs-driver/#how-the-overlay-driver-works

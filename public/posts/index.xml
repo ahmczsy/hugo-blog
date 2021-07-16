@@ -3,8 +3,15 @@
         <title>所有文章 - noel的个人博客</title>
         <link>https://blog.18881888.xyz/posts/</link>
         <description>所有文章 | noel的个人博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 26 Feb 2021 15:51:35 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>docker 中的overlay 存储原理</title>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 16 Jul 2021 10:43:06 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>linux中的socket和piple文件类型</title>
+    <link>https://blog.18881888.xyz/2021.07.16_linux%E4%B8%AD%E7%9A%84socket%E5%92%8Cpiple%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/</link>
+    <pubDate>Fri, 16 Jul 2021 10:43:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2021.07.16_linux%E4%B8%AD%E7%9A%84socket%E5%92%8Cpiple%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/</guid>
+    <description><![CDATA[前置知识 $$ 和 $BASHPID 的用处和区别 $$ 和 $BASHPID 都是打印当前 bash 进程的进程编号，在下面的例子两者是没有区别的，输出结果相同 1 2 3 4 noel@noel:~$ echo $$ 2948 noel@noel:~$ echo $BASHPID 2948 但是在下面的]]></description>
+</item><item>
+    <title>docker 中的 overlay 存储原理</title>
     <link>https://blog.18881888.xyz/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/</link>
     <pubDate>Fri, 26 Feb 2021 15:51:35 &#43;0800</pubDate>
     <author>作者</author>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://blog.18881888.xyz/2020.6.30_postman%E5%8F%91%E9%80%81gzip%E7%9A%84%E8%AF%B7%E6%B1%82/</guid>
     <description><![CDATA[最近需要测试gzip相关的内容。其中有一项需要对经过gzip压缩的request body进行处理。平时测试接口都是使用postman，这次我]]></description>
-</item><item>
-    <title>golang处理数据库返回大量数据</title>
-    <link>https://blog.18881888.xyz/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>
-    <pubDate>Tue, 26 May 2020 13:31:38 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://blog.18881888.xyz/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</guid>
-    <description><![CDATA[问题 这两天需要把ClickHouse的查询结果进行统计然后存储起来，但是每一次查询的出来的数据量非常大。行数很多，某一天的count统计如下]]></description>
 </item></channel>
 </rss>
