@@ -10,7 +10,7 @@
 <meta property="og:description" content="noel 的个人博客" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.18881888.xyz/" />
-<meta property="og:updated_time" content="2021-07-16T10:43:06+08:00" />
+<meta property="og:updated_time" content="2021-09-07T16:08:42+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="noel的个人博客"/>
 <meta name="twitter:description" content="noel 的个人博客"/>
@@ -100,6 +100,13 @@
         alt="https://s2.ax1x.com/2019/08/05/egNJkd.jpg"
         title="https://s2.ax1x.com/2019/08/05/egNJkd.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/ahmczsy" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://t.me/tgnoel" title="Telegram" target="_blank" rel="noopener noreffer me"><i class="fab fa-telegram-plane fa-fw"></i></a><a href="mailto:ahmczsy@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">golang ldfalgs的小技巧</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2019-08-26">2019-08-26</time></span></div><div class="content"><h2 id="问题">问题</h2>
+<p>如果想要在go build生成的可执行文件中注入编译时间，git hash等信息。可以在编译的时候使用-ldflags -X参数来注入变量</p>
+<p>-ldfflags -X 可以在go install 、go build、go run  、go test中使用</p>
+<p><strong>go build -ldflags &ldquo;-X  ' packageName.varName=cmd ' &ldquo;</strong></p></div><div class="post-footer">
+        <a href="/2019.9.12_golang-ldfalgs%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">阅读全文</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/2019.8.26_receiver-has-generic-name/">Receiver has generic name</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2019-08-26">2019-08-26</time></span></div><div class="content"><h4 id="问题">问题</h4>
 <p>Golang的<strong>方法接收者</strong>就是在函数名前的括号内的东西  如</p>
@@ -152,20 +159,6 @@
         <a href="/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/">使用idea自带的plugin反编译jar</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2019-03-25">2019-03-25</time></span></div><div class="content">问题 之前想反编译jar包,在网上了找了一些反编译的工具感觉都不太好用.就来我发现idea自带的反编译插件挺好用,但是没有GUI只能使用命令.</div><div class="post-footer">
         <a href="/%E4%BD%BF%E7%94%A8idea%E8%87%AA%E5%B8%A6%E7%9A%84plugin%E5%8F%8D%E7%BC%96%E8%AF%91jar/">阅读全文</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">B-树的一些概念</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2019-03-21">2019-03-21</time></span></div><div class="content"><h3 id="阶的含义">“阶”的含义</h3>
-<p>B-树的所有结点中<strong>最多可以拥有的子结点的个数</strong>为“阶”，用M表示，下图是一个三阶B-树</p>
-<p><a href="https://imgchr.com/i/A3Ce7n" target="_blank" rel="noopener noreffer"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://s2.ax1x.com/2019/03/21/A3Ce7n.png"
-        data-srcset="https://s2.ax1x.com/2019/03/21/A3Ce7n.png, https://s2.ax1x.com/2019/03/21/A3Ce7n.png 1.5x, https://s2.ax1x.com/2019/03/21/A3Ce7n.png 2x"
-        data-sizes="auto"
-        alt="https://s2.ax1x.com/2019/03/21/A3Ce7n.png"
-        title="A3Ce7n.png" /></a></p>
-<p>三阶B树中所有节点的子节点最多有三个，不能超过三个</p></div><div class="post-footer">
-        <a href="/2019.3.21_b-%E6%A0%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">阅读全文</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

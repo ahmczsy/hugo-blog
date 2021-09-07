@@ -3,7 +3,14 @@
         <title>linux - 分类 - noel的个人博客</title>
         <link>https://blog.18881888.xyz/categories/linux/</link>
         <description>linux - 分类 - noel的个人博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 16 Jul 2021 10:43:06 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/linux/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Sep 2021 16:08:42 &#43;0800</lastBuildDate><atom:link href="https://blog.18881888.xyz/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Mac 下 6.S081 的环境搭建</title>
+    <link>https://blog.18881888.xyz/2021_9_7_mac-%E4%B8%8B-6.s081-%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Tue, 07 Sep 2021 16:08:42 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.18881888.xyz/2021_9_7_mac-%E4%B8%8B-6.s081-%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[介绍 虽然我个人是计算机的科班毕业生，由于在学习操作系统的课程中并没有很好的代码实践，以至于到现在已经完全忘记了操作系统课程到内容。再加上在背]]></description>
+</item><item>
     <title>linux中的socket和piple文件类型</title>
     <link>https://blog.18881888.xyz/2021.07.16_linux%E4%B8%AD%E7%9A%84socket%E5%92%8Cpiple%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/</link>
     <pubDate>Fri, 16 Jul 2021 10:43:06 &#43;0800</pubDate>
