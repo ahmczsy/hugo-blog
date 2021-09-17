@@ -36,9 +36,10 @@ $ sudo service mysql strat
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2019.3.16_ubuntu18.04-%E4%BF%AE%E6%94%B9mysql5.7%E9%BB%98%E8%AE%A4root%E5%AF%86%E7%A0%81/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-03-16T14:42:11+08:00" />
 <meta property="article:modified_time" content="2019-03-16T14:42:11+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ubuntu18.04 修改Mysql5.7默认root密码"/>
 <meta name="twitter:description" content="步骤
@@ -187,11 +188,11 @@ $ sudo service mysql strat
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[mysqld]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[mysqld]
 skip-grant-tables=1
 </code></pre></td></tr></table>
 </div>
@@ -200,11 +201,11 @@ skip-grant-tables=1
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo service mysql stop
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo service mysql stop
 $ sudo service mysql strat
 </code></pre></td></tr></table>
 </div>
@@ -213,7 +214,7 @@ $ sudo service mysql strat
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -225,7 +226,7 @@ $ sudo service mysql strat
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ mysql
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ mysql
 //修改验证方式
 mysql&gt; USE mysql;
 mysql&gt; UPDATE user SET plugin=&#39;mysql_native_password&#39; WHERE User=&#39;root&#39;;
@@ -242,14 +243,14 @@ musql&gt; exit;
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ mysql -uroot -p
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ mysql -uroot -p
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="参考">参考</h4>
-<p><a href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost#">https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost#</a></p></div><div class="post-footer" id="post-footer">
+<p><a href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost#" target="_blank" rel="noopener noreffer">https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost#</a></p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -281,7 +282,7 @@ musql&gt; exit;
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

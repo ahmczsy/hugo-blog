@@ -6,14 +6,15 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>MySql索引优化 - noel的个人博客</title><meta name="Description" content="noel 的个人博客"><meta property="og:title" content="MySql索引优化" />
-<meta property="og:description" content="MySql索引优化 语法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 create table user_info ( id int AUTO_INCREMENT, name varchar(20), age int(3), email varchar(256), PRIMARY KEY (id) ); create index idx_user_nameAgeEmail on user_info (name,age,email); create table t ( a varchar(20), b int(3), c varchar(20) ); create index idx_a_b_c on t" />
+<meta property="og:description" content="MySql索引优化 语法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 createtableuser_info(idintAUTO_INCREMEN" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-03-25T14:42:11+08:00" />
 <meta property="article:modified_time" content="2019-03-25T14:42:11+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySql索引优化"/>
-<meta name="twitter:description" content="MySql索引优化 语法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 create table user_info ( id int AUTO_INCREMENT, name varchar(20), age int(3), email varchar(256), PRIMARY KEY (id) ); create index idx_user_nameAgeEmail on user_info (name,age,email); create table t ( a varchar(20), b int(3), c varchar(20) ); create index idx_a_b_c on t"/>
+<meta name="twitter:description" content="MySql索引优化 语法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 createtableuser_info(idintAUTO_INCREMEN"/>
 <meta name="application-name" content="noel">
 <meta name="apple-mobile-web-app-title" content="noel"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.18881888.xyz\/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96\/"
-        },"genre": "posts","wordcount":  206 ,
+        },"genre": "posts","wordcount":  416 ,
         "url": "https:\/\/blog.18881888.xyz\/2019.3.25_mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96\/","datePublished": "2019-03-25T14:42:11+08:00","dateModified": "2019-03-25T14:42:11+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "noel"},"author": {
@@ -103,7 +104,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">MySql索引优化</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-03-25">2019-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 206 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-03-25">2019-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 416 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -129,7 +130,7 @@
 <h3 id="语法">语法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -151,27 +152,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">table</span> <span class="n">user_info</span> <span class="p">(</span>
-	<span class="n">id</span> <span class="nb">int</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
-	<span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
-	<span class="n">age</span> <span class="nb">int</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-	<span class="n">email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
-	<span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="p">);</span>
-<span class="k">create</span> <span class="k">index</span> <span class="n">idx_user_nameAgeEmail</span> <span class="k">on</span> <span class="n">user_info</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">email</span><span class="p">);</span>
-
-<span class="k">create</span> <span class="k">table</span> <span class="n">t</span> <span class="p">(</span>
-	<span class="n">a</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
-	<span class="n">b</span> <span class="nb">int</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-	<span class="k">c</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="p">);</span>
-
-<span class="k">create</span> <span class="k">index</span> <span class="n">idx_a_b_c</span> <span class="k">on</span> <span class="n">t</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="k">c</span><span class="p">);</span>
-
-
-
-<span class="k">create</span> <span class="k">index</span> <span class="o">&lt;</span><span class="err">索引名称</span><span class="o">&gt;</span> <span class="k">on</span> <span class="o">&lt;</span><span class="err">表名</span><span class="o">&gt;</span> <span class="err">（</span><span class="o">&lt;</span><span class="err">列名</span><span class="o">&gt;</span><span class="p">,.....</span><span class="err">）</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">user_info</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span><span class="w">	</span><span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="n">age</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="n">email</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="n">idx_user_nameAgeEmail</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">user_info</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">email</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="n">a</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="n">b</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="k">c</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="n">idx_a_b_c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="k">c</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="o">&lt;</span><span class="err">索引名称</span><span class="o">&gt;</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="o">&lt;</span><span class="err">表名</span><span class="o">&gt;</span><span class="w"> </span><span class="err">（</span><span class="o">&lt;</span><span class="err">列名</span><span class="o">&gt;</span><span class="p">,.....</span><span class="err">）</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="不合适创建索引的情况">不合适创建索引的情况</h3>
 <ul>
@@ -218,7 +219,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

@@ -8,9 +8,10 @@
         <title>docker 中的 overlay 存储原理 - noel的个人博客</title><meta name="Description" content="noel 的个人博客"><meta property="og:title" content="docker 中的 overlay 存储原理" />
 <meta property="og:description" content="在 linux 中手动的体验 overlay2 什么是UnionFS 联合文件系统（Union File System）可以把多个目录(也叫分支)内容联合挂载到同一个目录下，而目录的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2021.02.26_docker-%E4%B8%AD%E7%9A%84overlay-%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-02-26T15:51:35+08:00" />
 <meta property="article:modified_time" content="2021-02-26T15:51:35+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="docker 中的 overlay 存储原理"/>
 <meta name="twitter:description" content="在 linux 中手动的体验 overlay2 什么是UnionFS 联合文件系统（Union File System）可以把多个目录(也叫分支)内容联合挂载到同一个目录下，而目录的"/>
@@ -160,7 +161,7 @@
 <p>首先下面的命令会创建这四种目录，并在这文件中创建了一些文件，用来观察 overlay 是如何联合挂载的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -177,7 +178,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir overlay-test
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkdir overlay-test
 <span class="nb">cd</span> overlay-test
 mkdir low1
 mkdir low2
@@ -218,11 +219,11 @@ touch  up/d
 <p>由于 low1 和 low2 都有 a 文件，所以需要看下 merge 里的 a 文件来自于哪个文件夹</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# cat merge/a
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# cat merge/a
 a in low1
 </code></pre></td></tr></table>
 </div>
@@ -233,7 +234,7 @@ a in low1
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -257,7 +258,7 @@ a in low1
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# touch merge/new_file
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# touch merge/new_file
 root@noel:~/overlay-test# tree
 .
 ├── low1
@@ -286,14 +287,14 @@ root@noel:~/overlay-test# tree
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# <span class="nb">echo</span> <span class="s2">&#34;bbbb&#34;</span> &gt;merge/b
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# <span class="nb">echo</span> <span class="s2">&#34;bbbb&#34;</span> &gt;merge/b
 root@noel:~/overlay-test# cat merge/b
 bbbb
 root@noel:~/overlay-test# cat low1/b
@@ -305,7 +306,7 @@ root@noel:~/overlay-test#
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -313,7 +314,7 @@ root@noel:~/overlay-test#
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# <span class="nb">echo</span> <span class="s2">&#34;ddddd&#34;</span> &gt; merge/d
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@noel:~/overlay-test# <span class="nb">echo</span> <span class="s2">&#34;ddddd&#34;</span> &gt; merge/d
 root@noel:~/overlay-test# cat merge/d
 ddddd
 root@noel:~/overlay-test# cat up/d
@@ -337,7 +338,7 @@ root@noel:~/overlay-test#
 <p>使用docker pull ubuntu 来下载 image 来研究</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -349,7 +350,7 @@ root@noel:~/overlay-test#
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:~# docker pull ubuntu
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@noel:~# docker pull ubuntu
 Using default tag: latest
 latest: Pulling from library/ubuntu
 83ee3a23efb7: Pull <span class="nb">complete</span>
@@ -367,7 +368,7 @@ root@noel:~#
 <p>docker 下载的镜像都在 <code>/var/lib/docker/overlay2</code> 进入该目录后看下目录结构</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -390,7 +391,7 @@ root@noel:~#
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# tree -L <span class="m">2</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# tree -L <span class="m">2</span>
 .
 ├── 18533d22086c0f91c14a11499d506f53452c92a0179ce20de5d8de21b084b05c
 │   ├── committed
@@ -422,7 +423,7 @@ root@noel:~#
 <p><code>docker run -it ubuntu</code> 启动容器后再观察文件的变化</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -460,7 +461,7 @@ root@noel:~#
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# tree -L <span class="m">2</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# tree -L <span class="m">2</span>
 .
 ├── 18533d22086c0f91c14a11499d506f53452c92a0179ce20de5d8de21b084b05c
 │   ├── committed
@@ -504,7 +505,7 @@ root@noel:~#
 <p>这时运行 <code>mount | grep docker</code> 查看系统目前挂载了什么文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -518,7 +519,7 @@ root@noel:~#
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">overlay on /var/lib/docker/overlay2/bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/merged type overlay 
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">overlay on /var/lib/docker/overlay2/bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/merged type overlay 
 (
 rw,relatime,
 lowerdir=
@@ -536,12 +537,12 @@ workdir=/var/lib/docker/overlay2/bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a
 <p>在容器内使用 <code>touch inner_container.txt</code> 新建一个文件，看看该文件在文件在宿主机的哪个文件夹下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# find ./ -name inner_container.txt
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@noel:/var/lib/docker/overlay2# find ./ -name inner_container.txt
 ./bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/diff/inner_container.txt
 ./bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a4d5e9b54658f54e68/merged/inner_container.txt
 </code></pre></td></tr></table>
@@ -549,10 +550,10 @@ workdir=/var/lib/docker/overlay2/bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a
 </div><p>可以看到在容器内新增了一个文件，只会在宿主机的 <code>upperdir</code> 和 <code>merged</code> 做出修改</p>
 <h2 id="参考">参考</h2>
 <ul>
-<li><a href="https://zhuanlan.zhihu.com/p/95590072">https://zhuanlan.zhihu.com/p/95590072</a>、</li>
-<li><a href="https://blog.csdn.net/luckyapple1028/article/details/78075358">https://blog.csdn.net/luckyapple1028/article/details/78075358</a></li>
-<li><a href="https://staight.github.io/2019/10/04/%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0-overlay2/">https://staight.github.io/2019/10/04/%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0-overlay2/</a></li>
-<li><a href="https://docs.docker.com/storage/storagedriver/overlayfs-driver/#how-the-overlay-driver-works">https://docs.docker.com/storage/storagedriver/overlayfs-driver/#how-the-overlay-driver-works</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/95590072" target="_blank" rel="noopener noreffer">https://zhuanlan.zhihu.com/p/95590072</a>、</li>
+<li><a href="https://blog.csdn.net/luckyapple1028/article/details/78075358" target="_blank" rel="noopener noreffer">https://blog.csdn.net/luckyapple1028/article/details/78075358</a></li>
+<li><a href="https://staight.github.io/2019/10/04/%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0-overlay2/" target="_blank" rel="noopener noreffer">https://staight.github.io/2019/10/04/%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0-overlay2/</a></li>
+<li><a href="https://docs.docker.com/storage/storagedriver/overlayfs-driver/#how-the-overlay-driver-works" target="_blank" rel="noopener noreffer">https://docs.docker.com/storage/storagedriver/overlayfs-driver/#how-the-overlay-driver-works</a></li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -586,7 +587,7 @@ workdir=/var/lib/docker/overlay2/bd9fd7613eb3a36398b0c9929740c7393c1e8e97208486a
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

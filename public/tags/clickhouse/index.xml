@@ -16,14 +16,14 @@
     <pubDate>Fri, 04 Sep 2020 14:11:48 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.18881888.xyz/2020.9.4_clickhouse%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%A4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%A4%E5%88%97/</guid>
-    <description><![CDATA[在 clickhouse 中经常遇到把数组转为列的情况 . 一个数组转为列 一个数组转列的情况很简单 , 直接使用 arrayjoin 函数来实现 1 select arrayJoin([1,2,3,4]) n 两个数组转为两列遇到的问题 现有两个数组]]></description>
+    <description><![CDATA[在 clickhouse 中经常遇到把数组转为列的情况 . 一个数组转为列 一个数组转列的情况很简单 , 直接使用 arrayjoin 函数来实现 1 selectarrayJoin([1,2,3,4])n 两个数组转为两列遇到的问题 现有两个数组 , 想]]></description>
 </item><item>
     <title>clickhouse 比较版本号</title>
     <link>https://blog.18881888.xyz/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
     <pubDate>Tue, 25 Aug 2020 19:02:20 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.18881888.xyz/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
-    <description><![CDATA[2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。 1 select IPv4StringToNum(&#39;2.7.14.23&#39;) &lt; IPv4StringToNum(&#39;2.12.8.12&#39;) comparse; 上面的结果是 1 符合我们的预期 但是这个函数有个缺点，版本号必须符合 ipv4 的]]></description>
+    <description><![CDATA[2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。 1 selectIPv4StringToNum(&#39;2.7.14.23&#39;)&lt;IPv4StringToNum(&#39;2.12.8.12&#39;)comparse; 上面的结果是 1 符合我们的预期 但是这个函数有个缺点，版本号必须符合 ipv4 的格式，否]]></description>
 </item><item>
     <title>golang处理数据库返回大量数据</title>
     <link>https://blog.18881888.xyz/2020.5.26_golang%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%94%E5%9B%9E%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/</link>

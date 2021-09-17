@@ -6,14 +6,15 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>clickhouse 比较版本号 - noel的个人博客</title><meta name="Description" content="noel 的个人博客"><meta property="og:title" content="clickhouse 比较版本号" />
-<meta property="og:description" content="2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。 1 select IPv4StringToNum(&#39;2.7.14.23&#39;) &lt; IPv4StringToNum(&#39;2.12.8.12&#39;) comparse; 上面的结果是 1 符合我们的预期 但是这个函数有个缺点，版本号必须符合 ipv4 的" />
+<meta property="og:description" content="2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。 1 selectIPv4StringToNum(&#39;2.7.14.23&#39;)&lt;IPv4StringToNum(&#39;2.12.8.12&#39;)comparse; 上面的结果是 1 符合我们的预期 但是这个函数有个缺点，版本号必须符合 ipv4 的格式，否" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-08-25T19:02:20+08:00" />
 <meta property="article:modified_time" content="2020-08-25T19:02:20+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="clickhouse 比较版本号"/>
-<meta name="twitter:description" content="2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。 1 select IPv4StringToNum(&#39;2.7.14.23&#39;) &lt; IPv4StringToNum(&#39;2.12.8.12&#39;) comparse; 上面的结果是 1 符合我们的预期 但是这个函数有个缺点，版本号必须符合 ipv4 的"/>
+<meta name="twitter:description" content="2021-01-15 日更新 最近发现 IPv4StringToNum 是用来比较版本号是更简单，性能更好的方式。 1 selectIPv4StringToNum(&#39;2.7.14.23&#39;)&lt;IPv4StringToNum(&#39;2.12.8.12&#39;)comparse; 上面的结果是 1 符合我们的预期 但是这个函数有个缺点，版本号必须符合 ipv4 的格式，否"/>
 <meta name="application-name" content="noel">
 <meta name="apple-mobile-web-app-title" content="noel"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.18881888.xyz\/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2\/"
-        },"genre": "posts","keywords": "clickhouse","wordcount":  629 ,
+        },"genre": "posts","keywords": "clickhouse","wordcount":  587 ,
         "url": "https:\/\/blog.18881888.xyz\/2020.8.25_clickhouse-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2\/","datePublished": "2020-08-25T19:02:20+08:00","dateModified": "2020-08-25T19:02:20+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "noel"},"author": {
@@ -103,7 +104,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">clickhouse 比较版本号</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/db/"><i class="far fa-folder fa-fw"></i>db</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-25">2020-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 629 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-25">2020-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 587 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -132,11 +133,11 @@
 <p>最近发现 <code>IPv4StringToNum</code> 是用来比较版本号是更简单，性能更好的方式。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="n">IPv4StringToNum</span><span class="p">(</span><span class="s1">&#39;2.7.14.23&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">IPv4StringToNum</span><span class="p">(</span><span class="s1">&#39;2.12.8.12&#39;</span><span class="p">)</span> <span class="n">comparse</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">IPv4StringToNum</span><span class="p">(</span><span class="s1">&#39;2.7.14.23&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">IPv4StringToNum</span><span class="p">(</span><span class="s1">&#39;2.12.8.12&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">comparse</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>上面的结果是 <code>1</code> 符合我们的预期</p>
 <p>但是这个函数有个缺点，版本号必须符合 ipv4 的格式，否者 <code>IPv4StringToNum</code> 会直接返回<code>0</code></p>
@@ -145,24 +146,24 @@
 <p>对于不符合 ipv4 的版本号可以稍微处理下，比如只有两位（<code>1.2</code>）或三位的版本号（<code>1.2.3</code>）要补全成 ipv4 的形式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">with</span> <span class="s1">&#39;1.2&#39;</span> <span class="k">as</span> <span class="n">shortVersion</span>
-<span class="k">select</span> <span class="n">concat</span><span class="p">(</span><span class="n">shortVersion</span><span class="p">,</span> <span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;.0&#39;</span><span class="p">,</span> <span class="n">toUInt64</span><span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="k">length</span><span class="p">(</span><span class="n">splitByString</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">shortVersion</span><span class="p">)))));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">with</span><span class="w"> </span><span class="s1">&#39;1.2&#39;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">shortVersion</span><span class="w">
+</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="n">shortVersion</span><span class="p">,</span><span class="w"> </span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">toUInt64</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">length</span><span class="p">(</span><span class="n">splitByString</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">shortVersion</span><span class="p">)))));</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h4 id="原理">原理</h4>
 <p>clickhouse 是如何把 ipv4 的字符串变为 number 的？经过查询找到了 clickhouse 的计算流程</p>
 <p>比如一个形如<code>64.233.187.99</code>的 ipv4 地址，会经过如下的计算</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">64*2^24 + 233*2^16 + 187*2^8 + 99
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">64*2^24 + 233*2^16 + 187*2^8 + 99
 = 1089059683
 </code></pre></td></tr></table>
 </div>
@@ -195,7 +196,7 @@
 <h2 id="完整的-sql">完整的 sql</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -203,19 +204,19 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">with</span> <span class="n">arrayStringConcat</span><span class="p">(</span><span class="n">arrayMap</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">concat</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">toUInt16</span><span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="n">x</span><span class="p">),</span>
-                                <span class="n">splitByString</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6.8.10&#39;</span><span class="p">)),</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ver1</span><span class="p">,</span>
-    <span class="n">arrayStringConcat</span><span class="p">(</span><span class="n">arrayMap</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">concat</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">toUInt16</span><span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="n">x</span><span class="p">),</span>
-                               <span class="n">splitByString</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6.8.2&#39;</span><span class="p">)),</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ver2</span>
-
-<span class="k">select</span> <span class="n">ver1</span> <span class="o">&gt;</span> <span class="n">ver2</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">with</span><span class="w"> </span><span class="n">arrayStringConcat</span><span class="p">(</span><span class="n">arrayMap</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">toUInt16</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span><span class="w"> </span><span class="n">x</span><span class="p">),</span><span class="w">
+</span><span class="w">                                </span><span class="n">splitByString</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;5.6.8.10&#39;</span><span class="p">)),</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">ver1</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">arrayStringConcat</span><span class="p">(</span><span class="n">arrayMap</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">toUInt16</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span><span class="w"> </span><span class="n">x</span><span class="p">),</span><span class="w">
+</span><span class="w">                               </span><span class="n">splitByString</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;5.6.8.2&#39;</span><span class="p">)),</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">ver2</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">ver1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ver2</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考">参考</h2>
 <ul>
-<li><a href="https://tiramisu-navy.github.io/2018/09/27/mysql-compare-version(varchar)/">https://tiramisu-navy.github.io/2018/09/27/mysql-compare-version(varchar)/</a></li>
-<li><a href="https://clickhouse.tech/docs/en/sql-reference/functions/higher-order-functions/#higher_order_functions-array-map">https://clickhouse.tech/docs/en/sql-reference/functions/higher-order-functions/#higher_order_functions-array-map</a></li>
-<li><a href="https://stackoverflow.com/questions/34876711/mysql-query-compare-version-numbers">https://stackoverflow.com/questions/34876711/mysql-query-compare-version-numbers</a></li>
+<li><a href="https://tiramisu-navy.github.io/2018/09/27/mysql-compare-version%28varchar%29/" target="_blank" rel="noopener noreffer">https://tiramisu-navy.github.io/2018/09/27/mysql-compare-version(varchar)/</a></li>
+<li><a href="https://clickhouse.tech/docs/en/sql-reference/functions/higher-order-functions/#higher_order_functions-array-map" target="_blank" rel="noopener noreffer">https://clickhouse.tech/docs/en/sql-reference/functions/higher-order-functions/#higher_order_functions-array-map</a></li>
+<li><a href="https://stackoverflow.com/questions/34876711/mysql-query-compare-version-numbers" target="_blank" rel="noopener noreffer">https://stackoverflow.com/questions/34876711/mysql-query-compare-version-numbers</a></li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -249,7 +250,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

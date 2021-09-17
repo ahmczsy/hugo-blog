@@ -8,9 +8,10 @@
         <title>openresty 开发记录 - noel的个人博客</title><meta name="Description" content="noel 的个人博客"><meta property="og:title" content="openresty 开发记录" />
 <meta property="og:description" content="这段时间需要做一个签名验证的模块 . 因为 golang 的 rsa 性能问题需要用 nginx-opensty 来开发 , 在这个过程中遇到了一些问题和结果方法 , 在这里记录一下 . 安装 在 mac 下可以直接" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2020.9.12_openresty-%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-09-12T15:04:00+08:00" />
 <meta property="article:modified_time" content="2020-09-12T15:04:00+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="openresty 开发记录"/>
 <meta name="twitter:description" content="这段时间需要做一个签名验证的模块 . 因为 golang 的 rsa 性能问题需要用 nginx-opensty 来开发 , 在这个过程中遇到了一些问题和结果方法 , 在这里记录一下 . 安装 在 mac 下可以直接"/>
@@ -145,7 +146,7 @@
 <p>然后在 <code>~/work/openresty/conf/</code> 下添加 <code>a.conf</code> 文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -157,7 +158,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
     listen       6622;
     set $path /Users/noelz/work/openresty/code;
     location / {
@@ -172,10 +173,10 @@
 </div><p>在 <code>~/work/openresty/code/</code> 添加 <code>hellow_world.lua</code> 文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">ngx.say</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="n">ngx.say</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>现在的 work 目录下的结构如下</p>
@@ -197,7 +198,7 @@
 <p>比如下面这个配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -212,7 +213,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-txt" data-lang="txt">lua_package_cpath &#39;/luatrace/code/?.so;/data/code/?.so;;&#39;;
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">lua_package_cpath &#39;/luatrace/code/?.so;/data/code/?.so;;&#39;;
 lua_package_path &#39;/luatrace/code/?.lua;/data/code/?.lua;;&#39;;
 init_by_lua_file /luatrace/code/service/conf.lua;
 server {
@@ -245,7 +246,7 @@ server {
 <p>在 openrest 中可以指定不同的加载阶段来执行不同的 lua 代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -261,7 +262,7 @@ server {
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">lua_package_cpath &#39;/data/code/?.so;/data/code/?.so;;&#39;;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">lua_package_cpath &#39;/data/code/?.so;/data/code/?.so;;&#39;;
 lua_package_path &#39;/data/code/?.lua;/data/code/?.lua;;&#39;;
 init_by_lua_file /data/code/service/conf.lua;
 server {
@@ -290,7 +291,7 @@ server {
 <p>比如在上面的配置文件的第三行中的 lua 代码就是读取了配置文件然后返回一个模块变量</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -308,7 +309,7 @@ server {
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">lfs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&#34;lfs&#34;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">lfs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&#34;lfs&#34;</span><span class="p">)</span>
 <span class="kd">local</span> <span class="n">str</span> <span class="o">=</span> <span class="n">require</span> <span class="s2">&#34;lib.str&#34;</span>
 
 <span class="kd">local</span> <span class="n">conf</span> <span class="o">=</span> <span class="p">{}</span>
@@ -329,13 +330,13 @@ server {
 </div><p>然后在其他的模块中就可以引用上面的 <code>conf</code> 模块了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="c1">-- 引入 conf 模块 , 它就是个全局变量</span>
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="c1">-- 引入 conf 模块 , 它就是个全局变量</span>
 <span class="kd">local</span> <span class="n">conf</span> <span class="o">=</span> <span class="n">require</span> <span class="s2">&#34;service.conf&#34;</span>  
 
 <span class="n">print</span><span class="p">(</span><span class="n">conf</span><span class="p">[</span><span class="s1">&#39;xxx&#39;</span><span class="p">])</span>
@@ -345,7 +346,7 @@ server {
 <p>虽然 lua 中有 <code>string.gmatch</code> 这样万能的字符串操作库 , 但是我只是临时用下 lua , gmatch 这个函数我有点用不来 . 所以下面是我封装的字符串分割 , 以及字符串转 16 进制的两个函数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -358,7 +359,7 @@ server {
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">split</span><span class="p">(</span><span class="n">inputstr</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">split</span><span class="p">(</span><span class="n">inputstr</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span>
     <span class="n">inputstr</span> <span class="o">=</span> <span class="n">inputstr</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
     <span class="kr">if</span> <span class="n">sep</span> <span class="o">==</span> <span class="kc">nil</span> <span class="kr">then</span>
         <span class="n">sep</span> <span class="o">=</span> <span class="s2">&#34;%s&#34;</span>
@@ -373,14 +374,14 @@ server {
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">hex</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">spacer</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">hex</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">spacer</span><span class="p">)</span>
     <span class="kr">return</span> <span class="n">string.lower</span><span class="p">((</span><span class="n">string.gsub</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s2">&#34;(.)&#34;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
         <span class="kr">return</span> <span class="n">string.format</span><span class="p">(</span><span class="s2">&#34;%02X%s&#34;</span><span class="p">,</span> <span class="n">string.byte</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">spacer</span> <span class="ow">or</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
     <span class="kr">end</span><span class="p">)))</span>
@@ -419,7 +420,7 @@ server {
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

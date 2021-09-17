@@ -26,7 +26,9 @@ serializable ：效率最低
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB/" /><meta property="article:section" content="posts" />
+
+
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySql事务等级和幻读"/>
@@ -61,7 +63,7 @@ serializable ：效率最低
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.18881888.xyz\/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB\/"
-        },"genre": "posts","wordcount":  529 ,
+        },"genre": "posts","wordcount":  517 ,
         "url": "https:\/\/blog.18881888.xyz\/2019.3.26_mysql%E4%BA%8B%E5%8A%A1%E7%AD%89%E7%BA%A7%E5%92%8C%E5%B9%BB%E8%AF%BB\/","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "noel"},"author": {
@@ -138,7 +140,7 @@ serializable ：效率最低
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">MySql事务等级和幻读</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>noel</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 529 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 517 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -179,11 +181,11 @@ serializable ：效率最低
 <h3 id="查看当前事务等级">查看当前事务等级</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SELECT</span> <span class="o">@@</span><span class="n">global</span><span class="p">.</span><span class="n">tx_isolation</span><span class="p">,</span> <span class="o">@@</span><span class="n">tx_isolation</span><span class="p">;</span>	
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="n">global</span><span class="p">.</span><span class="n">tx_isolation</span><span class="p">,</span><span class="w"> </span><span class="o">@@</span><span class="n">tx_isolation</span><span class="p">;</span><span class="w">	
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="触发幻读">触发幻读</h3>
 <ul>
@@ -191,7 +193,7 @@ serializable ：效率最低
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -199,13 +201,13 @@ serializable ：效率最低
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql">
-<span class="k">create</span> <span class="k">table</span> <span class="nf">t1</span> <span class="p">(</span>
-	<span class="n">id</span> <span class="kt">int</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
-	<span class="n">age</span> <span class="kt">int</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-	<span class="k">primary</span> <span class="k">key</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="w">
+</span><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="nf">t1</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="n">id</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="n">age</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>触发过程</li>
@@ -327,7 +329,7 @@ serializable ：效率最低
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

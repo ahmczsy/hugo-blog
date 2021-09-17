@@ -8,9 +8,10 @@
         <title>Mac下clash教程 - noel的个人博客</title><meta name="Description" content="clash配置说明"><meta property="og:title" content="Mac下clash教程" />
 <meta property="og:description" content="clash配置说明" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2020.2.18_mac%E4%B8%8Bclash%E6%95%99%E7%A8%8B/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-02-18T22:44:13+08:00" />
 <meta property="article:modified_time" content="2020-02-18T22:44:13+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mac下clash教程"/>
 <meta name="twitter:description" content="clash配置说明"/>
@@ -161,7 +162,7 @@
 <p>proxy字段接受对象数组，该字段用来制定代理服务器的描述，比如代理服务器的类型，ip地址，端口等</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -174,7 +175,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">Proxy</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">Proxy</span><span class="p">:</span><span class="w">
 </span><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Unblock&#34;</span><span class="w">
 </span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">ss</span><span class="w">
 </span><span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l">music.desperadoj.com</span><span class="w">
@@ -200,7 +201,7 @@
 <p>下面的事例是<code>select</code>类型的策略</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -208,7 +209,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w"> </span><span class="nt">Proxy Group</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w"> </span><span class="nt">Proxy Group</span><span class="p">:</span><span class="w">
 </span><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;🎵 Netease Music&#34;</span><span class="w">
 </span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">select</span><span class="w">
 </span><span class="w">  </span><span class="nt">proxies</span><span class="p">:</span><span class="w"> 
@@ -231,7 +232,7 @@
 <p>该字符串由逗号分隔,具体的规则是：<code>匹配规则,匹配源,使用哪个代理</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -242,7 +243,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">Rule</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">Rule</span><span class="p">:</span><span class="w">
 </span><span class="w"></span><span class="c"># domain类型是全匹配，只有访问的url是apps.apple.com时，才是使用名为“🎵 Netease Music”的代理</span><span class="w">
 </span><span class="w"></span>- <span class="l">DOMAIN,apps.apple.com,🎵 Netease Music</span><span class="w">
 </span><span class="w"></span><span class="c">#DOMAIN-SUFFIX是后缀域名匹配,例如这个规则可以匹配blog.126.com这个url，之后使用&#34;direct&#34;这个代理</span><span class="w">
@@ -255,9 +256,9 @@
 </div>
 </div><h2 id="参考">参考</h2>
 <ul>
-<li><a href="https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml">https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml</a></li>
-<li><a href="https://github.com/nondanee/UnblockNeteaseMusic">https://github.com/nondanee/UnblockNeteaseMusic</a></li>
-<li><a href="https://github.com/yichengchen/clashX">https://github.com/yichengchen/clashX</a></li>
+<li><a href="https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml" target="_blank" rel="noopener noreffer">https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml</a></li>
+<li><a href="https://github.com/nondanee/UnblockNeteaseMusic" target="_blank" rel="noopener noreffer">https://github.com/nondanee/UnblockNeteaseMusic</a></li>
+<li><a href="https://github.com/yichengchen/clashX" target="_blank" rel="noopener noreffer">https://github.com/yichengchen/clashX</a></li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -291,7 +292,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

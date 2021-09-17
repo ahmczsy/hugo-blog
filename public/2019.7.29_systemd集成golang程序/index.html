@@ -8,9 +8,10 @@
         <title>Systemd集成Golang程序 - noel的个人博客</title><meta name="Description" content="noel 的个人博客"><meta property="og:title" content="Systemd集成Golang程序" />
 <meta property="og:description" content="当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2019.7.29_systemd%E9%9B%86%E6%88%90golang%E7%A8%8B%E5%BA%8F/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-07-29T14:42:11+08:00" />
 <meta property="article:modified_time" content="2019-07-29T14:42:11+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Systemd集成Golang程序"/>
 <meta name="twitter:description" content="当想要在服务器上部署一个常驻程序时，不想让程序随着Terminal的退出而中止，你可以使用docker nohup supervisor 这些工具来实现。但是处于想学习Linux中Systemd的目的，我使用Systemd来实现把一个Golang程序作为一个系统服务"/>
@@ -127,16 +128,16 @@
 <p>首先新建Service，名称叫做glass-api</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">touch /lib/systemd/system/glass-api.service
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">touch /lib/systemd/system/glass-api.service
 </code></pre></td></tr></table>
 </div>
 </div><p>下一步，编辑该文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -150,7 +151,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[Unit]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[Unit]
 Description=Glass admin&#39;s api
 
 [Service]
@@ -170,34 +171,34 @@ WantedBy=multi-user.target
 <p>启动</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">service glass-api start
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">service glass-api start
 </code></pre></td></tr></table>
 </div>
 </div><p>停止</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">service glass-api stop
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">service glass-api stop
 </code></pre></td></tr></table>
 </div>
 </div><p>查看状态</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">service glass-api status
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">service glass-api status
 </code></pre></td></tr></table>
 </div>
 </div><p>输出结果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -207,7 +208,7 @@ WantedBy=multi-user.target
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">Redirecting to /bin/systemctl status  glass-api.service
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Redirecting to /bin/systemctl status  glass-api.service
 ● glass-api.service - Glass admin<span class="err">&#39;</span>s api
    Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/glass-api.service<span class="p">;</span> disabled<span class="p">;</span> vendor preset: disabled<span class="o">)</span>
    Active: active <span class="o">(</span>running<span class="o">)</span> since Sat 2019-07-27 19:00:09 CST<span class="p">;</span> <span class="m">1</span> day 15h ago
@@ -220,16 +221,16 @@ WantedBy=multi-user.target
 </div><p>如果想要开机启动</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">service glass-api <span class="nb">enable</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">service glass-api <span class="nb">enable</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="参考">参考</h3>
 <ul>
-<li><a href="https://liqiang.io/post/run-golang-binary-with-systemd">https://liqiang.io/post/run-golang-binary-with-systemd</a></li>
-<li><a href="https://github.com/kardianos/service">https://github.com/kardianos/service</a></li>
+<li><a href="https://liqiang.io/post/run-golang-binary-with-systemd" target="_blank" rel="noopener noreffer">https://liqiang.io/post/run-golang-binary-with-systemd</a></li>
+<li><a href="https://github.com/kardianos/service" target="_blank" rel="noopener noreffer">https://github.com/kardianos/service</a></li>
 </ul></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -262,7 +263,7 @@ WantedBy=multi-user.target
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

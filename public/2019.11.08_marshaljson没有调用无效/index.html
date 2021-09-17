@@ -8,9 +8,10 @@
         <title>MarshalJSON没有调用、无效？ - noel的个人博客</title><meta name="Description" content="golang的MarshalJSON没有调用、无效"><meta property="og:title" content="MarshalJSON没有调用、无效？" />
 <meta property="og:description" content="golang的MarshalJSON没有调用、无效" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.18881888.xyz/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/" />
+<meta property="og:url" content="https://blog.18881888.xyz/2019.11.08_marshaljson%E6%B2%A1%E6%9C%89%E8%B0%83%E7%94%A8%E6%97%A0%E6%95%88/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-11-08T19:07:02+08:00" />
 <meta property="article:modified_time" content="2019-11-08T19:07:02+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MarshalJSON没有调用、无效？"/>
 <meta name="twitter:description" content="golang的MarshalJSON没有调用、无效"/>
@@ -124,7 +125,7 @@
 <p>下面是我有问题的代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -138,7 +139,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">str</span> <span class="kt">string</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">str</span> <span class="kt">string</span>
 
 <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">str</span><span class="p">)</span> <span class="nf">MarshalJSON</span><span class="p">()</span> <span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 	<span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="s">&#34;bbb&#34;</span><span class="p">)</span>
@@ -155,12 +156,12 @@
 </div><h2 id="pointer-receiver--和value-receiver">pointer receiver  和value receiver</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span><span class="p">{}</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span><span class="p">{}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">T</span><span class="p">)</span> <span class="nf">pointerMethod</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">// pointer receiver
 </span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="nx">T</span><span class="p">)</span> <span class="nf">valueMethod</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">// value receiver
 </span></code></pre></td></tr></table>
@@ -169,18 +170,18 @@
 <p>由于golang没有面向对象那一套东西，上面的两行代码可以视为下面的形式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span>  <span class="nf">pointerMethod</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span> 
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span>  <span class="nf">pointerMethod</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span> 
 <span class="kd">func</span>  <span class="nf">valueMethod</span><span class="p">(</span><span class="nx">t</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
 </div><p>所以在golang中value变量只能调用value receiver的方法，pointer只能调用pointer receiver的方法。比如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -189,7 +190,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">t1</span> <span class="nx">T</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">t1</span> <span class="nx">T</span>
 <span class="nx">t1</span><span class="p">.</span><span class="nf">valueMethod</span><span class="p">()</span><span class="c1">//正确
 </span><span class="c1"></span><span class="nx">t1</span><span class="p">.</span><span class="nf">pointerMethod</span><span class="p">()</span><span class="c1">//错误?
 </span><span class="c1"></span>
@@ -201,7 +202,7 @@
 </div><p>其实我们实际可以相互调用的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -210,7 +211,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">t1</span> <span class="nx">T</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">t1</span> <span class="nx">T</span>
 <span class="nx">t1</span><span class="p">.</span><span class="nf">valueMethod</span><span class="p">()</span><span class="c1">//正确
 </span><span class="c1"></span><span class="nx">t1</span><span class="p">.</span><span class="nf">pointerMethod</span><span class="p">()</span><span class="c1">//正确
 </span><span class="c1"></span>
@@ -233,7 +234,7 @@
 <p>在讨论interface的receiver之前，先看下interface在使用中的一些问题。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -258,7 +259,7 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">S</span> <span class="kd">struct</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">S</span> <span class="kd">struct</span> <span class="p">{</span>
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">S</span><span class="p">)</span> <span class="nf">pointerMethod</span><span class="p">()</span> <span class="p">{</span>
@@ -297,7 +298,7 @@
 <p>把<code>s</code>的类型改为指针</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -311,17 +312,17 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">str</span> <span class="kt">string</span>
-  
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">str</span> <span class="kt">string</span>
+
 <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">str</span><span class="p">)</span> <span class="nf">MarshalJSON</span><span class="p">()</span> <span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="s">&#34;bbb&#34;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="s">&#34;bbb&#34;</span><span class="p">)</span>
 <span class="p">}</span>
-  
+
 <span class="kd">func</span> <span class="nf">TestStr</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">temp</span> <span class="o">:=</span> <span class="s">&#34;aaa&#34;</span>
-  <span class="kd">var</span> <span class="nx">s</span> <span class="o">*</span><span class="nx">str</span> <span class="p">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">str</span><span class="p">)(</span><span class="o">&amp;</span><span class="nx">temp</span><span class="p">)</span> <span class="c1">//改为指针
-</span><span class="c1"></span>  <span class="nx">bytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">bytes</span><span class="p">))</span>
+	<span class="nx">temp</span> <span class="o">:=</span> <span class="s">&#34;aaa&#34;</span>
+	<span class="kd">var</span> <span class="nx">s</span> <span class="o">*</span><span class="nx">str</span> <span class="p">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">str</span><span class="p">)(</span><span class="o">&amp;</span><span class="nx">temp</span><span class="p">)</span> <span class="c1">//改为指针
+</span><span class="c1"></span>	<span class="nx">bytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">bytes</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -330,7 +331,7 @@
 <p>从pointer receiver改为value receiver</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -343,16 +344,16 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">str</span> <span class="kt">string</span>
-  
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">str</span> <span class="kt">string</span>
+
 <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">str</span><span class="p">)</span> <span class="nf">MarshalJSON</span><span class="p">()</span> <span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//把 * 去掉
-</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="s">&#34;bbb&#34;</span><span class="p">)</span>
+</span><span class="c1"></span>	<span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="s">&#34;bbb&#34;</span><span class="p">)</span>
 <span class="p">}</span>
-  
+
 <span class="kd">func</span> <span class="nf">TestStr</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">s</span> <span class="nx">str</span> <span class="p">=</span> <span class="s">&#34;aaa&#34;</span>
-  <span class="nx">bytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">bytes</span><span class="p">))</span>
+	<span class="kd">var</span> <span class="nx">s</span> <span class="nx">str</span> <span class="p">=</span> <span class="s">&#34;aaa&#34;</span>
+	<span class="nx">bytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">bytes</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -361,22 +362,22 @@
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p><a href="https://stackoverflow.com/questions/33587227/golang-method-sets-pointer-vs-value-receiver">https://stackoverflow.com/questions/33587227/golang-method-sets-pointer-vs-value-receiver</a></p>
+<p><a href="https://stackoverflow.com/questions/33587227/golang-method-sets-pointer-vs-value-receiver" target="_blank" rel="noopener noreffer">https://stackoverflow.com/questions/33587227/golang-method-sets-pointer-vs-value-receiver</a></p>
 </li>
 <li>
-<p><a href="https://stackoverflow.com/questions/21390979/custom-marshaljson-never-gets-called-in-go">https://stackoverflow.com/questions/21390979/custom-marshaljson-never-gets-called-in-go</a></p>
+<p><a href="https://stackoverflow.com/questions/21390979/custom-marshaljson-never-gets-called-in-go" target="_blank" rel="noopener noreffer">https://stackoverflow.com/questions/21390979/custom-marshaljson-never-gets-called-in-go</a></p>
 </li>
 <li>
-<p><a href="http://shanks.leanote.com/post/Untitled-55ca439338f41148cd000759-17">http://shanks.leanote.com/post/Untitled-55ca439338f41148cd000759-17</a></p>
+<p><a href="http://shanks.leanote.com/post/Untitled-55ca439338f41148cd000759-17" target="_blank" rel="noopener noreffer">http://shanks.leanote.com/post/Untitled-55ca439338f41148cd000759-17</a></p>
 </li>
 <li>
-<p><a href="https://sanyuesha.com/2017/07/22/how-to-understand-go-interface/">https://sanyuesha.com/2017/07/22/how-to-understand-go-interface/</a></p>
+<p><a href="https://sanyuesha.com/2017/07/22/how-to-understand-go-interface/" target="_blank" rel="noopener noreffer">https://sanyuesha.com/2017/07/22/how-to-understand-go-interface/</a></p>
 </li>
 <li>
-<p><a href="https://colobu.com/2018/02/27/go-addressable/">https://colobu.com/2018/02/27/go-addressable/</a></p>
+<p><a href="https://colobu.com/2018/02/27/go-addressable/" target="_blank" rel="noopener noreffer">https://colobu.com/2018/02/27/go-addressable/</a></p>
 </li>
 <li>
-<p><a href="https://tonybai.com/2015/09/17/7-things-you-may-not-pay-attation-to-in-go/">https://tonybai.com/2015/09/17/7-things-you-may-not-pay-attation-to-in-go/</a></p>
+<p><a href="https://tonybai.com/2015/09/17/7-things-you-may-not-pay-attation-to-in-go/" target="_blank" rel="noopener noreffer">https://tonybai.com/2015/09/17/7-things-you-may-not-pay-attation-to-in-go/</a></p>
 </li>
 </ul>
 </div><div class="post-footer" id="post-footer">
@@ -411,7 +412,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.78.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">noel</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
